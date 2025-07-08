@@ -2,36 +2,37 @@
 
 import type React from "react"
 import { useState } from "react"
+import { useForm } from "@inertiajs/react"
 
 interface FormData {
   name: string
   email: string
   password: string
-  confirmPassword: string
+  password_confirmation: string
   rememberMe: boolean
 }
 
 const Register = () => {
-  const [formData, setFormData] = useState<FormData>({
+  const { data, setData, post, processing, errors, reset } = useForm<FormData>({
     name: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    password_confirmation: "",
     rememberMe: false,
   })
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }))
+    setData(name as keyof FormData, type === "checkbox" ? checked : value)
   }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log("Form submitted:", formData)
+    post('/register', {
+      onSuccess: () => {
+        reset()
+      },
+    })
   }
 
   return (
@@ -47,7 +48,8 @@ const Register = () => {
               Rejoignez-Nous Aujourd'hui Remplissez Le Formulaire Pour Commencer
             </p>
           </header>
-          <div className="space-y-2 sm:space-y-3 lg:space-y-6">
+
+          <form onSubmit={handleSubmit} className="space-y-2 sm:space-y-3 lg:space-y-6">
             <div>
               <h2 className="text-base sm:text-lg lg:text-xl font-semibold font-satoshi text-gray-900 mb-2 sm:mb-3 lg:mb-6">
                 Créez votre compte
@@ -66,13 +68,18 @@ const Register = () => {
                 type="text"
                 id="name"
                 name="name"
-                value={formData.name}
+                value={data.name}
                 onChange={handleInputChange}
                 placeholder="Tapez Nom"
-                className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none transition-all duration-300 bg-white font-gilroy shadow-sm hover:shadow-md focus:shadow-lg"
+                className={`w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none transition-all duration-300 bg-white font-gilroy shadow-sm hover:shadow-md focus:shadow-lg ${
+                  errors.name ? 'border-red-500' : 'border-gray-300'
+                }`}
                 required
                 aria-describedby="name-help"
               />
+              {errors.name && (
+                <p className="mt-1 text-xs text-red-600 font-gilroy">{errors.name}</p>
+              )}
             </div>
 
             {/* Email Field */}
@@ -87,13 +94,18 @@ const Register = () => {
                 type="email"
                 id="email"
                 name="email"
-                value={formData.email}
+                value={data.email}
                 onChange={handleInputChange}
                 placeholder="✉ Exemple"
-                className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none transition-all duration-300 bg-white font-gilroy shadow-sm hover:shadow-md focus:shadow-lg"
+                className={`w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none transition-all duration-300 bg-white font-gilroy shadow-sm hover:shadow-md focus:shadow-lg ${
+                  errors.email ? 'border-red-500' : 'border-gray-300'
+                }`}
                 required
                 aria-describedby="email-help"
               />
+              {errors.email && (
+                <p className="mt-1 text-xs text-red-600 font-gilroy">{errors.email}</p>
+              )}
             </div>
 
             {/* Password Field */}
@@ -108,28 +120,33 @@ const Register = () => {
                 type="password"
                 id="password"
                 name="password"
-                value={formData.password}
+                value={data.password}
                 onChange={handleInputChange}
                 placeholder="🔒 Mot de passe"
-                className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none transition-all duration-300 bg-white font-gilroy shadow-sm hover:shadow-md focus:shadow-lg"
+                className={`w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none transition-all duration-300 bg-white font-gilroy shadow-sm hover:shadow-md focus:shadow-lg ${
+                  errors.password ? 'border-red-500' : 'border-gray-300'
+                }`}
                 required
                 aria-describedby="password-help"
               />
+              {errors.password && (
+                <p className="mt-1 text-xs text-red-600 font-gilroy">{errors.password}</p>
+              )}
             </div>
 
             {/* Confirm Password Field */}
             <div>
               <label
-                htmlFor="confirmPassword"
+                htmlFor="password_confirmation"
                 className="block text-xs sm:text-sm font-medium font-gilroy text-gray-700 mb-1 sm:mb-2"
               >
                 Confirmer le mot de passe
               </label>
               <input
                 type="password"
-                id="confirmPassword"
-                name="confirmPassword"
-                value={formData.confirmPassword}
+                id="password_confirmation"
+                name="password_confirmation"
+                value={data.password_confirmation}
                 onChange={handleInputChange}
                 placeholder="🔒 Mot de passe"
                 className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none transition-all duration-300 bg-white font-gilroy shadow-sm hover:shadow-md focus:shadow-lg"
@@ -144,7 +161,7 @@ const Register = () => {
                 type="checkbox"
                 id="rememberMe"
                 name="rememberMe"
-                checked={formData.rememberMe}
+                checked={data.rememberMe}
                 onChange={handleInputChange}
                 className="w-3 h-3 sm:w-4 sm:h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500 focus:ring-2"
                 aria-describedby="remember-help"
@@ -157,13 +174,17 @@ const Register = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              onClick={handleSubmit}
-              className="w-full bg-gradient-to-r from-gray-900 to-black text-white py-2 sm:py-3 px-4 text-sm sm:text-base rounded-full font-medium font-gilroy hover:from-black hover:to-gray-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]"
+              disabled={processing}
+              className={`w-full bg-gradient-to-r from-gray-900 to-black text-white py-2 sm:py-3 px-4 text-sm sm:text-base rounded-full font-medium font-gilroy transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 shadow-lg transform active:scale-[0.98] ${
+                processing
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:from-black hover:to-gray-800 hover:shadow-xl hover:scale-[1.02]'
+              }`}
               aria-label="Créer un compte"
             >
-              Sign Up
+              {processing ? 'Creating Account...' : 'Sign Up'}
             </button>
-          </div>
+          </form>
         </div>
       </section>
 
