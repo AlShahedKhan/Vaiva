@@ -6,8 +6,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('Homepage', [
+        'title' => 'Welcome to Vaiva',
+        'description' => 'Your platform for seamless connections and solutions.',
+    ]);
 });
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])
