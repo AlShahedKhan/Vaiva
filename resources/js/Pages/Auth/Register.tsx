@@ -1,228 +1,217 @@
-import React, { useState } from "react";
+"use client"
+
+import type React from "react"
+import { useState } from "react"
+
+interface FormData {
+  name: string
+  email: string
+  password: string
+  confirmPassword: string
+  rememberMe: boolean
+}
 
 const Register = () => {
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-        rememberMe: false,
-    });
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    rememberMe: false,
+  })
 
-    const handleInputChange = (e) => {
-        const { name, value, type, checked } = e.target;
-        setFormData((prev) => ({
-            ...prev,
-            [name]: type === "checkbox" ? checked : value,
-        }));
-    };
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, type, checked } = e.target
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }))
+  }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission here
-        console.log("Form submitted:", formData);
-    };
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Handle form submission here
+    console.log("Form submitted:", formData)
+  }
 
-    return (
-        <div className="min-h-screen flex">
-            {/* Custom Font Styles */}
-            <style jsx>{`
-                @import url("https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;600;700;800;900&display=swap");
-                @import url("https://fonts.googleapis.com/css2?family=Gilroy:wght@300;400;500;600;700&display=swap");
-
-                .font-satoshi {
-                    font-family:
-                        "Satoshi",
-                        -apple-system,
-                        BlinkMacSystemFont,
-                        "Segoe UI",
-                        Roboto,
-                        sans-serif;
-                }
-
-                .font-gilroy {
-                    font-family:
-                        "Gilroy",
-                        -apple-system,
-                        BlinkMacSystemFont,
-                        "Segoe UI",
-                        Roboto,
-                        sans-serif;
-                }
-            `}</style>
-
-            {/* Left Side - Registration Form */}
-            <div className="flex-1 flex items-center justify-center p-8 bg-gray-50">
-                <div className="w-full max-w-md">
-                    <div className="mb-8">
-                        <h1 className="text-6xl font-satoshi font-semibold text-gray-900 mb-2">
-                            S'inscrire
-                        </h1>
-                        <p className="text-gray-600 text-sm font-gilroy">
-                            Rejoignez-Nous Aujourd'hui Remplissez Le Formulaire
-                            Pour Commencer
-                        </p>
-                    </div>
-
-                    <div className="space-y-6">
-                        <div>
-                            <h2 className="text-xl font-semibold font-satoshi text-gray-900 mb-6">
-                                Créez votre compte
-                            </h2>
-                        </div>
-
-                        {/* Name Field */}
-                        <div>
-                            <label
-                                htmlFor="name"
-                                className="block text-sm font-medium font-gilroy text-gray-700 mb-2"
-                            >
-                                Nom et prénom
-                            </label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleInputChange}
-                                placeholder="Tapez Nom"
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-200 bg-white font-gilroy"
-                                required
-                            />
-                        </div>
-
-                        {/* Email Field */}
-                        <div>
-                            <label
-                                htmlFor="email"
-                                className="block text-sm font-medium font-gilroy text-gray-700 mb-2"
-                            >
-                                Adresse email
-                            </label>
-                            <div className="relative">
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleInputChange}
-                                    placeholder="✉ Exemple"
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-200 bg-white font-gilroy"
-                                    required
-                                />
-                            </div>
-                        </div>
-
-                        {/* Password Field */}
-                        <div>
-                            <label
-                                htmlFor="password"
-                                className="block text-sm font-medium font-gilroy text-gray-700 mb-2"
-                            >
-                                Mot de passe
-                            </label>
-                            <div className="relative">
-                                <input
-                                    type="password"
-                                    id="password"
-                                    name="password"
-                                    value={formData.password}
-                                    onChange={handleInputChange}
-                                    placeholder="🔒 Mot de passe"
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-200 bg-white font-gilroy"
-                                    required
-                                />
-                            </div>
-                        </div>
-
-                        {/* Confirm Password Field */}
-                        <div>
-                            <label
-                                htmlFor="confirmPassword"
-                                className="block text-sm font-medium font-gilroy text-gray-700 mb-2"
-                            >
-                                Confirmer le mot de passe
-                            </label>
-                            <div className="relative">
-                                <input
-                                    type="password"
-                                    id="confirmPassword"
-                                    name="confirmPassword"
-                                    value={formData.confirmPassword}
-                                    onChange={handleInputChange}
-                                    placeholder="🔒 Mot de passe"
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-200 bg-white font-gilroy"
-                                    required
-                                />
-                            </div>
-                        </div>
-
-                        {/* Remember Me Checkbox */}
-                        <div className="flex items-center">
-                            <input
-                                type="checkbox"
-                                id="rememberMe"
-                                name="rememberMe"
-                                checked={formData.rememberMe}
-                                onChange={handleInputChange}
-                                className="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500 focus:ring-2"
-                            />
-                            <label
-                                htmlFor="rememberMe"
-                                className="ml-2 text-sm font-gilroy text-gray-700"
-                            >
-                                Remember me
-                            </label>
-                        </div>
-
-                        {/* Submit Button */}
-                        <button
-                            type="submit"
-                            onClick={handleSubmit}
-                            className="w-full bg-black text-white py-3 px-4 rounded-full font-medium font-gilroy hover:bg-gray-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-                        >
-                            Sign Up
-                        </button>
-                    </div>
-                </div>
+  return (
+    <main className="h-screen overflow-hidden flex flex-col-reverse lg:flex-row">
+      {/* Left Side - Registration Form - Your original position */}
+      <section className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-gray-50 min-h-[55vh] lg:min-h-full order-2 lg:order-1">
+        <div className="w-full max-w-md">
+          <header className="mb-3 sm:mb-4 lg:mb-8">
+            <h1 className="text-2xl sm:text-3xl lg:text-6xl font-satoshi font-semibold text-gray-900 mb-1 sm:mb-2 leading-tight">
+              S'inscrire
+            </h1>
+            <p className="text-gray-600 text-xs sm:text-sm font-gilroy leading-relaxed">
+              Rejoignez-Nous Aujourd'hui Remplissez Le Formulaire Pour Commencer
+            </p>
+          </header>
+          <div className="space-y-2 sm:space-y-3 lg:space-y-6">
+            <div>
+              <h2 className="text-base sm:text-lg lg:text-xl font-semibold font-satoshi text-gray-900 mb-2 sm:mb-3 lg:mb-6">
+                Créez votre compte
+              </h2>
             </div>
 
-            {/* Right Side - Purple Gradient with Content */}
-            <div className="flex-1 bg-violet-600 flex p-8 m-6 rounded-2xl relative overflow-hidden">
-                <div className="z-10 text-white ">
-                    <div className="mb-8 w-[129px] h-[40.35px] opacity-100  top-[53px] left-[791px]">
-                        <img src="/build/assets/images/Group 1.png" alt="" />
-                    </div>
-
-                    <div className="mb-8">
-                        <h2 className="text-4xl md:text-5xl font-bold font-satoshi leading-tight mb-4">
-                            Conecte.
-                            <br />
-                            Combine.
-                            <br />
-                            Resolva.
-                        </h2>
-                    </div>
-
-                    <div className="relative">
-                        <div className="absolute inset-0">
-                            <img
-                                src="/build/assets/images/Vaiva_elemento-1_fundo-branco.png"
-                                alt=""
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                        <div className="relative z-10">
-                            <img
-                                src="/build/assets/images/image 29 (1) 2.png"
-                                alt=""
-                            />
-                        </div>
-                    </div>
-                </div>
+            {/* Name Field */}
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-xs sm:text-sm font-medium font-gilroy text-gray-700 mb-1 sm:mb-2"
+              >
+                Nom et prénom
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                placeholder="Tapez Nom"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none transition-all duration-300 bg-white font-gilroy shadow-sm hover:shadow-md focus:shadow-lg"
+                required
+                aria-describedby="name-help"
+              />
             </div>
+
+            {/* Email Field */}
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-xs sm:text-sm font-medium font-gilroy text-gray-700 mb-1 sm:mb-2"
+              >
+                Adresse email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="✉ Exemple"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none transition-all duration-300 bg-white font-gilroy shadow-sm hover:shadow-md focus:shadow-lg"
+                required
+                aria-describedby="email-help"
+              />
+            </div>
+
+            {/* Password Field */}
+            <div>
+              <label
+                htmlFor="password"
+                className="block text-xs sm:text-sm font-medium font-gilroy text-gray-700 mb-1 sm:mb-2"
+              >
+                Mot de passe
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                placeholder="🔒 Mot de passe"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none transition-all duration-300 bg-white font-gilroy shadow-sm hover:shadow-md focus:shadow-lg"
+                required
+                aria-describedby="password-help"
+              />
+            </div>
+
+            {/* Confirm Password Field */}
+            <div>
+              <label
+                htmlFor="confirmPassword"
+                className="block text-xs sm:text-sm font-medium font-gilroy text-gray-700 mb-1 sm:mb-2"
+              >
+                Confirmer le mot de passe
+              </label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleInputChange}
+                placeholder="🔒 Mot de passe"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none transition-all duration-300 bg-white font-gilroy shadow-sm hover:shadow-md focus:shadow-lg"
+                required
+                aria-describedby="confirm-password-help"
+              />
+            </div>
+
+            {/* Remember Me Checkbox */}
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                id="rememberMe"
+                name="rememberMe"
+                checked={formData.rememberMe}
+                onChange={handleInputChange}
+                className="w-3 h-3 sm:w-4 sm:h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500 focus:ring-2"
+                aria-describedby="remember-help"
+              />
+              <label htmlFor="rememberMe" className="ml-2 text-xs sm:text-sm font-gilroy text-gray-700">
+                Remember me
+              </label>
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              onClick={handleSubmit}
+              className="w-full bg-gradient-to-r from-gray-900 to-black text-white py-2 sm:py-3 px-4 text-sm sm:text-base rounded-full font-medium font-gilroy hover:from-black hover:to-gray-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]"
+              aria-label="Créer un compte"
+            >
+              Sign Up
+            </button>
+          </div>
         </div>
-    );
-};
+      </section>
 
-export default Register;
+      {/* Right Side - Purple Gradient - Your original position */}
+      <section className="flex-1 bg-violet-600 flex m-2 sm:m-4 lg:m-6 rounded-2xl relative overflow-hidden min-h-[45vh] lg:min-h-full order-1 lg:order-2">
+        {/* Revert to your exact original purple section styling */}
+        <div className="z-10 text-white w-full flex flex-col justify-between">
+          <div className="p-4 sm:p-6 lg:p-8">
+            <div className="w-20 h-6 sm:w-24 sm:h-8 lg:w-[129px] lg:h-[40.35px] mb-4 sm:mb-6 lg:mb-8">
+              <img
+                src="/build/assets/images/Group 1.png"
+                alt="Vaiva Logo"
+                className="w-full h-full object-contain"
+                loading="lazy"
+              />
+            </div>
+            <div className="mt-10 sm:mt-12 lg:mt-16 xl:mt-20">
+              <h2 className="text-[65.87px] sm:text-[65.87px] lg:text-[65.87px] xl:text-[65.87px] font-satoshi font-medium leading-[73.1px] tracking-[0]">
+                Conecte.
+                <br />
+                Combine.
+                <br />
+                Resolva.
+              </h2>
+            </div>
+          </div>
+          <div className="relative flex-1">
+            <div className="absolute inset-0">
+              <img
+                src="/build/assets/images/Vaiva_elemento-1_fundo-branco.png"
+                alt="Background decoration"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div className="absolute bottom-6 right-26 w-1/2 sm:w-2/3 lg:w-auto">
+              <img
+                src="/build/assets/images/image 29 (1) 2.png"
+                alt="Professional person with laptop"
+                className="w-full h-auto object-contain"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+}
+
+export default Register
