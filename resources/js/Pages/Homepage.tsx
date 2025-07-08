@@ -1,16 +1,43 @@
 "use client"
 
 import React from "react"
-import { Search, CheckCircle, Menu, X } from "lucide-react"
+import { Search, CheckCircle, Menu, X, ChevronLeft, ChevronRight } from "lucide-react"
 import { Head } from "@inertiajs/react"
 
 type HomepageProps = {}
 
 const Homepage: React.FC<HomepageProps> = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
+  const [currentSlide, setCurrentSlide] = React.useState(0)
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
+  const freelancers = [
+    {
+      name: "Gustavo Almeida",
+      role: "Designer gráfico",
+      image: "/placeholder.svg?height=300&width=250",
+    },
+    {
+      name: "Caio Oliveira",
+      role: "Editor de vídeo",
+      image: "/placeholder.svg?height=300&width=250",
+    },
+    {
+      name: "Letícia Nogueira",
+      role: "Redatora freelancer",
+      image: "/placeholder.svg?height=300&width=250",
+    },
+  ]
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % freelancers.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + freelancers.length) % freelancers.length)
   }
 
   return (
@@ -154,6 +181,7 @@ const Homepage: React.FC<HomepageProps> = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-30" onClick={toggleMobileMenu} />
         )}
+
         {/* Hero Section */}
         <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 md:pt-16 pb-16">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
@@ -184,6 +212,137 @@ const Homepage: React.FC<HomepageProps> = () => {
             </div>
           </div>
         </main>
+
+        {/* Featured Freelancers Section */}
+        <section className="relative z-10 bg-white">
+          {/* Partner Logos */}
+          <div className="bg-violet-600 py-6 mb-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center justify-center space-x-8 md:space-x-12 overflow-x-auto">
+                <img
+                  src="/placeholder.svg?height=40&width=120"
+                  alt="HERING"
+                  className="h-8 md:h-10 opacity-80 hover:opacity-100 transition-opacity"
+                />
+                <img
+                  src="/placeholder.svg?height=40&width=120"
+                  alt="BRAHMA"
+                  className="h-8 md:h-10 opacity-80 hover:opacity-100 transition-opacity"
+                />
+                <img
+                  src="/placeholder.svg?height=40&width=120"
+                  alt="bradesco"
+                  className="h-8 md:h-10 opacity-80 hover:opacity-100 transition-opacity"
+                />
+                <img
+                  src="/placeholder.svg?height=40&width=120"
+                  alt="Localiza"
+                  className="h-8 md:h-10 opacity-80 hover:opacity-100 transition-opacity"
+                />
+                <img
+                  src="/placeholder.svg?height=40&width=120"
+                  alt="oBOTIC"
+                  className="h-8 md:h-10 opacity-80 hover:opacity-100 transition-opacity"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Main Content */}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                Aqui, quem faz é valorizado.
+              </h2>
+              <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                A Vaiva é uma plataforma brasileira que conecta prestadores de serviços a clientes de forma simples,
+                segura e acessível, com suporte em português e pagamentos em real, facilitando a contratação de serviços
+                no mercado local.
+              </p>
+            </div>
+
+            {/* Freelancer Carousel */}
+            <div className="relative">
+              {/* Desktop View - Show all cards */}
+              <div className="hidden md:grid md:grid-cols-3 gap-8">
+                {freelancers.map((freelancer, index) => (
+                  <div key={index} className="relative group">
+                    <div className="bg-gradient-to-br from-purple-200 to-purple-300 rounded-3xl p-8 text-center transform transition-transform duration-300 group-hover:scale-105">
+                      <div className="mb-6">
+                        <img
+                          src={freelancer.image || "/placeholder.svg"}
+                          alt={freelancer.name}
+                          className="w-32 h-32 mx-auto rounded-full object-cover border-4 border-white shadow-lg"
+                        />
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">{freelancer.name}</h3>
+                      <p className="text-gray-700 font-medium">{freelancer.role}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Mobile View - Carousel */}
+              <div className="md:hidden relative">
+                <div className="overflow-hidden">
+                  <div
+                    className="flex transition-transform duration-300 ease-in-out"
+                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                  >
+                    {freelancers.map((freelancer, index) => (
+                      <div key={index} className="w-full flex-shrink-0 px-4">
+                        <div className="bg-gradient-to-br from-purple-200 to-purple-300 rounded-3xl p-8 text-center">
+                          <div className="mb-6">
+                            <img
+                              src={freelancer.image || "/placeholder.svg"}
+                              alt={freelancer.name}
+                              className="w-32 h-32 mx-auto rounded-full object-cover border-4 border-white shadow-lg"
+                            />
+                          </div>
+                          <h3 className="text-xl font-bold text-gray-900 mb-2">{freelancer.name}</h3>
+                          <p className="text-gray-700 font-medium">{freelancer.role}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Navigation Arrows */}
+                <button
+                  onClick={prevSlide}
+                  className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-shadow duration-200"
+                  aria-label="Previous freelancer"
+                >
+                  <ChevronLeft className="w-6 h-6 text-purple-600" />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-shadow duration-200"
+                  aria-label="Next freelancer"
+                >
+                  <ChevronRight className="w-6 h-6 text-purple-600" />
+                </button>
+
+                {/* Dots Indicator */}
+                <div className="flex justify-center mt-6 space-x-2">
+                  {freelancers.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                      className={`w-3 h-3 rounded-full transition-colors duration-200 ${
+                        index === currentSlide ? "bg-purple-600" : "bg-purple-200"
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Decorative Elements */}
+          <div className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-tl from-purple-200 to-transparent rounded-full transform translate-x-32 translate-y-32 opacity-50"></div>
+        </section>
       </div>
     </>
   )
