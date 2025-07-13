@@ -8,6 +8,7 @@ import {
     X,
     ChevronLeft,
     ChevronRight,
+    Star,
 } from "lucide-react";
 import { Head } from "@inertiajs/react";
 
@@ -76,6 +77,43 @@ const Homepage: React.FC<HomepageProps> = () => {
 
     const handleNext1 = () => {
         setCarouselImages1((prev) => {
+            const arr = [...prev];
+            arr.push(arr.shift());
+            return arr;
+        });
+    };
+
+    const testimonials = [
+        {
+            name: "John Anderson",
+            role: "February 2, 2024 Muito Obrigado",
+            image: "/build/assets/images/user profile.png",
+            text: "Entregou rápido e ficou melhor do que eu imaginei. Voltarei a contratar com certeza.",
+        },
+        {
+            name: "John Anderson",
+            role: "February 2, 2024 Muito Obrigado",
+            image: "/build/assets/images/user profile.png",
+            text: "Tudo certinho, combinado pelo chat e entregue no prazo. Sem dor de cabeça.",
+        },
+        {
+            name: "Elena Rossi",
+            role: "Owner Seaview Boutique Hotel",
+            image: "/build/assets/images/user profile.png",
+            text: "Primeira vez usando a Vaiva e já resolveu meu problema. Muito prático.",
+        },
+    ];
+    const [testimonialIndex, setTestimonialIndex] = useState(0);
+    const [testimonialCards, setTestimonialCards] = useState(testimonials);
+    const handlePrevTestimonial = () => {
+        setTestimonialCards((prev) => {
+            const arr = [...prev];
+            arr.unshift(arr.pop());
+            return arr;
+        });
+    };
+    const handleNextTestimonial = () => {
+        setTestimonialCards((prev) => {
             const arr = [...prev];
             arr.push(arr.shift());
             return arr;
@@ -491,18 +529,110 @@ const Homepage: React.FC<HomepageProps> = () => {
                     </div>
                 </section>
                 <section>
-                    <div
-                        className="text-center text-4xl font-bold mt-24"
-                    >
-                        <h1>
+                    <div className="mt-24 text-center">
+                        <h1 className=" text-5xl font-bold">
                             A Vaiva nasceu pra facilitar a vida <br /> de quem
                             contrata e de quem <br /> oferece serviços digitais.
                         </h1>
+                        <p className="mt-8 text-[#D9D9D9]">
+                            Tudo em português, com pagamentos em real e uma
+                            navegação simples de verdade. <br /> Sem burocracia,
+                            sem complicação: só o que funciona, do seu jeito.
+                        </p>
                     </div>
                     <img
+                        className="items-center mx-auto mt-12"
                         src="/build/assets/images/Group 1618873536.png"
                         alt=""
                     />
+                </section>
+                {/* Testimonials Section */}
+                <section className="relative py-16 bg-gray-50 overflow-hidden">
+                    {/* Purple gradient background element */}
+                    {/* <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-purple-400 to-purple-600 rounded-bl-full opacity-20"></div> */}
+
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        {/* Section Title */}
+                        <div className="text-center mb-12">
+                            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+                                Testimonials
+                            </h2>
+                        </div>
+
+                        {/* Testimonials Container */}
+                        <div className="relative">
+                            {/* Navigation Arrows */}
+                            <button
+                                onClick={handlePrevTestimonial}
+                                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 z-10  p-3  duration-200  "
+                                aria-label="Previous testimonial"
+                            >
+                                <ChevronLeft className="w-6 h-6 text-black" />
+                            </button>
+
+                            <button
+                                onClick={handleNextTestimonial}
+                                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 z-10  p-3 "
+                                aria-label="Next testimonial"
+                            >
+                                <ChevronRight className="w-6 h-6 text-black" />
+                            </button>
+
+                            {/* Testimonials Grid */}
+                            <div className="grid md:grid-cols-3 gap-6 px-8">
+                                {testimonialCards.map((t, idx) => (
+                                    <div
+                                        key={idx}
+                                        className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200 relative"
+                                    >
+                                        {/* Quote marks */}
+                                        <div className="flex justify-between items-start mb-4">
+                                            <div className="text-4xl text-purple-400 font-bold leading-none">
+                                                "
+                                            </div>
+                                            <div className="text-4xl text-purple-400 font-bold leading-none">
+                                                "
+                                            </div>
+                                        </div>
+
+                                        {/* Profile Section */}
+                                        <div className="flex flex-col items-center mb-4">
+                                            <img
+                                                src={t.image}
+                                                alt={t.name}
+                                                className="w-16 h-16 rounded-full object-cover mb-3 border-2 border-gray-100"
+                                            />
+                                            <h3 className="font-semibold text-gray-900 text-center">
+                                                {t.name}
+                                            </h3>
+                                            <p className="text-sm text-gray-500 text-center mt-1">
+                                                {t.role}
+                                            </p>
+                                        </div>
+
+                                        {/* Star Rating */}
+                                        <div className="flex justify-center mb-4">
+                                            {Array.from(
+                                                { length: 5 },
+                                                (_, index) => (
+                                                    <Star
+                                                        key={index}
+                                                        className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                                                    />
+                                                ),
+                                            )}
+                                        </div>
+
+                                        {/* Testimonial Text */}
+                                        <p className="text-gray-700 text-center leading-relaxed">
+                                            {t.text}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                    </div>
                 </section>
             </div>
         </>
