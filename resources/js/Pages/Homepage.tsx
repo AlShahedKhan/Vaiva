@@ -347,7 +347,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                                 </button>
                             </div>
                         </div>
-                        <div>
+                        <div className="sm:flex sm:justify-center md:justify-center">
                             <img
                                 src="/build/assets/images/Mask group.png"
                                 alt=""
