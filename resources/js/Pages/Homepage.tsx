@@ -566,9 +566,9 @@ const Homepage: React.FC<HomepageProps> = () => {
                         </div>
                     </div>
                 </section>
-                <section>
+                <section className="relative">
                     <div className="mt-24 text-center">
-                        <h1 className=" text-5xl font-bold sm:text-4xl">
+                        <h1 className="text-5xl font-bold sm:text-4xl">
                             A Vaiva nasceu pra facilitar a vida <br /> de quem
                             contrata e de quem <br /> oferece serviços digitais.
                         </h1>
@@ -578,14 +578,20 @@ const Homepage: React.FC<HomepageProps> = () => {
                             sem complicação: só o que funciona, do seu jeito.
                         </p>
                     </div>
+
+                    {/* Image first */}
                     <img
-                        className="items-center mx-auto mt-12"
+                        className="items-center mx-auto mt-12 relative z-10"
                         src="/build/assets/images/Group 1618873536.png"
                         alt=""
                     />
+
+                    {/* Purple block shown *under* the image */}
+                    <div className="bg-[#7E54F7] h-40 relative z-0 -mt-120"></div>
                 </section>
+
                 {/* Testimonials Section */}
-                <section className="relative py-16 bg-gray-50 overflow-hidden">
+                <section className="relative py-16 bg-gray-50 overflow-hidden mt-120">
                     {/* Purple gradient background element */}
                     {/* <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-purple-400 to-purple-600 rounded-bl-full opacity-20"></div> */}
 
