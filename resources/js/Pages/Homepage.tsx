@@ -476,7 +476,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                 <section className="relative z-10 py-16 bg-[#1E1845] mx-4 rounded-t-2xl mt-32">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         {/* Header */}
-                        <div className="flex justify-between items-center mb-12">
+                        <div className="flex flex-col lg:flex-row justify-between items-center mb-12 gap-4 text-center lg:text-left">
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
                                 Os serviços da plataforma
                             </h2>
