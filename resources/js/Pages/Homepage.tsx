@@ -363,60 +363,60 @@ const Homepage: React.FC<HomepageProps> = () => {
                             {/* This div will contain two identical sets of logos */}
                             <div className="flex w-[200%] animate-scroll">
                                 {/* First set of logos */}
-                                <div className="flex items-center justify-around w-full">
+                                <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-4 sm:gap-6 md:gap-8 w-full">
                                     <img
                                         src="/build/assets/images/path4.png"
                                         alt="HERING"
-                                        className="h-8 md:h-10 opacity-80 hover:opacity-100"
+                                        className="h-6 sm:h-8 md:h-10 opacity-80 hover:opacity-100"
                                     />
                                     <img
                                         src="/build/assets/images/Group 1321315497.png"
                                         alt="BRAHMA"
-                                        className="h-8 md:h-10 opacity-80 hover:opacity-100"
+                                        className="h-6 sm:h-8 md:h-10 opacity-80 hover:opacity-100"
                                     />
                                     <img
                                         src="/build/assets/images/Group 1321315528.png"
                                         alt="bradesco"
-                                        className="h-8 md:h-10 opacity-80 hover:opacity-100"
+                                        className="h-6 sm:h-8 md:h-10 opacity-80 hover:opacity-100"
                                     />
                                     <img
                                         src="/build/assets/images/path2.png"
                                         alt="Localiza"
-                                        className="h-8 md:h-10 opacity-80 hover:opacity-100"
+                                        className="h-6 sm:h-8 md:h-10 opacity-80 hover:opacity-100"
                                     />
                                     <img
                                         src="/build/assets/images/Vector.png"
                                         alt="oBOTIC"
-                                        className="h-8 md:h-10 opacity-80 hover:opacity-100"
+                                        className="h-6 sm:h-8 md:h-10 opacity-80 hover:opacity-100"
                                     />
                                 </div>
 
                                 {/* Second identical set (for seamless looping) */}
-                                <div className="flex items-center justify-around w-full">
+                                <div className="flex items-center justify-around w-full sm:px-64 md:px-64">
                                     <img
                                         src="/build/assets/images/path4.png"
                                         alt="HERING"
-                                        className="h-8 md:h-10 opacity-80 hover:opacity-100"
+                                        className="h-8 md:h-10 opacity-80 hover:opacity-100 sm:px-6 md:px-8"
                                     />
                                     <img
                                         src="/build/assets/images/Group 1321315497.png"
                                         alt="BRAHMA"
-                                        className="h-8 md:h-10 opacity-80 hover:opacity-100"
+                                        className="h-8 md:h-10 opacity-80 hover:opacity-100 sm:px-6 md:px-8"
                                     />
                                     <img
                                         src="/build/assets/images/Group 1321315528.png"
                                         alt="bradesco"
-                                        className="h-8 md:h-10 opacity-80 hover:opacity-100"
+                                        className="h-8 md:h-10 opacity-80 hover:opacity-100 sm:px-6 md:px-8"
                                     />
                                     <img
                                         src="/build/assets/images/path2.png"
                                         alt="Localiza"
-                                        className="h-8 md:h-10 opacity-80 hover:opacity-100"
+                                        className="h-8 md:h-10 opacity-80 hover:opacity-100 sm:px-6 md:px-8"
                                     />
                                     <img
                                         src="/build/assets/images/Vector.png"
                                         alt="oBOTIC"
-                                        className="h-8 md:h-10 opacity-80 hover:opacity-100"
+                                        className="h-8 md:h-10 opacity-80 hover:opacity-100 sm:px-6 md:px-8"
                                     />
                                 </div>
                             </div>
