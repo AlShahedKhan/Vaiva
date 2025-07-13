@@ -126,8 +126,7 @@ const Homepage: React.FC<HomepageProps> = () => {
     const faqItems = [
         {
             question: "Posso conversar com o profissional antes de contratar?",
-            answer:
-                "Lorem ipsum dolor sit amet consectetur. Volutpat id donec euismod eu eu risus. Quis sagittis nunc ultricies eu in est. Pretium leo arcu eget ultricies faucibus amet nunc. Sed quis quis vulputate volutpat purus. Facilisis et quis sit tincidunt ipsum. Convallis est consectetur commodo amet sed odio a. Sollicitudin laoreet adipiscing id semper vulputate. Morbi consequat gravida tincidunt.",
+            answer: "Lorem ipsum dolor sit amet consectetur. Volutpat id donec euismod eu eu risus. Quis sagittis nunc ultricies eu in est. Pretium leo arcu eget ultricies faucibus amet nunc. Sed quis quis vulputate volutpat purus. Facilisis et quis sit tincidunt ipsum. Convallis est consectetur commodo amet sed odio a. Sollicitudin laoreet adipiscing id semper vulputate. Morbi consequat gravida tincidunt.",
         },
         {
             question: "Como funciona o pagamento pela plataforma?",
@@ -325,9 +324,11 @@ const Homepage: React.FC<HomepageProps> = () => {
                         {/* Left Content */}
                         <div className="space-y-8 text-center lg:text-left">
                             <div className="space-y-4">
-                                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
-                                    <span className="block">Conecte.</span>
-                                    <span className="block">Combine.</span>
+                                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight ">
+                                    <span className="block sm:flex sm:space-x-3  sm:justify-center">
+                                        <span className="block">Conecte.</span>
+                                        <span className="block">Combine.</span>
+                                    </span>
                                     <span className="block">Resolva.</span>
                                 </h1>
                                 <p className="text-lg md:text-xl text-gray-600 max-w-md mx-auto lg:mx-0">
@@ -677,14 +678,23 @@ const Homepage: React.FC<HomepageProps> = () => {
                         <div className="space-y-4">
                             {/* FAQ Item 1 - Expanded */}
                             {faqItems.map((item, idx) => (
-                                <div key={idx} className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-sm">
+                                <div
+                                    key={idx}
+                                    className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-sm"
+                                >
                                     <button
                                         className="w-full px-6 py-6 text-left flex justify-between items-center hover:bg-gray-50/50 transition-colors duration-200 rounded-2xl"
-                                        onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}
+                                        onClick={() =>
+                                            setOpenFaq(
+                                                openFaq === idx ? -1 : idx,
+                                            )
+                                        }
                                         aria-expanded={openFaq === idx}
                                         aria-controls={`faq-panel-${idx}`}
                                     >
-                                        <span className="text-lg font-medium text-gray-900 pr-4">{item.question}</span>
+                                        <span className="text-lg font-medium text-gray-900 pr-4">
+                                            {item.question}
+                                        </span>
                                         {openFaq === idx ? (
                                             <Minus className="w-6 h-6 text-gray-600 flex-shrink-0" />
                                         ) : (
@@ -692,8 +702,13 @@ const Homepage: React.FC<HomepageProps> = () => {
                                         )}
                                     </button>
                                     {openFaq === idx && (
-                                        <div className="px-6 pb-6" id={`faq-panel-${idx}`}>
-                                            <p className="text-gray-600 leading-relaxed">{item.answer}</p>
+                                        <div
+                                            className="px-6 pb-6"
+                                            id={`faq-panel-${idx}`}
+                                        >
+                                            <p className="text-gray-600 leading-relaxed">
+                                                {item.answer}
+                                            </p>
                                         </div>
                                     )}
                                 </div>
