@@ -375,7 +375,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                         <div className="flex items-center gap-4 justify-center w-full px-2 md:px-8">
                             {/* Left button */}
                             <button
-                                className="p-2  transition"
+                                className=" p-2  transition"
                                 aria-label="Scroll left"
                                 onClick={handlePrev}
                             >
@@ -465,9 +465,9 @@ const Homepage: React.FC<HomepageProps> = () => {
                     </div>
                 </section>
                 {/* Statistics Bar */}
-                <section>
+                <section className="">
                     <div className="bg-[#7E54F7] backdrop-blur-sm  p-6 borde">
-                        <div className="flex flex-wrap items-center justify-center gap-8 text-white text-sm">
+                        <div className="flex flex-wrap items-center justify-center gap-8 text-white text-sm animate-scroll w-[200%]">
                             <div className="flex items-center gap-2">
                                 <span className="w-2 h-2 bg-green-400 rounded-full"></span>
                                 <span>Freelancers</span>
