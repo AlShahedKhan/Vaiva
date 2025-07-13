@@ -357,7 +357,7 @@ const Homepage: React.FC<HomepageProps> = () => {
 
                 {/* Featured Freelancers Section */}
                 <section className="relative z-10 bg-white">
-                    <div className="absolute top-64 right-0 h-screen w-[46vw] -z-10 overflow-hidden pointer-events-none">
+                    <div className="absolute top-64 right-0 h-screen w-[46vw] md:w-[54vw] -z-10 overflow-hidden pointer-events-none">
                         <img
                             src="/build/assets/images/Vaiva_elemento-2_fundo-roxo.png"
                             alt=""
