@@ -312,11 +312,11 @@ const Homepage: React.FC<HomepageProps> = () => {
                 {/* Hero Section */}
                 <main className="relative z-10 px-4 sm:px-6 lg:px-8 pt-8 md:pt-16 pb-16">
                     {/* Background Image for all content */}
-                    <div className="absolute -z-10 w-full h-210 sm:h-222 bg-no-repeat inset-0 pointer-events-none">
+                    <div className="absolute -z-10 w-full h-210 sm:h-222 md:h-236  bg-no-repeat inset-0 pointer-events-none">
                         <img
                             src="/build/assets/images/Vaiva_elemento-1_fundo-branco.png"
                             alt=""
-                            className="w-full h-full pb-50 sm:pb-0 sm:-mb-24"
+                            className="w-full h-full pb-50 sm:pb-0 sm:-mb-24 md:pb-0"
                         />
                     </div>
                     <div className="grid max-w-7xl mx-auto lg:grid-cols-2 gap-8 lg:gap-16 items-center">
