@@ -591,7 +591,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                 </section>
 
                 {/* Testimonials Section */}
-                <section className="relative py-16 bg-gray-50 overflow-hidden mt-120">
+                <section className="relative py-16 bg-gray-50 overflow-hidden mt-120 md:mt-56">
                     {/* Purple gradient background element */}
                     {/* <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-purple-400 to-purple-600 rounded-bl-full opacity-20"></div> */}
 
