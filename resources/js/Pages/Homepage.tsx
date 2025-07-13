@@ -122,6 +122,31 @@ const Homepage: React.FC<HomepageProps> = () => {
         });
     };
 
+    const [openFaq, setOpenFaq] = useState(0);
+    const faqItems = [
+        {
+            question: "Posso conversar com o profissional antes de contratar?",
+            answer:
+                "Lorem ipsum dolor sit amet consectetur. Volutpat id donec euismod eu eu risus. Quis sagittis nunc ultricies eu in est. Pretium leo arcu eget ultricies faucibus amet nunc. Sed quis quis vulputate volutpat purus. Facilisis et quis sit tincidunt ipsum. Convallis est consectetur commodo amet sed odio a. Sollicitudin laoreet adipiscing id semper vulputate. Morbi consequat gravida tincidunt.",
+        },
+        {
+            question: "Como funciona o pagamento pela plataforma?",
+            answer: "...",
+        },
+        {
+            question: "Os profissionais são avaliados por outros usuários?",
+            answer: "...",
+        },
+        {
+            question: "A Vaiva tem aplicativo para celular?",
+            answer: "...",
+        },
+        {
+            question: "Como encontro um prestador de serviço?",
+            answer: "...",
+        },
+    ];
+
     return (
         <>
             <Head>
@@ -651,72 +676,28 @@ const Homepage: React.FC<HomepageProps> = () => {
                         {/* FAQ Items */}
                         <div className="space-y-4">
                             {/* FAQ Item 1 - Expanded */}
-                            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-sm">
-                                <button className="w-full px-6 py-6 text-left flex justify-between items-center hover:bg-gray-50/50 transition-colors duration-200 rounded-2xl">
-                                    <span className="text-lg font-medium text-gray-900 pr-4">
-                                        Posso conversar com o profissional antes
-                                        de contratar?
-                                    </span>
-                                    <Minus className="w-6 h-6 text-gray-600 flex-shrink-0" />
-                                </button>
-                                <div className="px-6 pb-6">
-                                    <p className="text-gray-600 leading-relaxed">
-                                        Lorem ipsum dolor sit amet consectetur.
-                                        Volutpat id donec euismod eu eu risus.
-                                        Quis sagittis nunc ultricies eu in est.
-                                        Pretium leo arcu eget ultricies faucibus
-                                        amet nunc. Sed quis quis vulputate
-                                        volutpat purus. Facilisis et quis sit
-                                        tincidunt ipsum. Convallis est
-                                        consectetur commodo amet sed odio a.
-                                        Sollicitudin laoreet adipiscing id
-                                        semper vulputate. Morbi consequat
-                                        gravida tincidunt.
-                                    </p>
+                            {faqItems.map((item, idx) => (
+                                <div key={idx} className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-sm">
+                                    <button
+                                        className="w-full px-6 py-6 text-left flex justify-between items-center hover:bg-gray-50/50 transition-colors duration-200 rounded-2xl"
+                                        onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}
+                                        aria-expanded={openFaq === idx}
+                                        aria-controls={`faq-panel-${idx}`}
+                                    >
+                                        <span className="text-lg font-medium text-gray-900 pr-4">{item.question}</span>
+                                        {openFaq === idx ? (
+                                            <Minus className="w-6 h-6 text-gray-600 flex-shrink-0" />
+                                        ) : (
+                                            <Plus className="w-6 h-6 text-gray-600 flex-shrink-0" />
+                                        )}
+                                    </button>
+                                    {openFaq === idx && (
+                                        <div className="px-6 pb-6" id={`faq-panel-${idx}`}>
+                                            <p className="text-gray-600 leading-relaxed">{item.answer}</p>
+                                        </div>
+                                    )}
                                 </div>
-                            </div>
-
-                            {/* FAQ Item 2 */}
-                            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-sm">
-                                <button className="w-full px-6 py-6 text-left flex justify-between items-center hover:bg-gray-50/50 transition-colors duration-200 rounded-2xl">
-                                    <span className="text-lg font-medium text-gray-900 pr-4">
-                                        Como funciona o pagamento pela
-                                        plataforma?
-                                    </span>
-                                    <Plus className="w-6 h-6 text-gray-600 flex-shrink-0" />
-                                </button>
-                            </div>
-
-                            {/* FAQ Item 3 */}
-                            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-sm">
-                                <button className="w-full px-6 py-6 text-left flex justify-between items-center hover:bg-gray-50/50 transition-colors duration-200 rounded-2xl">
-                                    <span className="text-lg font-medium text-gray-900 pr-4">
-                                        Os profissionais são avaliados por
-                                        outros usuários?
-                                    </span>
-                                    <Plus className="w-6 h-6 text-gray-600 flex-shrink-0" />
-                                </button>
-                            </div>
-
-                            {/* FAQ Item 4 */}
-                            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-sm">
-                                <button className="w-full px-6 py-6 text-left flex justify-between items-center hover:bg-gray-50/50 transition-colors duration-200 rounded-2xl">
-                                    <span className="text-lg font-medium text-gray-900 pr-4">
-                                        A Vaiva tem aplicativo para celular?
-                                    </span>
-                                    <Plus className="w-6 h-6 text-gray-600 flex-shrink-0" />
-                                </button>
-                            </div>
-
-                            {/* FAQ Item 5 */}
-                            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-sm">
-                                <button className="w-full px-6 py-6 text-left flex justify-between items-center hover:bg-gray-50/50 transition-colors duration-200 rounded-2xl">
-                                    <span className="text-lg font-medium text-gray-900 pr-4">
-                                        Como encontro um prestador de serviço?
-                                    </span>
-                                    <Plus className="w-6 h-6 text-gray-600 flex-shrink-0" />
-                                </button>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </section>
