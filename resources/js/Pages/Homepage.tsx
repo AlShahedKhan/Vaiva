@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
     Search,
     CheckCircle,
@@ -16,6 +16,7 @@ type HomepageProps = {};
 const Homepage: React.FC<HomepageProps> = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
     const [currentSlide, setCurrentSlide] = React.useState(0);
+    const [logoIndex, setLogoIndex] = useState(0);
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -39,6 +40,12 @@ const Homepage: React.FC<HomepageProps> = () => {
         },
     ];
 
+    const logoImages = [
+        "/build/assets/images/Group 1618873530.png",
+        "/build/assets/images/Group 1618873531.png",
+        "/build/assets/images/Group 1618873532.png",
+    ];
+
     const nextSlide = () => {
         setCurrentSlide((prev) => (prev + 1) % freelancers.length);
     };
@@ -47,6 +54,16 @@ const Homepage: React.FC<HomepageProps> = () => {
         setCurrentSlide(
             (prev) => (prev - 1 + freelancers.length) % freelancers.length,
         );
+    };
+
+    const visibleLogos = logoImages.slice(logoIndex, logoIndex + 3);
+
+    const handlePrev = () => {
+        setLogoIndex((prev) => Math.max(prev - 1, 0));
+    };
+
+    const handleNext = () => {
+        setLogoIndex((prev) => Math.min(prev + 1, logoImages.length - 3));
     };
 
     return (
@@ -259,38 +276,6 @@ const Homepage: React.FC<HomepageProps> = () => {
 
                 {/* Featured Freelancers Section */}
                 <section className="relative z-10 bg-white">
-                    {/* Partner Logos */}
-                    {/* <div className="bg-violet-600 py-6 mb-16">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex items-center justify-center space-x-8 md:space-x-12 overflow-x-auto">
-                <img
-                  src="/build/assets/images/path4.png"
-                  alt="HERING"
-                  className="h-8 md:h-10 opacity-80 hover:opacity-100 transition-opacity"
-                />
-                <img
-                  src="/build/assets/images/Group 1321315497.png"
-                  alt="BRAHMA"
-                  className="h-8 md:h-10 opacity-80 hover:opacity-100 transition-opacity"
-                />
-                <img
-                  src="/build/assets/images/Group 1321315528.png"
-                  alt="bradesco"
-                  className="h-8 md:h-10 opacity-80 hover:opacity-100 transition-opacity"
-                />
-                <img
-                  src="/build/assets/images/path2.png"
-                  alt="Localiza"
-                  className="h-8 md:h-10 opacity-80 hover:opacity-100 transition-opacity"
-                />
-                <img
-                  src="/build/assets/images/Vector.png"
-                  alt="oBOTIC"
-                  className="h-8 md:h-10 opacity-80 hover:opacity-100 transition-opacity"
-                />
-              </div>
-            </div>
-          </div> */}
                     <div className="bg-violet-600 py-6 mb-16 overflow-hidden">
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                             {/* This div will contain two identical sets of logos */}
@@ -371,110 +356,45 @@ const Homepage: React.FC<HomepageProps> = () => {
                             </p>
                         </div>
 
-                        {/* Freelancer Carousel */}
-                        <div className="relative">
-                            <div className="hidden md:grid md:grid-cols-3 gap-8">
-                                {freelancers.map((freelancer, index) => (
-                                    <div key={index} className="relative group">
-                                        <div className="bg-gradient-to-br from-purple-200 to-purple-300 rounded-3xl p-8 text-center transform transition-transform duration-300 group-hover:scale-105">
-                                            <div className="mb-6">
-                                                <img
-                                                    src={
-                                                        freelancer.image ||
-                                                        "/placeholder.svg"
-                                                    }
-                                                    alt={freelancer.name}
-                                                    className="w-32 h-32 mx-auto rounded-full object-cover border-4 border-white shadow-lg"
-                                                />
-                                            </div>
-                                            <h3 className="text-xl font-bold text-gray-900 mb-2">
-                                                {freelancer.name}
-                                            </h3>
-                                            <p className="text-gray-700 font-medium">
-                                                {freelancer.role}
-                                            </p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div className="md:hidden relative">
-                                <div className="overflow-hidden">
-                                    <div
-                                        className="flex transition-transform duration-300 ease-in-out"
-                                        style={{
-                                            transform: `translateX(-${currentSlide * 100}%)`,
-                                        }}
-                                    >
-                                        {freelancers.map(
-                                            (freelancer, index) => (
-                                                <div
-                                                    key={index}
-                                                    className="w-full flex-shrink-0 px-4"
-                                                >
-                                                    <div className="bg-gradient-to-br from-purple-200 to-purple-300 rounded-3xl p-8 text-center">
-                                                        <div className="mb-6">
-                                                            <img
-                                                                src={
-                                                                    freelancer.image ||
-                                                                    "/placeholder.svg"
-                                                                }
-                                                                alt={
-                                                                    freelancer.name
-                                                                }
-                                                                className="w-32 h-32 mx-auto rounded-full object-cover border-4 border-white shadow-lg"
-                                                            />
-                                                        </div>
-                                                        <h3 className="text-xl font-bold text-gray-900 mb-2">
-                                                            {freelancer.name}
-                                                        </h3>
-                                                        <p className="text-gray-700 font-medium">
-                                                            {freelancer.role}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            ),
-                                        )}
-                                    </div>
-                                </div>
-
-                                <button
-                                    onClick={prevSlide}
-                                    className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-shadow duration-200"
-                                    aria-label="Previous freelancer"
-                                >
-                                    <ChevronLeft className="w-6 h-6 text-purple-600" />
-                                </button>
-                                <button
-                                    onClick={nextSlide}
-                                    className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-shadow duration-200"
-                                    aria-label="Next freelancer"
-                                >
-                                    <ChevronRight className="w-6 h-6 text-purple-600" />
-                                </button>
-
-                                <div className="flex justify-center mt-6 space-x-2">
-                                    {freelancers.map((_, index) => (
-                                        <button
-                                            key={index}
-                                            onClick={() =>
-                                                setCurrentSlide(index)
-                                            }
-                                            className={`w-3 h-3 rounded-full transition-colors duration-200 ${
-                                                index === currentSlide
-                                                    ? "bg-purple-600"
-                                                    : "bg-purple-200"
-                                            }`}
-                                            aria-label={`Go to slide ${index + 1}`}
+                        <div className="flex items-center gap-4 justify-center w-full px-2 md:px-8">
+                            {/* Left button */}
+                            <button
+                                className="shrink-0 bg-white rounded-full shadow p-2 hover:bg-gray-100 transition"
+                                aria-label="Scroll left"
+                                onClick={handlePrev}
+                                disabled={logoIndex === 0}
+                            >
+                                <ChevronLeft className="w-6 h-6 text-violet-600" />
+                            </button>
+                            {/* Visible logos */}
+                            <div className="overflow-hidden flex justify-center flex-1">
+                                <div className="flex gap-8 w-full">
+                                    {visibleLogos.map((src, idx) => (
+                                        <img
+                                            key={idx}
+                                            src={src}
+                                            alt=""
+                                            className="object-contain mx-auto"
+                                            style={{
+                                                height: "330px",
+                                                width: "33.33%",
+                                                maxWidth: "100%",
+                                            }}
                                         />
                                     ))}
                                 </div>
                             </div>
+                            {/* Right button */}
+                            <button
+                                className="shrink-0 bg-white rounded-full shadow p-2 hover:bg-gray-100 transition"
+                                aria-label="Scroll right"
+                                onClick={handleNext}
+                                disabled={logoIndex >= logoImages.length - 3}
+                            >
+                                <ChevronRight className="w-6 h-6 text-violet-600" />
+                            </button>
                         </div>
                     </div>
-
-                    {/* Decorative Elements */}
-                    <div className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-tl from-purple-200 to-transparent rounded-full transform translate-x-32 translate-y-32 opacity-50"></div>
                 </section>
             </div>
         </>
