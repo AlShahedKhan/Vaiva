@@ -449,22 +449,18 @@ const Homepage: React.FC<HomepageProps> = () => {
                             </button>
                             {/* Visible logos */}
                             <div className="overflow-hidden flex justify-center flex-1">
-                                <div className="flex gap-8 w-full">
+                                <div className="flex gap-4 sm:gap-6 md:gap-8 w-full">
                                     {carouselImages.map((src, idx) => (
                                         <img
                                             key={idx}
                                             src={src}
                                             alt=""
-                                            className="object-contain mx-auto"
-                                            style={{
-                                                height: "330px",
-                                                width: "33.33%",
-                                                maxWidth: "100%",
-                                            }}
+                                            className="object-contain mx-auto w-full sm:w-full md:w-1/2 lg:w-1/3 h-40 sm:h-116 md:h-64 lg:h-[330px] "
                                         />
                                     ))}
                                 </div>
                             </div>
+
                             {/* Right button */}
                             <button
                                 className="p-2  transition"
