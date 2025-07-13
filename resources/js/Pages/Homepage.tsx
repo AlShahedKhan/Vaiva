@@ -490,7 +490,20 @@ const Homepage: React.FC<HomepageProps> = () => {
                         </div>
                     </div>
                 </section>
-                <h1>hi</h1>
+                <section>
+                    <div
+                        className="text-center text-4xl font-bold mt-24"
+                    >
+                        <h1>
+                            A Vaiva nasceu pra facilitar a vida <br /> de quem
+                            contrata e de quem <br /> oferece serviços digitais.
+                        </h1>
+                    </div>
+                    <img
+                        src="/build/assets/images/Group 1618873536.png"
+                        alt=""
+                    />
+                </section>
             </div>
         </>
     );
