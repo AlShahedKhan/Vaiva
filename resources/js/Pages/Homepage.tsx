@@ -466,7 +466,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                 </section>
                 {/* Statistics Bar */}
                 <section className="">
-                    <div className="bg-[#7E54F7] backdrop-blur-sm  p-6 borde">
+                    <div className="bg-[#7E54F7] backdrop-blur-sm p-6 borde overflow-hidden w-full">
                         <div className="flex flex-wrap items-center justify-center gap-8 text-white text-sm animate-scroll w-[200%]">
                             <div className="flex items-center gap-2">
                                 <span className="w-2 h-2 bg-green-400 rounded-full"></span>
@@ -490,6 +490,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                         </div>
                     </div>
                 </section>
+                <h1>hi</h1>
             </div>
         </>
     );
