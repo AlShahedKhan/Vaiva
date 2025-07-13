@@ -177,15 +177,6 @@ const Homepage: React.FC<HomepageProps> = () => {
             </Head>
 
             <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-100 relative">
-                {/* Background Image for all content */}
-                <div className="fixed inset-0 z-0 pointer-events-none">
-                    <img
-                        src="/build/assets/images/Vaiva_elemento-1_fundo-branco.png"
-                        alt=""
-                        className="w-full h-full object-cover opacity-30"
-                    />
-                </div>
-
                 {/* Header */}
                 <header className="relative z-10 w-full bg-white/80 backdrop-blur-sm border-b border-purple-100 sticky top-0">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -319,8 +310,16 @@ const Homepage: React.FC<HomepageProps> = () => {
                 )}
 
                 {/* Hero Section */}
-                <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 md:pt-16 pb-16">
-                    <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                <main className="relative z-10 px-4 sm:px-6 lg:px-8 pt-8 md:pt-16 pb-16">
+                    {/* Background Image for all content */}
+                    <div className="absolute -z-10 w-full h-[800px] bg-no-repeat inset-0 pointer-events-none">
+                        <img
+                            src="/build/assets/images/Vaiva_elemento-1_fundo-branco.png"
+                            alt=""
+                            className="w-full h-full"
+                        />
+                    </div>
+                    <div className="grid max-w-7xl mx-auto lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                         {/* Left Content */}
                         <div className="space-y-8 text-center lg:text-left">
                             <div className="space-y-4">
