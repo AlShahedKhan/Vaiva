@@ -9,6 +9,8 @@ import {
     ChevronLeft,
     ChevronRight,
     Star,
+    Plus,
+    Minus,
 } from "lucide-react";
 import { Head } from "@inertiajs/react";
 
@@ -631,7 +633,91 @@ const Homepage: React.FC<HomepageProps> = () => {
                                 ))}
                             </div>
                         </div>
+                    </div>
+                </section>
+                {/* FAQ Section */}
+                <section className="relative py-16 bg-gradient-to-br from-purple-50 via-gray-50 to-purple-100 overflow-hidden">
+                    {/* Purple accent element */}
+                    {/* <div className="absolute top-0 left-0 w-64 h-32 bg-gradient-to-br from-purple-400 to-purple-600 opacity-30"></div> */}
 
+                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        {/* Section Title */}
+                        <div className="text-center mb-12">
+                            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+                                Perguntas frequentes
+                            </h2>
+                        </div>
+
+                        {/* FAQ Items */}
+                        <div className="space-y-4">
+                            {/* FAQ Item 1 - Expanded */}
+                            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-sm">
+                                <button className="w-full px-6 py-6 text-left flex justify-between items-center hover:bg-gray-50/50 transition-colors duration-200 rounded-2xl">
+                                    <span className="text-lg font-medium text-gray-900 pr-4">
+                                        Posso conversar com o profissional antes
+                                        de contratar?
+                                    </span>
+                                    <Minus className="w-6 h-6 text-gray-600 flex-shrink-0" />
+                                </button>
+                                <div className="px-6 pb-6">
+                                    <p className="text-gray-600 leading-relaxed">
+                                        Lorem ipsum dolor sit amet consectetur.
+                                        Volutpat id donec euismod eu eu risus.
+                                        Quis sagittis nunc ultricies eu in est.
+                                        Pretium leo arcu eget ultricies faucibus
+                                        amet nunc. Sed quis quis vulputate
+                                        volutpat purus. Facilisis et quis sit
+                                        tincidunt ipsum. Convallis est
+                                        consectetur commodo amet sed odio a.
+                                        Sollicitudin laoreet adipiscing id
+                                        semper vulputate. Morbi consequat
+                                        gravida tincidunt.
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* FAQ Item 2 */}
+                            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-sm">
+                                <button className="w-full px-6 py-6 text-left flex justify-between items-center hover:bg-gray-50/50 transition-colors duration-200 rounded-2xl">
+                                    <span className="text-lg font-medium text-gray-900 pr-4">
+                                        Como funciona o pagamento pela
+                                        plataforma?
+                                    </span>
+                                    <Plus className="w-6 h-6 text-gray-600 flex-shrink-0" />
+                                </button>
+                            </div>
+
+                            {/* FAQ Item 3 */}
+                            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-sm">
+                                <button className="w-full px-6 py-6 text-left flex justify-between items-center hover:bg-gray-50/50 transition-colors duration-200 rounded-2xl">
+                                    <span className="text-lg font-medium text-gray-900 pr-4">
+                                        Os profissionais são avaliados por
+                                        outros usuários?
+                                    </span>
+                                    <Plus className="w-6 h-6 text-gray-600 flex-shrink-0" />
+                                </button>
+                            </div>
+
+                            {/* FAQ Item 4 */}
+                            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-sm">
+                                <button className="w-full px-6 py-6 text-left flex justify-between items-center hover:bg-gray-50/50 transition-colors duration-200 rounded-2xl">
+                                    <span className="text-lg font-medium text-gray-900 pr-4">
+                                        A Vaiva tem aplicativo para celular?
+                                    </span>
+                                    <Plus className="w-6 h-6 text-gray-600 flex-shrink-0" />
+                                </button>
+                            </div>
+
+                            {/* FAQ Item 5 */}
+                            <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-sm">
+                                <button className="w-full px-6 py-6 text-left flex justify-between items-center hover:bg-gray-50/50 transition-colors duration-200 rounded-2xl">
+                                    <span className="text-lg font-medium text-gray-900 pr-4">
+                                        Como encontro um prestador de serviço?
+                                    </span>
+                                    <Plus className="w-6 h-6 text-gray-600 flex-shrink-0" />
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>
