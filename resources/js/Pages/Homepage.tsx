@@ -498,18 +498,26 @@ const Homepage: React.FC<HomepageProps> = () => {
 
                             {/* Carousel Container */}
                             <div className="overflow-hidden flex-1">
-                                <div className="flex gap-8 w-full">
+                                <div className="flex gap-4 sm:gap-6 md:gap-8 w-full">
                                     {carouselImages1.map((src, idx) => (
                                         <img
                                             key={idx}
                                             src={src}
                                             alt=""
-                                            className="object-contain mx-auto rounded-xl"
-                                            style={{
-                                                height: "330px",
-                                                width: "33.33%",
-                                                maxWidth: "100%",
-                                            }}
+                                            className="
+          object-contain
+          mx-auto
+          rounded-xl
+          h-40
+          sm:h-112
+          md:h-[280px]
+          lg:h-[330px]
+          w-full
+          sm:w-full
+          md:w-1/2
+          lg:w-1/3
+          max-w-full
+        "
                                         />
                                     ))}
                                 </div>
