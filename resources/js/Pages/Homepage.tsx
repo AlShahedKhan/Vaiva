@@ -357,6 +357,13 @@ const Homepage: React.FC<HomepageProps> = () => {
 
                 {/* Featured Freelancers Section */}
                 <section className="relative z-10 bg-white">
+                    <div className="absolute top-64 right-0 h-screen w-[46vw] -z-10 overflow-hidden pointer-events-none">
+                        <img
+                            src="/build/assets/images/Vaiva_elemento-2_fundo-roxo.png"
+                            alt=""
+                            className="w-full h-full"
+                        />
+                    </div>
                     <div className="bg-violet-600 py-6 mb-16 overflow-hidden">
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                             {/* This div will contain two identical sets of logos */}
