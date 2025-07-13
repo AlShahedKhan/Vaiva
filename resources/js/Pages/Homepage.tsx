@@ -23,6 +23,12 @@ const Homepage: React.FC<HomepageProps> = () => {
         "/build/assets/images/Group 1618873532.png",
     ]);
 
+    const [carouselImages1, setCarouselImages1] = useState([
+        "/build/assets/images/Group 1618873533.png",
+        "/build/assets/images/Group 1618873534.png",
+        "/build/assets/images/Group 1618873535.png",
+    ]);
+
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
@@ -55,6 +61,21 @@ const Homepage: React.FC<HomepageProps> = () => {
 
     const handleNext = () => {
         setCarouselImages((prev) => {
+            const arr = [...prev];
+            arr.push(arr.shift());
+            return arr;
+        });
+    };
+    const handlePrev1 = () => {
+        setCarouselImages1((prev) => {
+            const arr = [...prev];
+            arr.unshift(arr.pop());
+            return arr;
+        });
+    };
+
+    const handleNext1 = () => {
+        setCarouselImages1((prev) => {
             const arr = [...prev];
             arr.push(arr.shift());
             return arr;
@@ -354,7 +375,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                         <div className="flex items-center gap-4 justify-center w-full px-2 md:px-8">
                             {/* Left button */}
                             <button
-                                className="shrink-0 bg-white rounded-full shadow p-2 hover:bg-gray-100 transition"
+                                className="p-2  transition"
                                 aria-label="Scroll left"
                                 onClick={handlePrev}
                             >
@@ -380,7 +401,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                             </div>
                             {/* Right button */}
                             <button
-                                className="shrink-0 bg-white rounded-full shadow p-2 hover:bg-gray-100 transition"
+                                className="p-2  transition"
                                 aria-label="Scroll right"
                                 onClick={handleNext}
                             >
@@ -403,66 +424,43 @@ const Homepage: React.FC<HomepageProps> = () => {
                         </div>
 
                         {/* Service Cards */}
-                        <div className="grid md:grid-cols-3 gap-6 mb-12">
-                            {/* Design Gráfico Card */}
-                            <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-700/50 to-purple-900/50 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300">
-                                <div className="aspect-[4/3] relative overflow-hidden">
-                                    <img
-                                        src="/placeholder.svg?height=240&width=320"
-                                        alt="Design workspace with computer and materials"
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-transparent to-transparent" />
-                                </div>
-                                <div className="p-6">
-                                    <div className="text-white/70 text-sm mb-2">
-                                        295 profissionais disponíveis
-                                    </div>
-                                    <h3 className="text-xl font-bold text-white">
-                                        Design Gráfico
-                                    </h3>
+                        <div className="flex items-center justify-between gap-4 mb-12">
+                            {/* Left Button */}
+                            <button
+                                className=" rounded-full shadow p-1 w-8 h-8 flex items-center justify-center  transition"
+                                aria-label="Scroll left"
+                                onClick={handlePrev1}
+                            >
+                                <ChevronLeft className="w-6 h-6 text-white" />
+                            </button>
+
+                            {/* Carousel Container */}
+                            <div className="overflow-hidden flex-1">
+                                <div className="flex gap-8 w-full">
+                                    {carouselImages1.map((src, idx) => (
+                                        <img
+                                            key={idx}
+                                            src={src}
+                                            alt=""
+                                            className="object-contain mx-auto rounded-xl"
+                                            style={{
+                                                height: "330px",
+                                                width: "33.33%",
+                                                maxWidth: "100%",
+                                            }}
+                                        />
+                                    ))}
                                 </div>
                             </div>
 
-                            {/* Redação Card */}
-                            <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-700/50 to-purple-900/50 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300">
-                                <div className="aspect-[4/3] relative overflow-hidden">
-                                    <img
-                                        src="/placeholder.svg?height=240&width=320"
-                                        alt="Hands writing on paper"
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-transparent to-transparent" />
-                                </div>
-                                <div className="p-6">
-                                    <div className="text-white/70 text-sm mb-2">
-                                        100 profissionais disponíveis
-                                    </div>
-                                    <h3 className="text-xl font-bold text-white">
-                                        Redação
-                                    </h3>
-                                </div>
-                            </div>
-
-                            {/* Edição de vídeo Card */}
-                            <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-700/50 to-purple-900/50 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300">
-                                <div className="aspect-[4/3] relative overflow-hidden">
-                                    <img
-                                        src="/placeholder.svg?height=240&width=320"
-                                        alt="Video editing interface"
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-transparent to-transparent" />
-                                </div>
-                                <div className="p-6">
-                                    <div className="text-white/70 text-sm mb-2">
-                                        148 profissionais disponíveis
-                                    </div>
-                                    <h3 className="text-xl font-bold text-white">
-                                        Edição de vídeo
-                                    </h3>
-                                </div>
-                            </div>
+                            {/* Right Button */}
+                            <button
+                                className=" rounded-full shadow p-1 w-8 h-8 flex items-center justify-center  transition"
+                                aria-label="Scroll right"
+                                onClick={handleNext1}
+                            >
+                                <ChevronRight className="w-6 h-6 text-white" />
+                            </button>
                         </div>
                     </div>
                 </section>
