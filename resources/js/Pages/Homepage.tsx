@@ -17,6 +17,11 @@ const Homepage: React.FC<HomepageProps> = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
     const [currentSlide, setCurrentSlide] = React.useState(0);
     const [logoIndex, setLogoIndex] = useState(0);
+    const [carouselImages, setCarouselImages] = useState([
+        "/build/assets/images/Group 1618873530.png",
+        "/build/assets/images/Group 1618873531.png",
+        "/build/assets/images/Group 1618873532.png",
+    ]);
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -40,30 +45,20 @@ const Homepage: React.FC<HomepageProps> = () => {
         },
     ];
 
-    const logoImages = [
-        "/build/assets/images/Group 1618873530.png",
-        "/build/assets/images/Group 1618873531.png",
-        "/build/assets/images/Group 1618873532.png",
-    ];
-
-    const nextSlide = () => {
-        setCurrentSlide((prev) => (prev + 1) % freelancers.length);
-    };
-
-    const prevSlide = () => {
-        setCurrentSlide(
-            (prev) => (prev - 1 + freelancers.length) % freelancers.length,
-        );
-    };
-
-    const visibleLogos = logoImages.slice(logoIndex, logoIndex + 3);
-
     const handlePrev = () => {
-        setLogoIndex((prev) => Math.max(prev - 1, 0));
+        setCarouselImages((prev) => {
+            const arr = [...prev];
+            arr.unshift(arr.pop());
+            return arr;
+        });
     };
 
     const handleNext = () => {
-        setLogoIndex((prev) => Math.min(prev + 1, logoImages.length - 3));
+        setCarouselImages((prev) => {
+            const arr = [...prev];
+            arr.push(arr.shift());
+            return arr;
+        });
     };
 
     return (
@@ -362,24 +357,19 @@ const Homepage: React.FC<HomepageProps> = () => {
                                 className="shrink-0 bg-white rounded-full shadow p-2 hover:bg-gray-100 transition"
                                 aria-label="Scroll left"
                                 onClick={handlePrev}
-                                disabled={logoIndex === 0}
                             >
                                 <ChevronLeft className="w-6 h-6 text-violet-600" />
                             </button>
                             {/* Visible logos */}
                             <div className="overflow-hidden flex justify-center flex-1">
                                 <div className="flex gap-8 w-full">
-                                    {visibleLogos.map((src, idx) => (
+                                    {carouselImages.map((src, idx) => (
                                         <img
                                             key={idx}
                                             src={src}
                                             alt=""
                                             className="object-contain mx-auto"
-                                            style={{
-                                                height: "330px",
-                                                width: "33.33%",
-                                                maxWidth: "100%",
-                                            }}
+                                            style={{ height: "330px", width: "33.33%", maxWidth: "100%" }}
                                         />
                                     ))}
                                 </div>
@@ -389,7 +379,6 @@ const Homepage: React.FC<HomepageProps> = () => {
                                 className="shrink-0 bg-white rounded-full shadow p-2 hover:bg-gray-100 transition"
                                 aria-label="Scroll right"
                                 onClick={handleNext}
-                                disabled={logoIndex >= logoImages.length - 3}
                             >
                                 <ChevronRight className="w-6 h-6 text-violet-600" />
                             </button>
