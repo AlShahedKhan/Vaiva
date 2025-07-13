@@ -562,7 +562,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                 </section>
                 <section>
                     <div className="mt-24 text-center">
-                        <h1 className=" text-5xl font-bold">
+                        <h1 className=" text-5xl font-bold sm:text-4xl">
                             A Vaiva nasceu pra facilitar a vida <br /> de quem
                             contrata e de quem <br /> oferece serviços digitais.
                         </h1>
