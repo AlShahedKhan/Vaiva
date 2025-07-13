@@ -369,7 +369,11 @@ const Homepage: React.FC<HomepageProps> = () => {
                                             src={src}
                                             alt=""
                                             className="object-contain mx-auto"
-                                            style={{ height: "330px", width: "33.33%", maxWidth: "100%" }}
+                                            style={{
+                                                height: "330px",
+                                                width: "33.33%",
+                                                maxWidth: "100%",
+                                            }}
                                         />
                                     ))}
                                 </div>
@@ -382,6 +386,109 @@ const Homepage: React.FC<HomepageProps> = () => {
                             >
                                 <ChevronRight className="w-6 h-6 text-violet-600" />
                             </button>
+                        </div>
+                    </div>
+                </section>
+                {/* Platform Services Section */}
+                <section className="relative z-10 py-16 bg-[#1E1845] mx-4 rounded-t-2xl mt-32">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        {/* Header */}
+                        <div className="flex justify-between items-center mb-12">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+                                Os serviços da plataforma
+                            </h2>
+                            <button className="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white px-6 py-2 rounded-full font-medium transition-all duration-200 border border-white/20">
+                                Ver todos →
+                            </button>
+                        </div>
+
+                        {/* Service Cards */}
+                        <div className="grid md:grid-cols-3 gap-6 mb-12">
+                            {/* Design Gráfico Card */}
+                            <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-700/50 to-purple-900/50 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300">
+                                <div className="aspect-[4/3] relative overflow-hidden">
+                                    <img
+                                        src="/placeholder.svg?height=240&width=320"
+                                        alt="Design workspace with computer and materials"
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-transparent to-transparent" />
+                                </div>
+                                <div className="p-6">
+                                    <div className="text-white/70 text-sm mb-2">
+                                        295 profissionais disponíveis
+                                    </div>
+                                    <h3 className="text-xl font-bold text-white">
+                                        Design Gráfico
+                                    </h3>
+                                </div>
+                            </div>
+
+                            {/* Redação Card */}
+                            <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-700/50 to-purple-900/50 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300">
+                                <div className="aspect-[4/3] relative overflow-hidden">
+                                    <img
+                                        src="/placeholder.svg?height=240&width=320"
+                                        alt="Hands writing on paper"
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-transparent to-transparent" />
+                                </div>
+                                <div className="p-6">
+                                    <div className="text-white/70 text-sm mb-2">
+                                        100 profissionais disponíveis
+                                    </div>
+                                    <h3 className="text-xl font-bold text-white">
+                                        Redação
+                                    </h3>
+                                </div>
+                            </div>
+
+                            {/* Edição de vídeo Card */}
+                            <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-700/50 to-purple-900/50 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300">
+                                <div className="aspect-[4/3] relative overflow-hidden">
+                                    <img
+                                        src="/placeholder.svg?height=240&width=320"
+                                        alt="Video editing interface"
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-transparent to-transparent" />
+                                </div>
+                                <div className="p-6">
+                                    <div className="text-white/70 text-sm mb-2">
+                                        148 profissionais disponíveis
+                                    </div>
+                                    <h3 className="text-xl font-bold text-white">
+                                        Edição de vídeo
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                {/* Statistics Bar */}
+                <section>
+                    <div className="bg-[#7E54F7] backdrop-blur-sm  p-6 borde">
+                        <div className="flex flex-wrap items-center justify-center gap-8 text-white text-sm">
+                            <div className="flex items-center gap-2">
+                                <span className="w-2 h-2 bg-green-400 rounded-full"></span>
+                                <span>Freelancers</span>
+                            </div>
+                            <div className="text-white/70">
+                                858 checks realizados
+                            </div>
+                            <div className="text-white/70">Desde 2025</div>
+                            <div className="text-white/70 font-bold">
+                                1407.56 • 745.65
+                            </div>
+                            <div className="text-white/70">1058 projetos</div>
+                            <div className="text-white/70">
+                                858 checks realizados
+                            </div>
+                            <div className="text-white/70">Desde 2025</div>
+                            <div className="text-white/70">
+                                1058 profissionais digitais
+                            </div>
                         </div>
                     </div>
                 </section>
