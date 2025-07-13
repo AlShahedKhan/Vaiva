@@ -591,12 +591,11 @@ const Homepage: React.FC<HomepageProps> = () => {
                             </h2>
                         </div>
 
-                        {/* Testimonials Container */}
                         <div className="relative">
                             {/* Navigation Arrows */}
                             <button
                                 onClick={handlePrevTestimonial}
-                                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 z-10  p-3  duration-200  "
+                                className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 z-10 p-3 duration-200"
                                 aria-label="Previous testimonial"
                             >
                                 <ChevronLeft className="w-6 h-6 text-black" />
@@ -604,63 +603,71 @@ const Homepage: React.FC<HomepageProps> = () => {
 
                             <button
                                 onClick={handleNextTestimonial}
-                                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 z-10  p-3 "
+                                className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 z-10 p-3"
                                 aria-label="Next testimonial"
                             >
                                 <ChevronRight className="w-6 h-6 text-black" />
                             </button>
 
                             {/* Testimonials Grid */}
-                            <div className="grid md:grid-cols-3 gap-6 px-8">
-                                {testimonialCards.map((t, idx) => (
-                                    <div
-                                        key={idx}
-                                        className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200 relative"
-                                    >
-                                        {/* Quote marks */}
-                                        <div className="flex justify-between items-start mb-4">
-                                            <div className="text-4xl text-purple-400 font-bold leading-none">
-                                                "
-                                            </div>
-                                            <div className="text-4xl text-purple-400 font-bold leading-none">
-                                                "
-                                            </div>
-                                        </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-6 md:px-8">
+                                {testimonialCards.map((t, idx) => {
+                                    let visibilityClass = "";
+                                    if (idx > 0)
+                                        visibilityClass = "hidden md:block"; // Show only first on sm
+                                    if (idx > 1)
+                                        visibilityClass = "hidden lg:block"; // Show only first two on md
 
-                                        {/* Profile Section */}
-                                        <div className="flex flex-col items-center mb-4">
-                                            <img
-                                                src={t.image}
-                                                alt={t.name}
-                                                className="w-16 h-16 rounded-full object-cover mb-3 border-2 border-gray-100"
-                                            />
-                                            <h3 className="font-semibold text-gray-900 text-center">
-                                                {t.name}
-                                            </h3>
-                                            <p className="text-sm text-gray-500 text-center mt-1">
-                                                {t.role}
+                                    return (
+                                        <div
+                                            key={idx}
+                                            className={`bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200 relative ${visibilityClass}`}
+                                        >
+                                            {/* Quote marks */}
+                                            <div className="flex justify-between items-start mb-4">
+                                                <div className="text-4xl text-purple-400 font-bold leading-none">
+                                                    "
+                                                </div>
+                                                <div className="text-4xl text-purple-400 font-bold leading-none">
+                                                    "
+                                                </div>
+                                            </div>
+
+                                            {/* Profile Section */}
+                                            <div className="flex flex-col items-center mb-4">
+                                                <img
+                                                    src={t.image}
+                                                    alt={t.name}
+                                                    className="w-16 h-16 rounded-full object-cover mb-3 border-2 border-gray-100"
+                                                />
+                                                <h3 className="font-semibold text-gray-900 text-center">
+                                                    {t.name}
+                                                </h3>
+                                                <p className="text-sm text-gray-500 text-center mt-1">
+                                                    {t.role}
+                                                </p>
+                                            </div>
+
+                                            {/* Star Rating */}
+                                            <div className="flex justify-center mb-4">
+                                                {Array.from(
+                                                    { length: 5 },
+                                                    (_, index) => (
+                                                        <Star
+                                                            key={index}
+                                                            className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                                                        />
+                                                    ),
+                                                )}
+                                            </div>
+
+                                            {/* Testimonial Text */}
+                                            <p className="text-gray-700 text-center leading-relaxed">
+                                                {t.text}
                                             </p>
                                         </div>
-
-                                        {/* Star Rating */}
-                                        <div className="flex justify-center mb-4">
-                                            {Array.from(
-                                                { length: 5 },
-                                                (_, index) => (
-                                                    <Star
-                                                        key={index}
-                                                        className="w-4 h-4 fill-yellow-400 text-yellow-400"
-                                                    />
-                                                ),
-                                            )}
-                                        </div>
-
-                                        {/* Testimonial Text */}
-                                        <p className="text-gray-700 text-center leading-relaxed">
-                                            {t.text}
-                                        </p>
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </div>
                     </div>
