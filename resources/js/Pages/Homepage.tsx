@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { Head } from "@inertiajs/react";
 import Footer from "../components/footer"
+import Header from "../components/Header";
 
 type HomepageProps = {};
 
@@ -178,137 +179,8 @@ const Homepage: React.FC<HomepageProps> = () => {
             </Head>
 
             <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-100 relative">
-                {/* Header */}
-                <header className="relative z-10 w-full bg-white/80 backdrop-blur-sm border-b border-purple-100 sticky top-0">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="flex items-center justify-between h-16 md:h-20">
-                            {/* Logo */}
-                            <div className="flex items-center space-x-2">
-                                <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
-                                    <CheckCircle className="w-5 h-5 text-white" />
-                                </div>
-                                <span className="text-xl md:text-2xl font-bold text-gray-900">
-                                    Vaiva
-                                </span>
-                            </div>
-                            {/* Desktop Navigation */}
-                            <nav className="hidden md:flex items-center space-x-8">
-                                <a
-                                    href="#home"
-                                    className="text-gray-900 hover:text-purple-600 font-medium transition-colors duration-200"
-                                >
-                                    Home
-                                </a>
-                                <a
-                                    href="#services"
-                                    className="text-gray-700 hover:text-purple-600 font-medium transition-colors duration-200"
-                                >
-                                    Explore Services
-                                </a>
-                                <a
-                                    href="#how-it-works"
-                                    className="text-gray-700 hover:text-purple-600 font-medium transition-colors duration-200"
-                                >
-                                    How It Works
-                                </a>
-                                <a
-                                    href="#freelancer"
-                                    className="text-gray-700 hover:text-purple-600 font-medium transition-colors duration-200"
-                                >
-                                    Become a Freelancer
-                                </a>
-                            </nav>
-                            {/* Auth Buttons */}
-                            <div className="flex items-center space-x-3">
-                                <button className="hidden sm:inline-flex px-4 py-2 text-gray-700 hover:text-purple-600 font-medium transition-colors duration-200">
-                                    Log In
-                                </button>
-                                <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-2 rounded-full font-medium transition-colors duration-200">
-                                    Sign Up
-                                </button>
-                            </div>
-                            {/* Mobile Menu Button */}
-                            <button
-                                className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
-                                onClick={toggleMobileMenu}
-                                aria-label="Toggle mobile menu"
-                            >
-                                {isMobileMenuOpen ? (
-                                    <X className="w-6 h-6 text-gray-600" />
-                                ) : (
-                                    <Menu className="w-6 h-6 text-gray-600" />
-                                )}
-                            </button>
-                        </div>
-                    </div>
-                </header>
-                {/* Mobile Navigation Menu */}
-                <div
-                    className={`md:hidden fixed inset-0 bg-white z-40 transform transition-transform duration-300 ease-in-out ${
-                        isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-                    }`}
-                >
-                    <div className="p-6 space-y-6">
-                        <div className="flex justify-between items-center">
-                            <div className="flex items-center space-x-2">
-                                <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
-                                    <CheckCircle className="w-5 h-5 text-white" />
-                                </div>
-                                <span className="text-xl font-bold text-gray-900">
-                                    Vaiva
-                                </span>
-                            </div>
-                            <button
-                                className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
-                                onClick={toggleMobileMenu}
-                                aria-label="Close menu"
-                            >
-                                <X className="w-6 h-6 text-gray-600" />
-                            </button>
-                        </div>
-                        <nav className="space-y-4">
-                            <a
-                                href="#home"
-                                className="block text-lg font-medium text-gray-900 hover:text-purple-600 py-2"
-                            >
-                                Home
-                            </a>
-                            <a
-                                href="#services"
-                                className="block text-lg font-medium text-gray-700 hover:text-purple-600 py-2"
-                            >
-                                Explore Services
-                            </a>
-                            <a
-                                href="#how-it-works"
-                                className="block text-lg font-medium text-gray-700 hover:text-purple-600 py-2"
-                            >
-                                How It Works
-                            </a>
-                            <a
-                                href="#freelancer"
-                                className="block text-lg font-medium text-gray-700 hover:text-purple-600 py-2"
-                            >
-                                Become a Freelancer
-                            </a>
-                        </nav>
-                        <div className="space-y-3 pt-6 border-t border-gray-200">
-                            <button className="w-full text-left py-3 px-4 text-gray-700 hover:text-purple-600 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200">
-                                Log In
-                            </button>
-                            <button className="w-full bg-gray-900 hover:bg-gray-800 text-white py-3 px-4 rounded-lg font-medium transition-colors duration-200">
-                                Sign Up
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                {/* Overlay for mobile menu */}
-                {isMobileMenuOpen && (
-                    <div
-                        className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-30"
-                        onClick={toggleMobileMenu}
-                    />
-                )}
+              <Header/>
+                
 
                 {/* Hero Section */}
                 <main className="relative z-10 px-4 sm:px-6 lg:px-8 pt-8 md:pt-16 pb-16">

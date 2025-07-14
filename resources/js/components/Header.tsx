@@ -37,12 +37,12 @@ const Header: React.FC<HeaderProps> = ({ isMobileMenuOpen, toggleMobileMenu }) =
                             >
                                 Explore Services
                             </Link>
-                            <a
-                                href="#how-it-works"
+                            <Link
+                                href="/how-it-works"
                                 className="text-gray-700 hover:text-purple-600 font-medium transition-colors duration-200"
                             >
                                 How It Works
-                            </a>
+                            </Link>
                             <a
                                 href="#freelancer"
                                 className="text-gray-700 hover:text-purple-600 font-medium transition-colors duration-200"
