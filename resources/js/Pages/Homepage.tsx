@@ -13,6 +13,7 @@ import {
     Minus,
 } from "lucide-react";
 import { Head } from "@inertiajs/react";
+import Footer from "../components/footer"
 
 type HomepageProps = {};
 
@@ -754,6 +755,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                         </div>
                     </div>
                 </section>
+                <Footer />
             </div>
         </>
     );

@@ -16,6 +16,13 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/services', function () {
+    return Inertia::render('Serivces', [
+        'title' => 'Services',
+        'description' => 'Your platform for seamless connections and solutions.',
+    ]);
+})->name('services');
+
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])
     ->name('register');
 
