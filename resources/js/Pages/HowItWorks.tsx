@@ -20,7 +20,7 @@ const HowItWorks: React.FC<HowItWorksProps> = () => {
                 <Header />
 
                 {/* Hero Section */}
-                <main className="relative z-10 px-4 sm:px-6 lg:px-8 pt-8 md:pt-0 md:pb-0 pb-16">
+                <main className="relative z-10 px-4 sm:px-6 lg:px-8 pt-8 md:pt-0 ms:pt-0 md:pb-0 sm:pb-0 pb-16">
                     {/* Background Image for all content */}
                     <div className="absolute -z-10 w-full h-210 sm:h-222 md:h-236  bg-no-repeat inset-0 pointer-events-none">
                         <img
@@ -114,7 +114,7 @@ const HowItWorks: React.FC<HowItWorksProps> = () => {
                     </div>
                 </section>
                 {/* Call to Action Section */}
-                <section className="relative z-10 py-16 -mt-16 md:py-24 bg-gradient-to-br from-gray-50 to-white">
+                <section className="relative z-10 py-16 -mt-16 md:py-16 bg-gradient-to-br from-gray-50 to-white">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                         {/* Subtitle */}
                         <p className="text-purple-600 text-lg md:text-xl font-medium mb-4 tracking-wide">
@@ -147,10 +147,10 @@ const HowItWorks: React.FC<HowItWorksProps> = () => {
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                             {/* Left Content */}
-                            <div className="space-y-8">
+                            <div className="space-y-8 ">
                                 {/* Logo and Title */}
-                                <div className="space-y-6">
-                                    <div className="w-12 h-12 flex items-center justify-center">
+                                <div className="space-y-6 text-center">
+                                    <div className="w-12 h-12 flex items-center justify-center md:hidden sm:hidden">
                                         <img src="/build/assets/images/Vaiva_horizontal-2 2.png" alt="" />
                                     </div>
                                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
@@ -225,7 +225,7 @@ const HowItWorks: React.FC<HowItWorksProps> = () => {
                                 </div>
 
                                 {/* CTA Button */}
-                                <div className="pt-4">
+                                <div className="pt-4 text-center">
                                     <button className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-300">
                                         Contratar um Designer
                                     </button>
