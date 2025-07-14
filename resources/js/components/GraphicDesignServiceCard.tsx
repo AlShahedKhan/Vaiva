@@ -12,11 +12,11 @@ const GraphicDesignServiceCard: React.FC<GraphicDesignServiceCardProps> = () => 
             <img
                 src="/build/assets/services/person-bg.png"
                 alt="Background Image"
-                className="absolute -bottom-16 -right-0 md:-bottom-24 md:-right-0 w-64 h-64 md:w-auto md:h-auto lg:-bottom-80 lg:right-0 z-0"
+                className="absolute -bottom-30 -right-0 md:-bottom-24 md:-right-0 w-64 h-64 md:w-auto md:h-auto lg:-bottom-80 lg:right-0 z-0"
             />
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
                 {/* Image Section */}
-                <div className="md:w-1/2 w-full">
+                <div className="md:w-1/2 w-full order-2 lg:order-1 z-99">
                     <img
                         src="/build/assets/services/person.png" // Replace with your actual image path
                         alt="Designer gráfico trabalhando em um laptop"
@@ -25,23 +25,23 @@ const GraphicDesignServiceCard: React.FC<GraphicDesignServiceCardProps> = () => 
                 </div>
 
                 {/* Content Section */}
-                <div className="md:w-1/2 w-full p-8 md:p-12 space-y-6">
-                    <h2 className="text-4xl font-bold text-gray-900 leading-tight">
+                <div className="md:w-1/2 w-full lg:p-8 mt-0 lg:mt-20 space-y-6 order-1 lg:order-2">
+                    <h2 className="text-4xl font-bold text-gray-900 leading-tight text-center lg:text-left">
                         Design Gráfico
                     </h2>
-                    <p className="text-gray-700 text-lg">
+                    <p className="text-gray-700 text-lg text-center lg:text-left">
                         Transforme suas ideias em artes visuais incríveis com a ajuda de nossos
                         designers gráficos experientes. Desde logotipos profissionais até posts
                         criativos para redes sociais, você encontra aqui o talento certo para dar vida
                         ao seu projeto.
                     </p>
-                    <p className="text-gray-600 text-base">
+                    <p className="text-gray-600 text-base text-center lg:text-left">
                         Com **253 profissionais disponíveis**, você pode escolher entre especialistas
                         em branding, criação de identidade visual, design para web, impressos e
                         muito mais. Encontre o designer perfeito para o que você precisa, de forma
                         rápida e segura.
                     </p>
-                    <button className="mt-4 px-8 py-3 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 transition-colors duration-200">
+                    <button className="mt-4 px-8 py-3 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 w-full lg:w-fit transition-colors duration-200">
                         Contratar um Designer
                     </button>
                 </div>

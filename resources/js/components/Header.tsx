@@ -74,14 +74,14 @@ const Header: React.FC<HeaderProps> = ({
 
                         {/* Mobile Menu Button */}
                         <button
-                            className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+                            className="md:hidden p-1 bg-blue-500 rounded-[5px] hover:bg-black transition-colors duration-200"
                             onClick={toggleMobileMenu}
                             aria-label="Toggle mobile menu"
                         >
                             {isMobileMenuOpen ? (
                                 <X className="w-6 h-6 text-gray-600" />
                             ) : (
-                                <Menu className="w-6 h-6 text-gray-600" />
+                                <Menu className="w-6 h-6 text-white" />
                             )}
                         </button>
                     </div>
