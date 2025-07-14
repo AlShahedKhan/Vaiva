@@ -587,7 +587,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                     />
 
                     {/* Purple block shown *under* the image */}
-                    <div className="bg-[#7E54F7] h-40 relative z-0 -mt-120 sm:-mt-66 md:-mt-78"></div>
+                    <div className="bg-[#7E54F7] h-40 relative z-0 lg:-top-34 sm:-mt-66 md:-mt-78"></div>
                 </section>
 
                 {/* Testimonials Section */}
