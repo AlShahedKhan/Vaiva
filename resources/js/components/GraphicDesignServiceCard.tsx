@@ -12,9 +12,9 @@ const GraphicDesignServiceCard: React.FC<GraphicDesignServiceCardProps> = () => 
             <img
                 src="/build/assets/services/person-bg.png"
                 alt="Background Image"
-                className="absolute -bottom-30 -right-0 md:-bottom-24 md:-right-0 w-64 h-64 md:w-auto md:h-auto lg:-bottom-80 lg:right-0 z-0"
+                className="absolute -bottom-30 -right-0 md:-bottom-124 md:-right-0 w-64 h-64 md:w-auto md:h-auto lg:-bottom-80 lg:right-0 z-0"
             />
-            <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between md:gap-5">
                 {/* Image Section */}
                 <div className="md:w-1/2 w-full order-2 lg:order-1 z-99">
                     <img

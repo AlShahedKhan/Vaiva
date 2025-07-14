@@ -34,17 +34,15 @@ const Login = () => {
     };
 
     const handleGoogleLogin = () => {
-        // Redirect to Google OAuth endpoint
         window.location.href = "/auth/google";
     };
 
     const handleFacebookLogin = () => {
-        // Redirect to Facebook OAuth endpoint
         window.location.href = "/auth/facebook";
     };
 
     return (
-        <main className="h-screen overflow-hidden flex flex-col-reverse lg:flex-row">
+        <main className="h-screen overflow-hidden flex flex-col lg:flex-row">
             {/* Left Side - Login Form */}
             <section className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-gray-50 min-h-[55vh] lg:min-h-full order-2 lg:order-1">
                 <div className="w-full max-w-md">
@@ -249,26 +247,19 @@ const Login = () => {
             </section>
 
             {/* Right Side - Purple Gradient with Content */}
-            <section className="flex-1 bg-violet-600 flex m-2 sm:m-4 lg:m-6 rounded-2xl relative overflow-hidden min-h-[45vh] lg:min-h-full order-1 lg:order-2">
-                {/* Decorative background elements */}
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute top-10 left-10 w-20 h-20 bg-white rounded-full blur-sm"></div>
-                    <div className="absolute bottom-20 right-16 w-16 h-16 bg-white rounded-full blur-sm"></div>
-                    <div className="absolute top-1/2 left-6 w-12 h-12 bg-white rounded-full blur-sm"></div>
-                </div>
-
-                <div className="z-10 text-white w-full flex flex-col justify-between">
-                    <div className="p-4 sm:p-6 lg:p-8">
-                        <div className="w-20 h-6 sm:w-24 sm:h-8 lg:w-[129px] lg:h-[40.35px] mb-4 sm:mb-6 lg:mb-8">
+            <section className="flex-1 bg-violet-600 ">
+                <div className="">
+                    <div className="">
+                        <div className="">
                             <img
                                 src="/build/assets/images/Group 1.png"
                                 alt="Vaiva Logo"
-                                className="w-full h-full object-contain"
+                                className=""
                                 loading="lazy"
                             />
                         </div>
-                        <div className="mt-10 sm:mt-12 lg:mt-16 xl:mt-20">
-                            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[65.87px] xl:text-[65.87px] font-satoshi font-medium leading-tight lg:leading-[73.1px] tracking-tight text-center">
+                        <div className="">
+                            <h2 className="">
                                 Conecte. Combine.
                                 <br />
                                 Resolva.
@@ -276,50 +267,18 @@ const Login = () => {
                         </div>
                     </div>
 
-                    <div className="relative flex-1 min-h-[200px] lg:min-h-0">
-                        <div className="absolute inset-0">
-                            <img
-                                src="/build/assets/images/Vaiva_elemento-1_fundo-branco.png"
-                                alt="Background decoration"
-                                className="w-full h-full object-cover opacity-20"
-                                loading="lazy"
-                            />
-                        </div>
-                        <div className="absolute bottom-2 sm:bottom-4 lg:bottom-6 right-4 sm:right-8 lg:right-16 w-3/5 sm:w-2/5 lg:w-auto max-w-[250px] lg:max-w-none">
+                    <div className="flex-1">
+                        <div className="">
                             <img
                                 src="/build/assets/images/Group 1618873490 1.png"
                                 alt="Two professional women collaborating"
-                                className="w-full h-auto object-contain drop-shadow-2xl"
+                                className="w-full h-full"
                                 loading="lazy"
                             />
                         </div>
                     </div>
                 </div>
             </section>
-
-            {/* Custom Font Styles */}
-            <style jsx>{`
-                @import url("https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;600;700;800;900&display=swap");
-                @import url("https://fonts.googleapis.com/css2?family=Gilroy:wght@300;400;500;600;700&display=swap");
-                .font-satoshi {
-                    font-family:
-                        "Satoshi",
-                        -apple-system,
-                        BlinkMacSystemFont,
-                        "Segoe UI",
-                        Roboto,
-                        sans-serif;
-                }
-                .font-gilroy {
-                    font-family:
-                        "Gilroy",
-                        -apple-system,
-                        BlinkMacSystemFont,
-                        "Segoe UI",
-                        Roboto,
-                        sans-serif;
-                }
-            `}</style>
         </main>
     );
 };

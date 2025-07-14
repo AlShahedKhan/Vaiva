@@ -8,7 +8,7 @@ const HeroContentSection: React.FC<HeroContentSectionProps> = () => {
     return (
         <section className="relative z-99 bg-gradient-to-br from-gray-900 to-purple-900 overflow-hidden flex items-center justify-center mx-3 rounded-2xl">
             {/* Content Container */}
-            <div className="container px-4 relative z-10 flex flex-col lg:flex-row justify-between items-center gap-10 lg:gap-30">
+            <div className="lg:container px-4 relative z-10 flex flex-col md:flex-row justify-between items-center gap-10 lg:gap-30">
                 {/* Left Side: Text Content */}
                 <div className="flex-1 text-center lg:text-left text-white max-w-xl lg:max-w-md xl:max-w-full py-2 md:py-20 lg:py-20">
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-center lg:text-left">
