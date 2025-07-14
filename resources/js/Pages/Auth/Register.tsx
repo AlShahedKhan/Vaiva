@@ -36,7 +36,7 @@ const Register = () => {
   }
 
   return (
-    <main className="h-screen overflow-hidden flex flex-col-reverse lg:flex-row">
+    <main className="h-screen overflow-hidden flex ">
       {/* Left Side - Registration Form - Your original position */}
       <section className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-gray-50 min-h-[55vh] lg:min-h-full order-2 lg:order-1">
         <div className="w-full max-w-md">
@@ -189,9 +189,9 @@ const Register = () => {
       </section>
 
       {/* Right Side - Purple Gradient - Your original position */}
-      <section className="flex-1 bg-violet-600 flex m-2 sm:m-4 lg:m-6 rounded-2xl relative overflow-hidden min-h-[45vh] lg:min-h-full order-1 lg:order-2">
+      <section className="flex-1 bg-violet-600 flex m-2 sm:m-4 lg:m-6 rounded-2xl relative overflow-hidden min-h-[45vh] lg:min-h-full order-1 lg:order-2 ">
         {/* Revert to your exact original purple section styling */}
-        <div className="z-10 text-white w-full flex flex-col justify-between">
+        <div className=" text-white w-full flex flex-col justify-between">
           <div className="p-4 sm:p-6 lg:p-8">
             <div className="w-20 h-6 sm:w-24 sm:h-8 lg:w-[129px] lg:h-[40.35px] mb-4 sm:mb-6 lg:mb-8">
               <img
