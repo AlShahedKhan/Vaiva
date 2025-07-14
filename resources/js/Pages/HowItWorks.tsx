@@ -5,6 +5,7 @@ import { Search, CheckCircle, Menu, X } from "lucide-react";
 import { Head } from "@inertiajs/react";
 import Footer from "../components/footer";
 import Header from "../components/Header";
+import PartnerLogosMarquee from "../components/PartnerLogosMarquee";
 
 type HomepageProps = {};
 type HowItWorksProps = {};
@@ -17,16 +18,16 @@ const HowItWorks: React.FC<HowItWorksProps> = () => {
     return (
         <>
             <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-100 relative">
-                <Header isMobileMenuOpen={isMobileMenuOpen} toggleMobileMenu={toggleMobileMenu} />
+                <Header />
 
                 {/* Hero Section */}
                 <main className="relative z-10 px-4 sm:px-6 lg:px-8 pt-8 md:pt-0 ms:pt-0 md:pb-0 sm:pb-0 pb-16">
                     {/* Background Image for all content */}
-                    <div className="absolute -z-10 w-full h-210 sm:h-222 md:h-236  bg-no-repeat inset-0 pointer-events-none">
+                    <div className="absolute -z-10 w-full h-96 sm:h-222 md:h-236  bg-no-repeat inset-0 pointer-events-none">
                         <img
                             src="/build/assets/images/Vaiva_elemento-1_fundo-branco.png"
                             alt=""
-                            className="w-full h-[65%] pb-50 sm:pb-0 sm:-mb-24 md:pb-0"
+                            className="w-full h-[45%] sm:h-[55%] pb-50 sm:pb-0 sm:-mb-24 md:pb-0"
                         />
                     </div>
                     <div className="text-center space-y-8 mt-16 mb-16">
@@ -47,74 +48,12 @@ const HowItWorks: React.FC<HowItWorksProps> = () => {
                 </main>
 
                 {/* Featured Freelancers Section */}
-                <section className="relative z-10 bg-white">
-                    <div className="bg-violet-600 py-6 mb-16 overflow-hidden">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            {/* This div will contain two identical sets of logos */}
-                            <div className="flex w-[200%] animate-scroll">
-                                {/* First set of logos */}
-                                <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-4 sm:gap-6 md:gap-8 w-full">
-                                    <img
-                                        src="/build/assets/images/path4.png"
-                                        alt="HERING"
-                                        className="h-6 sm:h-8 md:h-10 opacity-80 hover:opacity-100"
-                                    />
-                                    <img
-                                        src="/build/assets/images/Group 1321315497.png"
-                                        alt="BRAHMA"
-                                        className="h-6 sm:h-8 md:h-10 opacity-80 hover:opacity-100"
-                                    />
-                                    <img
-                                        src="/build/assets/images/Group 1321315528.png"
-                                        alt="bradesco"
-                                        className="h-6 sm:h-8 md:h-10 opacity-80 hover:opacity-100"
-                                    />
-                                    <img
-                                        src="/build/assets/images/path2.png"
-                                        alt="Localiza"
-                                        className="h-6 sm:h-8 md:h-10 opacity-80 hover:opacity-100"
-                                    />
-                                    <img
-                                        src="/build/assets/images/Vector.png"
-                                        alt="oBOTIC"
-                                        className="h-6 sm:h-8 md:h-10 opacity-80 hover:opacity-100"
-                                    />
-                                </div>
-
-                                {/* Second identical set (for seamless looping) */}
-                                <div className="flex items-center justify-around w-full sm:px-64 md:px-64">
-                                    <img
-                                        src="/build/assets/images/path4.png"
-                                        alt="HERING"
-                                        className="h-8 md:h-10 opacity-80 hover:opacity-100 sm:px-6 md:px-8"
-                                    />
-                                    <img
-                                        src="/build/assets/images/Group 1321315497.png"
-                                        alt="BRAHMA"
-                                        className="h-8 md:h-10 opacity-80 hover:opacity-100 sm:px-6 md:px-8"
-                                    />
-                                    <img
-                                        src="/build/assets/images/Group 1321315528.png"
-                                        alt="bradesco"
-                                        className="h-8 md:h-10 opacity-80 hover:opacity-100 sm:px-6 md:px-8"
-                                    />
-                                    <img
-                                        src="/build/assets/images/path2.png"
-                                        alt="Localiza"
-                                        className="h-8 md:h-10 opacity-80 hover:opacity-100 sm:px-6 md:px-8"
-                                    />
-                                    <img
-                                        src="/build/assets/images/Vector.png"
-                                        alt="oBOTIC"
-                                        className="h-8 md:h-10 opacity-80 hover:opacity-100 sm:px-6 md:px-8"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <section className="mb-24">
+                    <PartnerLogosMarquee />
                 </section>
+
                 {/* Call to Action Section */}
-                <section className="relative z-10 py-16 -mt-16 md:py-16 bg-gradient-to-br from-gray-50 to-white">
+                <section className="relative z-10 py-16 -mt-16 md:py-8 bg-gradient-to-br from-gray-50 to-white">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                         {/* Subtitle */}
                         <p className="text-purple-600 text-lg md:text-xl font-medium mb-4 tracking-wide">
@@ -151,7 +90,10 @@ const HowItWorks: React.FC<HowItWorksProps> = () => {
                                 {/* Logo and Title */}
                                 <div className="space-y-6 text-center">
                                     <div className="w-12 h-12 flex items-center justify-center md:hidden sm:hidden">
-                                        <img src="/build/assets/images/Vaiva_horizontal-2 2.png" alt="" />
+                                        <img
+                                            src="/build/assets/images/Vaiva_horizontal-2 2.png"
+                                            alt=""
+                                        />
                                     </div>
                                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
                                         Pourquoi Vaiva ?

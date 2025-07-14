@@ -33,7 +33,7 @@ const PartnerLogosMarquee: React.FC<PartnerLogosMarqueeProps> = () => {
     ]
 
     return (
-        <section className="relative z-10 py-8 bg-purple-700">
+        <section className="relative z-10 py-8 bg-[#8F6CF3]">
             <Marquee
                 gradient={false}
                 speed={40}
