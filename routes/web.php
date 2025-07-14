@@ -23,6 +23,13 @@ Route::get('/services', function () {
     ]);
 })->name('services');
 
+Route::get('/how-it-works', function () {
+    return Inertia::render('HowItWorks', [
+        'title' => 'Welcome to Vaiva',
+        'description' => 'Your platform for seamless connections and solutions.',
+    ]);
+});
+
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])
     ->name('register');
 
