@@ -320,8 +320,8 @@ const Homepage: React.FC<HomepageProps> = () => {
                             className="w-full h-full pb-50 sm:pb-0 sm:-mb-24 md:pb-0"
                         />
                     </div>
-                    <div className="text-center ">
-                        <h1 className="text-7xl font-bold text-gray-900 leading-tight">
+                    <div className="text-center space-y-8 mt-16 mb-16">
+                        <h1 className="text-7xl font-bold text-gray-900 leading-tight ">
                             <span>
                                 <span>Simples </span>
                                 <span>desse</span>
@@ -329,7 +329,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                             <br />
                             <span>jeito</span>
                         </h1>
-                        <p>Chez Vaiva, nous vous facilitons la recherche du professionnel idéal et vous aidons à réaliser vos travaux rapidement et en toute sécurité.</p>
+                        <p className="text-lg text-gray-500  mx-auto ">Chez Vaiva, nous vous facilitons la recherche du professionnel idéal et vous aidons à réaliser vos travaux <br /> rapidement et en toute sécurité.</p>
                     </div>
                     {/* <div className="max-w-7xl items-center">
                         <div className="text-center ">
