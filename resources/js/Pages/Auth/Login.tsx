@@ -34,19 +34,17 @@ const Login = () => {
     };
 
     const handleGoogleLogin = () => {
-        // Redirect to Google OAuth endpoint
         window.location.href = "/auth/google";
     };
 
     const handleFacebookLogin = () => {
-        // Redirect to Facebook OAuth endpoint
         window.location.href = "/auth/facebook";
     };
 
     return (
-        <main className="h-screen overflow-hidden flex flex-col-reverse lg:flex-row">
+        <main className="h-screen overflow-hidden flex flex-col md:flex-row">
             {/* Left Side - Login Form */}
-            <section className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-gray-50 min-h-[55vh] lg:min-h-full order-2 lg:order-1">
+            <section className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-gray-50 order-2 md:order-1">
                 <div className="w-full max-w-md">
                     <header className="mb-6 sm:mb-8 lg:mb-12">
                         <h1 className="text-3xl sm:text-4xl lg:text-6xl font-satoshi font-semibold text-gray-900 mb-2 leading-tight">
@@ -58,14 +56,12 @@ const Login = () => {
                         onSubmit={handleSubmit}
                         className="space-y-4 sm:space-y-5 lg:space-y-6"
                     >
-                        {/* Error Message */}
                         {errors.email && (
                             <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm font-gilroy">
                                 {errors.email}
                             </div>
                         )}
 
-                        {/* Email Field */}
                         <div>
                             <label
                                 htmlFor="email"
@@ -86,7 +82,6 @@ const Login = () => {
                             />
                         </div>
 
-                        {/* Password Field */}
                         <div>
                             <label
                                 htmlFor="password"
@@ -107,7 +102,6 @@ const Login = () => {
                             />
                         </div>
 
-                        {/* Remember Me & Forgot Password */}
                         <div className="flex items-center justify-between">
                             <div className="flex items-center">
                                 <input
@@ -135,7 +129,6 @@ const Login = () => {
                             </a>
                         </div>
 
-                        {/* Login Button */}
                         <button
                             type="submit"
                             disabled={processing}
@@ -172,7 +165,6 @@ const Login = () => {
                         </button>
                     </form>
 
-                    {/* Social Login Section */}
                     <div className="mt-6 sm:mt-8">
                         <div className="text-center mb-4">
                             <span className="text-sm font-gilroy text-gray-600">
@@ -181,7 +173,6 @@ const Login = () => {
                         </div>
 
                         <div className="space-y-3">
-                            {/* Google Login */}
                             <button
                                 type="button"
                                 onClick={handleGoogleLogin}
@@ -213,7 +204,6 @@ const Login = () => {
                                 Login with Google
                             </button>
 
-                            {/* Facebook Login */}
                             <button
                                 type="button"
                                 onClick={handleFacebookLogin}
@@ -233,7 +223,6 @@ const Login = () => {
                         </div>
                     </div>
 
-                    {/* Sign Up Link */}
                     <div className="mt-6 sm:mt-8 text-center">
                         <p className="text-sm font-gilroy text-gray-600">
                             Vous n'avez pas encore de compte ?{" "}
@@ -249,8 +238,7 @@ const Login = () => {
             </section>
 
             {/* Right Side - Purple Gradient with Content */}
-            <section className="flex-1 bg-violet-600 flex m-2 sm:m-4 lg:m-6 rounded-2xl relative overflow-hidden min-h-[45vh] lg:min-h-full order-1 lg:order-2">
-                {/* Decorative background elements */}
+            <section className="flex-1 bg-violet-600 flex m-2 sm:m-4 lg:m-6 rounded-2xl relative overflow-hidden order-1 md:order-2 min-h-[40vh] md:min-h-full">
                 <div className="absolute inset-0 opacity-10">
                     <div className="absolute top-10 left-10 w-20 h-20 bg-white rounded-full blur-sm"></div>
                     <div className="absolute bottom-20 right-16 w-16 h-16 bg-white rounded-full blur-sm"></div>
@@ -267,8 +255,8 @@ const Login = () => {
                                 loading="lazy"
                             />
                         </div>
-                        <div className="mt-10 sm:mt-12 lg:mt-16 xl:mt-20">
-                            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[65.87px] xl:text-[65.87px] font-satoshi font-medium leading-tight lg:leading-[73.1px] tracking-tight text-center">
+                        <div className="mt-8 sm:mt-10 lg:mt-16 xl:mt-20">
+                            <h2 className="text-2xl sm:text-3xl lg:text-[65.87px] xl:text-[65.87px] font-satoshi font-medium leading-tight lg:leading-[73.1px] tracking-tight text-center">
                                 Conecte. Combine.
                                 <br />
                                 Resolva.
@@ -276,7 +264,7 @@ const Login = () => {
                         </div>
                     </div>
 
-                    <div className="relative flex-1 min-h-[200px] lg:min-h-0">
+                    <div className="relative flex-1 min-h-[150px] md:min-h-0">
                         <div className="absolute inset-0">
                             <img
                                 src="/build/assets/images/Vaiva_elemento-1_fundo-branco.png"
@@ -285,7 +273,7 @@ const Login = () => {
                                 loading="lazy"
                             />
                         </div>
-                        <div className="absolute bottom-2 sm:bottom-4 lg:bottom-6 right-4 sm:right-8 lg:right-16 w-3/5 sm:w-2/5 lg:w-auto max-w-[250px] lg:max-w-none">
+                        <div className="absolute lg:bottom-6 lg:left-24">
                             <img
                                 src="/build/assets/images/Group 1618873490 1.png"
                                 alt="Two professional women collaborating"
@@ -297,7 +285,6 @@ const Login = () => {
                 </div>
             </section>
 
-            {/* Custom Font Styles */}
             <style jsx>{`
                 @import url("https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;600;700;800;900&display=swap");
                 @import url("https://fonts.googleapis.com/css2?family=Gilroy:wght@300;400;500;600;700&display=swap");
