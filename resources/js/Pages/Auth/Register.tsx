@@ -38,7 +38,7 @@ const Register = () => {
   return (
     <main className="h-screen flex flex-col sm:flex-col md:flex-row sm:overflow-y-auto md:overflow-hidden lg:overflow-hidden">
       {/* Purple Section - Top only on sm, Right on md/lg */}
-      <section className="flex-1 bg-violet-600 flex m-2 sm:m-4 lg:m-6 rounded-2xl relative overflow-hidden min-h-[45vh] sm:min-h-[40vh] md:min-h-full order-1 sm:order-1 md:order-2 overflow-y-auto">
+      <section className="flex-1 bg-violet-600 flex m-2 sm:m-4 lg:m-6 rounded-2xl relative overflow-hidden min-h-[45vh] sm:min-h-[90vh] md:min-h-full order-1 sm:order-1 md:order-2 overflow-y-auto sm:mb-12">
         <div className="text-white w-full flex flex-col justify-between">
           <div className="p-4 sm:p-6 lg:p-8">
             <div className="w-20 h-6 sm:w-24 sm:h-8 lg:w-[129px] lg:h-[40.35px] mb-4 sm:mb-6 lg:mb-8">
