@@ -20,7 +20,7 @@ const Footer: React.FC<FooterProps> = () => {
                 }}>
                 {/* Background image for this specific section */}
 
-                <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row w-full">
+                <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row w-full">
                     {/* Text content */}
                     <div className="lg:w-1/2 mb-8 md:mb-0 p-8 text-center lg:text-left lg:p-14 lg:pr-0">
                         <h2 className="text-4xl lg:text-6xl font-bold leading-10 lg:leading-16 mb-6 ">

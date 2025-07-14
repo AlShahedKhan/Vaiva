@@ -21,11 +21,11 @@ const Header: React.FC<HeaderProps> = ({
                     <div className="flex items-center justify-between h-16 md:h-20">
                         {/* Logo */}
                         <div className="flex items-center space-x-2">
-                            <img src={HeaderLogo} alt="Header Logo"/>
+                            <img src={HeaderLogo} alt="Header Logo" />
                         </div>
 
                         {/* Desktop Navigation */}
-                        <nav className="hidden md:flex items-center space-x-8">
+                        <nav className="hidden lg:flex items-center space-x-8">
                             <Link
                                 href="/"
                                 className="text-gray-900 hover:text-purple-600 font-medium transition-colors duration-200"
@@ -54,23 +54,23 @@ const Header: React.FC<HeaderProps> = ({
 
                         {/* Auth Buttons */}
                         <div className="flex items-center space-x-3">
-                            <a
+                            <Link
                                 href="/login"
-                                className="hidden sm:inline-flex px-4 py-2 text-gray-700 hover:text-purple-600 font-medium transition-colors duration-200"
+                                className="hidden lg:inline-flex bg-gray-900 hover:bg-gray-800 text-white px-6 py-2 rounded-full font-medium border-1 border-gray-900 transition-colors duration-200"
                             >
                                 Log In
-                            </a>
-                            <a
+                            </Link>
+                            <Link
                                 href="/register"
-                                className="hidden sm:inline-flex bg-gray-900 hover:bg-gray-800 text-white px-6 py-2 rounded-full font-medium transition-colors duration-200"
+                                className="hidden lg:inline-flex px-4 py-2 text-gray-700 hover:text-white hover:bg-gray-900 font-medium transition-colors duration-200 border-1 border-gray-900 rounded-full"
                             >
                                 Sign Up
-                            </a>
+                            </Link>
                         </div>
 
                         {/* Mobile Menu Button */}
                         <button
-                            className="md:hidden p-1 bg-blue-500 rounded-[5px] hover:bg-black transition-colors duration-200"
+                            className="lg:hidden p-1 bg-blue-500 rounded-[5px] hover:bg-black transition-colors duration-200"
                             onClick={toggleMobileMenu}
                             aria-label="Toggle mobile menu"
                         >
@@ -85,9 +85,8 @@ const Header: React.FC<HeaderProps> = ({
             </header>
             {/* Mobile Menu */}
             <div
-                className={`md:hidden fixed inset-0 bg-white z-[999] transform transition-transform duration-300 ease-in-out ${
-                    isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-                }`}
+                className={`lg:hidden fixed inset-0 bg-white z-[999] transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+                    }`}
             >
                 <div className="p-6 space-y-6">
                     <div className="flex justify-between items-center mb-6">
@@ -106,20 +105,20 @@ const Header: React.FC<HeaderProps> = ({
 
                     {/* Mobile Navigation */}
                     <nav className="space-y-4">
-                        <a
+                        <Link
                             href="/"
                             className="block text-lg font-medium text-gray-900 hover:text-purple-600 py-2"
                             onClick={toggleMobileMenu}
                         >
                             Home
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                             href="/services"
                             className="block text-lg font-medium text-gray-700 hover:text-purple-600 py-2"
                             onClick={toggleMobileMenu}
                         >
                             Explore Services
-                        </a>
+                        </Link>
                         <a
                             href="#how-it-works"
                             className="block text-lg font-medium text-gray-700 hover:text-purple-600 py-2"
@@ -136,26 +135,26 @@ const Header: React.FC<HeaderProps> = ({
                         </a>
                     </nav>
 
-                    <div className="space-y-3 pt-6 border-t border-gray-200 mt-6">
-                        <button
-                            className="w-full text-left py-3 px-4 text-gray-700 hover:text-purple-600 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
+                    <div className="flex flex-col space-y-3 w-full pt-6 border-t border-gray-200 mt-6">
+                        <Link href='/login'
+                            className="w-full d-block bg-gray-900 hover:bg-gray-800 text-white py-3 px-4 rounded-lg font-medium transition-colors duration-200 text-center"
                             onClick={toggleMobileMenu}
                         >
                             Log In
-                        </button>
-                        <button
-                            className="w-full bg-gray-900 hover:bg-gray-800 text-white py-3 px-4 rounded-lg font-medium transition-colors duration-200"
+                        </Link>
+                        <Link href='/register'
+                            className="w-full d-block bg-white border-1 border-gray-900 hover:bg-gray-800 text-black hover:text-white py-3 px-4 rounded-lg font-medium transition-colors duration-200 text-center"
                             onClick={toggleMobileMenu}
                         >
                             Sign Up
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
             {/* Overlay for mobile menu */}
             {isMobileMenuOpen && (
                 <div
-                    className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-30"
+                    className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-30"
                     onClick={toggleMobileMenu}
                 />
             )}
