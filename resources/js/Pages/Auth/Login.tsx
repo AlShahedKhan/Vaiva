@@ -285,7 +285,6 @@ const Login = () => {
                 </div>
             </section>
 
-<<<<<<< HEAD
             <style jsx>{`
                 @import url("https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;600;700;800;900&display=swap");
                 @import url("https://fonts.googleapis.com/css2?family=Gilroy:wght@300;400;500;600;700&display=swap");
@@ -308,41 +307,6 @@ const Login = () => {
                         sans-serif;
                 }
             `}</style>
-=======
-            {/* Right Side - Purple Gradient with Content */}
-            <section className="flex-1 bg-violet-600 ">
-                <div className="">
-                    <div className="">
-                        <div className="">
-                            <img
-                                src="/build/assets/images/Group 1.png"
-                                alt="Vaiva Logo"
-                                className=""
-                                loading="lazy"
-                            />
-                        </div>
-                        <div className="">
-                            <h2 className="">
-                                Conecte. Combine.
-                                <br />
-                                Resolva.
-                            </h2>
-                        </div>
-                    </div>
-
-                    <div className="flex-1">
-                        <div className="">
-                            <img
-                                src="/build/assets/images/Group 1618873490 1.png"
-                                alt="Two professional women collaborating"
-                                className="w-full h-full"
-                                loading="lazy"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </section>
->>>>>>> 6393566d40ed720eede94b64c8818a74255e83b1
         </main>
     );
 };
