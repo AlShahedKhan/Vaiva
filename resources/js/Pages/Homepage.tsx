@@ -477,7 +477,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                     {/* Purple gradient background element */}
                     {/* <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-purple-400 to-purple-600 rounded-bl-full opacity-20"></div> */}
 
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 md:-mt-16 lg:px-8 md:py-0">
+                    <div className="max-w-7xl mx-auto px-4 lg:mt-6 sm:px-6 md:-mt-16 lg:px-8 md:py-0">
                         {/* Section Title */}
                         <div className="text-center mb-12">
                             <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
@@ -577,7 +577,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                     {/* Purple accent element */}
                     {/* <div className="absolute top-0 left-0 w-64 h-32 bg-gradient-to-br from-purple-400 to-purple-600 opacity-30"></div> */}
 
-                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 md:-mt-12 sm:-mt-6">
+                    <div className="max-w-4xl mx-auto lg:mb-18 px-4 sm:px-6 lg:px-8 relative z-10 md:-mt-12 sm:-mt-6">
                         {/* Section Title */}
                         <div className="text-center mb-12">
                             <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
