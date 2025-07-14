@@ -26,7 +26,7 @@ const HowItWorks: React.FC<HowItWorksProps> = () => {
                         <img
                             src="/build/assets/images/Vaiva_elemento-1_fundo-branco.png"
                             alt=""
-                            className="w-full h-full pb-50 sm:pb-0 sm:-mb-24 md:pb-0"
+                            className="w-full h-[65%] pb-50 sm:pb-0 sm:-mb-24 md:pb-0"
                         />
                     </div>
                     <div className="text-center space-y-8 mt-16 mb-16">
@@ -114,7 +114,7 @@ const HowItWorks: React.FC<HowItWorksProps> = () => {
                     </div>
                 </section>
                 {/* Call to Action Section */}
-                <section className="relative z-10 py-16 md:py-24 bg-gradient-to-br from-gray-50 to-white">
+                <section className="relative z-10 py-16 -mt-16 md:py-24 bg-gradient-to-br from-gray-50 to-white">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                         {/* Subtitle */}
                         <p className="text-purple-600 text-lg md:text-xl font-medium mb-4 tracking-wide">
@@ -143,15 +143,15 @@ const HowItWorks: React.FC<HowItWorksProps> = () => {
                     </div>
                 </section>
                 {/* Why Vaiva Section */}
-                <section className="relative z-10 py-16 md:py-24 bg-gray-50">
+                <section className="relative z-10 py-16 -mt-24 md:py-24 bg-gray-50 mb-8">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                             {/* Left Content */}
                             <div className="space-y-8">
                                 {/* Logo and Title */}
                                 <div className="space-y-6">
-                                    <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
-                                        <CheckCircle className="w-7 h-7 text-white" />
+                                    <div className="w-12 h-12 flex items-center justify-center">
+                                        <img src="/build/assets/images/Vaiva_horizontal-2 2.png" alt="" />
                                     </div>
                                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
                                         Pourquoi Vaiva ?
@@ -238,12 +238,10 @@ const HowItWorks: React.FC<HowItWorksProps> = () => {
                                     <img
                                         src="/build/assets/images/Group 1618873541.png"
                                         alt="Professional freelancer with growth metrics and ranking statistics"
-                                        className="w-full h-auto rounded-2xl shadow-2xl"
+                                        className="w-full h-auto"
                                         loading="lazy"
                                     />
                                 </div>
-                                {/* Background decoration */}
-                                <div className="absolute -top-4 -right-4 w-full h-full bg-purple-100 rounded-2xl -z-10"></div>
                             </div>
                         </div>
                     </div>
