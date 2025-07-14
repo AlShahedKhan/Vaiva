@@ -1,14 +1,17 @@
-import React from 'react'
-import { Search, CheckCircle, Menu, X } from "lucide-react"
-import { Head, Link, usePage } from '@inertiajs/react';
+import React from "react";
+import { Search, CheckCircle, Menu, X } from "lucide-react";
+import { Head, Link, usePage } from "@inertiajs/react";
 // import route from 'ziggy-js';
 
 type HeaderProps = {
     isMobileMenuOpen: boolean;
     toggleMobileMenu: () => void;
-}
+};
 
-const Header: React.FC<HeaderProps> = ({ isMobileMenuOpen, toggleMobileMenu }) => {
+const Header: React.FC<HeaderProps> = ({
+    isMobileMenuOpen,
+    toggleMobileMenu,
+}) => {
     return (
         <>
             {/* Main header itself needs a high z-index to stay above page content */}
@@ -20,7 +23,9 @@ const Header: React.FC<HeaderProps> = ({ isMobileMenuOpen, toggleMobileMenu }) =
                             <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
                                 <CheckCircle className="w-5 h-5 text-white" />
                             </div>
-                            <span className="text-xl md:text-2xl font-bold text-gray-900">Vaiva</span>
+                            <span className="text-xl md:text-2xl font-bold text-gray-900">
+                                Vaiva
+                            </span>
                         </div>
 
                         {/* Desktop Navigation */}
@@ -53,12 +58,18 @@ const Header: React.FC<HeaderProps> = ({ isMobileMenuOpen, toggleMobileMenu }) =
 
                         {/* Auth Buttons */}
                         <div className="flex items-center space-x-3">
-                            <button className="hidden sm:inline-flex px-4 py-2 text-gray-700 hover:text-purple-600 font-medium transition-colors duration-200">
+                            <a
+                                href="/login"
+                                className="hidden sm:inline-flex px-4 py-2 text-gray-700 hover:text-purple-600 font-medium transition-colors duration-200"
+                            >
                                 Log In
-                            </button>
-                            <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-2 rounded-full font-medium transition-colors duration-200">
+                            </a>
+                            <a
+                                href="/register"
+                                className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-2 rounded-full font-medium transition-colors duration-200"
+                            >
                                 Sign Up
-                            </button>
+                            </a>
                         </div>
 
                         {/* Mobile Menu Button */}
@@ -77,9 +88,11 @@ const Header: React.FC<HeaderProps> = ({ isMobileMenuOpen, toggleMobileMenu }) =
                 </div>
             </header>
             {/* Mobile Menu */}
-            <div className={`md:hidden fixed inset-0 bg-white z-[999] transform transition-transform duration-300 ease-in-out ${
+            <div
+                className={`md:hidden fixed inset-0 bg-white z-[999] transform transition-transform duration-300 ease-in-out ${
                     isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-                }`}>
+                }`}
+            >
                 <div className="p-6 space-y-6">
                     <div className="flex justify-between items-center mb-6">
                         {/* Logo */}
@@ -87,7 +100,9 @@ const Header: React.FC<HeaderProps> = ({ isMobileMenuOpen, toggleMobileMenu }) =
                             <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
                                 <CheckCircle className="w-5 h-5 text-white" />
                             </div>
-                            <span className="text-xl font-bold text-gray-900">Vaiva</span>
+                            <span className="text-xl font-bold text-gray-900">
+                                Vaiva
+                            </span>
                         </div>
                         <button
                             className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
@@ -154,7 +169,7 @@ const Header: React.FC<HeaderProps> = ({ isMobileMenuOpen, toggleMobileMenu }) =
                 />
             )}
         </>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;
