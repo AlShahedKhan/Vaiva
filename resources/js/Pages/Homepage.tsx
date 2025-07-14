@@ -567,7 +567,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                         </div>
                     </div>
                 </section>
-                <section className="relative sm:-mt-8 sm:-mb-28 ">
+                <section className="relative sm:-mt-8 sm:-mb-28  overfollow-hidden">
                     <div className="mt-24 text-center">
                         <h1 className="text-5xl font-bold sm:text-4xl">
                             A Vaiva nasceu pra facilitar a vida <br /> de quem

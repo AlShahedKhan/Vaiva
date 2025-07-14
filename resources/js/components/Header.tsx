@@ -1,6 +1,7 @@
 import React from 'react'
 import { Search, CheckCircle, Menu, X } from "lucide-react"
 import { Head, Link, usePage } from '@inertiajs/react';
+const HeaderLogo = '/build/assets/footer/logo-footer.png';
 // import route from 'ziggy-js';
 
 type HeaderProps = {
@@ -17,10 +18,7 @@ const Header: React.FC<HeaderProps> = ({ isMobileMenuOpen, toggleMobileMenu }) =
                     <div className="flex items-center justify-between h-16 md:h-20">
                         {/* Logo */}
                         <div className="flex items-center space-x-2">
-                            <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
-                                <CheckCircle className="w-5 h-5 text-white" />
-                            </div>
-                            <span className="text-xl md:text-2xl font-bold text-gray-900">Vaiva</span>
+                            <img src={HeaderLogo} alt="Header Logo" />
                         </div>
 
                         {/* Desktop Navigation */}
@@ -56,21 +54,21 @@ const Header: React.FC<HeaderProps> = ({ isMobileMenuOpen, toggleMobileMenu }) =
                             <button className="hidden sm:inline-flex px-4 py-2 text-gray-700 hover:text-purple-600 font-medium transition-colors duration-200">
                                 Log In
                             </button>
-                            <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-2 rounded-full font-medium transition-colors duration-200">
+                            <button className="hidden sm:inline-flex bg-gray-900 hover:bg-gray-800 text-white px-6 py-2 rounded-full font-medium transition-colors duration-200">
                                 Sign Up
                             </button>
                         </div>
 
                         {/* Mobile Menu Button */}
                         <button
-                            className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+                            className="md:hidden p-1 bg-blue-500 rounded-[5px] hover:bg-black transition-colors duration-200"
                             onClick={toggleMobileMenu}
                             aria-label="Toggle mobile menu"
                         >
                             {isMobileMenuOpen ? (
                                 <X className="w-6 h-6 text-gray-600" />
                             ) : (
-                                <Menu className="w-6 h-6 text-gray-600" />
+                                <Menu className="w-6 h-6 text-white" />
                             )}
                         </button>
                     </div>
@@ -84,10 +82,7 @@ const Header: React.FC<HeaderProps> = ({ isMobileMenuOpen, toggleMobileMenu }) =
                     <div className="flex justify-between items-center mb-6">
                         {/* Logo */}
                         <div className="flex items-center space-x-2">
-                            <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
-                                <CheckCircle className="w-5 h-5 text-white" />
-                            </div>
-                            <span className="text-xl font-bold text-gray-900">Vaiva</span>
+                            <img src={HeaderLogo} alt="Header Logo" />
                         </div>
                         <button
                             className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
