@@ -1,13 +1,97 @@
 {
+  "_PartnerLogosMarquee-C8FECk3m.js": {
+    "file": "assets/PartnerLogosMarquee-C8FECk3m.js",
+    "name": "PartnerLogosMarquee",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_search-DmpsyRmk.js": {
+    "file": "assets/search-DmpsyRmk.js",
+    "name": "search",
+    "imports": [
+      "_PartnerLogosMarquee-C8FECk3m.js"
+    ]
+  },
   "resources/css/app.css": {
-    "file": "assets/app-oCbQHhGh.css",
+    "file": "assets/app-BaMl2DId.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
-  "resources/js/app.js": {
-    "file": "assets/app-DNxiirP_.js",
+  "resources/js/Pages/Auth/Login.tsx": {
+    "file": "assets/Login-BU_6Qrq4.js",
+    "name": "Login",
+    "src": "resources/js/Pages/Auth/Login.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "resources/js/Pages/Auth/Register.tsx": {
+    "file": "assets/Register-D6yOnezc.js",
+    "name": "Register",
+    "src": "resources/js/Pages/Auth/Register.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "resources/js/Pages/Dashboard.tsx": {
+    "file": "assets/Dashboard-BGHfFxJp.js",
+    "name": "Dashboard",
+    "src": "resources/js/Pages/Dashboard.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "resources/js/Pages/Homepage.tsx": {
+    "file": "assets/Homepage-DgoeCZYb.js",
+    "name": "Homepage",
+    "src": "resources/js/Pages/Homepage.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_PartnerLogosMarquee-C8FECk3m.js",
+      "_search-DmpsyRmk.js"
+    ]
+  },
+  "resources/js/Pages/HowItWorks.tsx": {
+    "file": "assets/HowItWorks-BwnBY25H.js",
+    "name": "HowItWorks",
+    "src": "resources/js/Pages/HowItWorks.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_PartnerLogosMarquee-C8FECk3m.js"
+    ]
+  },
+  "resources/js/Pages/Serivces.tsx": {
+    "file": "assets/Serivces-oq0RgQa_.js",
+    "name": "Serivces",
+    "src": "resources/js/Pages/Serivces.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_PartnerLogosMarquee-C8FECk3m.js",
+      "_search-DmpsyRmk.js"
+    ]
+  },
+  "resources/js/app.tsx": {
+    "file": "assets/app-Dh_4p4ib.js",
     "name": "app",
-    "src": "resources/js/app.js",
-    "isEntry": true
+    "src": "resources/js/app.tsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/Pages/Auth/Login.tsx",
+      "resources/js/Pages/Auth/Register.tsx",
+      "resources/js/Pages/Dashboard.tsx",
+      "resources/js/Pages/Homepage.tsx",
+      "resources/js/Pages/HowItWorks.tsx",
+      "resources/js/Pages/Serivces.tsx"
+    ],
+    "css": [
+      "assets/app-BaMl2DId.css"
+    ]
   }
 }
