@@ -42,9 +42,57 @@ const Login = () => {
     };
 
     return (
-        <main className="h-screen overflow-hidden flex flex-col md:flex-row">
-            {/* Left Side - Login Form */}
-            <section className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-gray-50 order-2 md:order-1">
+        <main className="h-screen flex flex-col md:flex-row overflow-y-auto sm:overflow-y-auto md:overflow-hidden lg:overflow-hidden">
+            {/* Purple Gradient Section - Top on sm, Right on md/lg */}
+            <section className="flex-1 bg-violet-600 flex m-2 sm:m-4 lg:m-6 rounded-2xl relative overflow-hidden order-1 md:order-2 lg:min-h-[40vh] sm:min-h-[85vh] md:min-h-full ">
+                <div className="absolute inset-0 opacity-10">
+                    <div className="absolute top-10 left-10 w-20 h-20 bg-white rounded-full blur-sm"></div>
+                    <div className="absolute bottom-20 right-16 w-16 h-16 bg-white rounded-full blur-sm"></div>
+                    <div className="absolute top-1/2 left-6 w-12 h-12 bg-white rounded-full blur-sm"></div>
+                </div>
+
+                <div className="z-10 text-white w-full flex flex-col justify-between">
+                    <div className="p-4 sm:p-6 lg:p-8">
+                        <div className="w-20 h-6 sm:w-24 sm:h-8 lg:w-[129px] lg:h-[40.35px] mb-4 sm:mb-6 lg:mb-8">
+                            <img
+                                src="/build/assets/images/Group 1.png"
+                                alt="Vaiva Logo"
+                                className="w-full h-full object-contain"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div className="mt-8 sm:mt-10 lg:mt-16 xl:mt-20">
+                            <h2 className="text-2xl sm:text-3xl lg:text-[65.87px] xl:text-[65.87px] font-satoshi font-medium leading-tight lg:leading-[73.1px] tracking-tight text-center">
+                                Conecte. Combine.
+                                <br />
+                                Resolva.
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div className="relative flex-1 min-h-[150px] md:min-h-0">
+                        <div className="absolute inset-0">
+                            <img
+                                src="/build/assets/images/Vaiva_elemento-1_fundo-branco.png"
+                                alt="Background decoration"
+                                className="w-full h-full object-cover opacity-20"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div className="absolute bottom-4 sm:bottom-0 lg:bottom-6 lg:left-24 ">
+                            <img
+                                src="/build/assets/images/Group 1618873490 1.png"
+                                alt="Two professional women collaborating"
+                                className="w-full h-auto object-contain drop-shadow-2xl"
+                                loading="lazy"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Login Form Section - Bottom on sm, Left on md/lg */}
+            <section className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-gray-50 order-2 md:order-1 ">
                 <div className="w-full max-w-md">
                     <header className="mb-6 sm:mb-8 lg:mb-12">
                         <h1 className="text-3xl sm:text-4xl lg:text-6xl font-satoshi font-semibold text-gray-900 mb-2 leading-tight">
@@ -233,54 +281,6 @@ const Login = () => {
                                 S'inscrire
                             </a>
                         </p>
-                    </div>
-                </div>
-            </section>
-
-            {/* Right Side - Purple Gradient with Content */}
-            <section className="flex-1 bg-violet-600 flex m-2 sm:m-4 lg:m-6 rounded-2xl relative overflow-hidden order-1 md:order-2 min-h-[40vh] md:min-h-full">
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute top-10 left-10 w-20 h-20 bg-white rounded-full blur-sm"></div>
-                    <div className="absolute bottom-20 right-16 w-16 h-16 bg-white rounded-full blur-sm"></div>
-                    <div className="absolute top-1/2 left-6 w-12 h-12 bg-white rounded-full blur-sm"></div>
-                </div>
-
-                <div className="z-10 text-white w-full flex flex-col justify-between">
-                    <div className="p-4 sm:p-6 lg:p-8">
-                        <div className="w-20 h-6 sm:w-24 sm:h-8 lg:w-[129px] lg:h-[40.35px] mb-4 sm:mb-6 lg:mb-8">
-                            <img
-                                src="/build/assets/images/Group 1.png"
-                                alt="Vaiva Logo"
-                                className="w-full h-full object-contain"
-                                loading="lazy"
-                            />
-                        </div>
-                        <div className="mt-8 sm:mt-10 lg:mt-16 xl:mt-20">
-                            <h2 className="text-2xl sm:text-3xl lg:text-[65.87px] xl:text-[65.87px] font-satoshi font-medium leading-tight lg:leading-[73.1px] tracking-tight text-center">
-                                Conecte. Combine.
-                                <br />
-                                Resolva.
-                            </h2>
-                        </div>
-                    </div>
-
-                    <div className="relative flex-1 min-h-[150px] md:min-h-0">
-                        <div className="absolute inset-0">
-                            <img
-                                src="/build/assets/images/Vaiva_elemento-1_fundo-branco.png"
-                                alt="Background decoration"
-                                className="w-full h-full object-cover opacity-20"
-                                loading="lazy"
-                            />
-                        </div>
-                        <div className="absolute lg:bottom-6 lg:left-24 md:bottom-4">
-                            <img
-                                src="/build/assets/images/Group 1618873490 1.png"
-                                alt="Two professional women collaborating"
-                                className="w-full h-auto object-contain drop-shadow-2xl"
-                                loading="lazy"
-                            />
-                        </div>
                     </div>
                 </div>
             </section>
