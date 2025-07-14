@@ -587,12 +587,20 @@ const Homepage: React.FC<HomepageProps> = () => {
                     />
 
                     {/* Purple block shown *under* the image */}
-                    <div style={{ transform: "rotate(-2deg)" }} className="bg-[#7E54F7] h-40 relative z-1 lg:-top-34 sm:-mt-66 md:-mt-78"></div>
-                    <img  style={{ transform: "rotate(-15deg)" }} className="absolute z-0 right-0 -bottom-71 lg:block md:hidden sm:hidden  max-w-full h-auto" src="/build/assets/images/Vaiva_elemento-3_fundo-branco.png" alt="" />
+                    <div
+                        style={{ transform: "rotate(-2deg)" }}
+                        className="bg-[#7E54F7] h-40 relative z-1 lg:-top-34 sm:-mt-66 md:-mt-78"
+                    ></div>
+                    <img
+                        style={{ transform: "rotate(-15deg)" }}
+                        className="absolute z-0 right-0 -bottom-71 lg:block md:hidden sm:hidden  max-w-full h-auto"
+                        src="/build/assets/images/Vaiva_elemento-3_fundo-branco.png"
+                        alt="bg image"
+                    />
                 </section>
 
                 {/* Testimonials Section */}
-                <section className="relative py-16  overflow-hidden mt-120 md:mt-56 sm:mt-32">
+                <section className="relative py-16 bg-gray-50  overflow-hidden mt-120 md:mt-56 sm:mt-32">
                     {/* Purple gradient background element */}
                     {/* <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-purple-400 to-purple-600 rounded-bl-full opacity-20"></div> */}
 
@@ -683,6 +691,12 @@ const Homepage: React.FC<HomepageProps> = () => {
                                 })}
                             </div>
                         </div>
+                        <img
+                            style={{ transform: "rotate(-180deg)" }}
+                            className="absolute z-0 left-0 -bottom-71 lg:block md:hidden sm:hidden  max-w-full h-auto"
+                            src="/build/assets/images/Vaiva_elemento-3_fundo-branco.png"
+                            alt="bg image"
+                        />
                     </div>
                 </section>
                 {/* FAQ Section */}
