@@ -17,7 +17,7 @@ const HowItWorks: React.FC<HowItWorksProps> = () => {
     return (
         <>
             <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-100 relative">
-                <Header />
+                <Header isMobileMenuOpen={isMobileMenuOpen} toggleMobileMenu={toggleMobileMenu} />
 
                 {/* Hero Section */}
                 <main className="relative z-10 px-4 sm:px-6 lg:px-8 pt-8 md:pt-0 ms:pt-0 md:pb-0 sm:pb-0 pb-16">

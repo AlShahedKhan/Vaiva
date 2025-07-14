@@ -179,8 +179,8 @@ const Homepage: React.FC<HomepageProps> = () => {
             </Head>
 
             <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-100 relative">
-              <Header/>
-                
+              <Header isMobileMenuOpen={isMobileMenuOpen} toggleMobileMenu={toggleMobileMenu} />
+
 
                 {/* Hero Section */}
                 <main className="relative z-10 px-4 sm:px-6 lg:px-8 pt-8 md:pt-16 pb-16">
