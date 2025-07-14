@@ -589,7 +589,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                     {/* Purple block shown *under* the image */}
                     <div
                         style={{ transform: "rotate(-2deg)" }}
-                        className="bg-[#7E54F7] h-40 relative z-1 lg:-top-34 sm:-mt-66 md:-mt-78"
+                        className="bg-[#7E54F7] lg:h-40 md:h-96 sm:h-76 relative z-1 lg:-top-34 sm:-mt-66 md:-mt-78"
                     ></div>
                     <img
                         style={{ transform: "rotate(-15deg)" }}
