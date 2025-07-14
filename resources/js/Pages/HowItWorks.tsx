@@ -135,7 +135,117 @@ const HowItWorks: React.FC<HowItWorksProps> = () => {
                                 Pour les indépendants
                             </button>
                         </div>
-                        <img className="mt-24" src="/build/assets/images/Group 1618873540.png" alt="" />
+                        <img
+                            className="mt-24"
+                            src="/build/assets/images/Group 1618873540.png"
+                            alt=""
+                        />
+                    </div>
+                </section>
+                {/* Why Vaiva Section */}
+                <section className="relative z-10 py-16 md:py-24 bg-gray-50">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                            {/* Left Content */}
+                            <div className="space-y-8">
+                                {/* Logo and Title */}
+                                <div className="space-y-6">
+                                    <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
+                                        <CheckCircle className="w-7 h-7 text-white" />
+                                    </div>
+                                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+                                        Pourquoi Vaiva ?
+                                    </h2>
+                                </div>
+
+                                {/* Features List */}
+                                <div className="space-y-6">
+                                    <div className="flex items-start space-x-4">
+                                        <div className="flex-shrink-0 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center mt-1">
+                                            <CheckCircle className="w-4 h-4 text-white" />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                                                100% in Portuguese
+                                            </h3>
+                                            <p className="text-gray-600">
+                                                Platform entirely in Portuguese
+                                                for better communication
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-start space-x-4">
+                                        <div className="flex-shrink-0 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center mt-1">
+                                            <CheckCircle className="w-4 h-4 text-white" />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                                                Des freelances vérifiés et des
+                                                transactions sécurisées
+                                            </h3>
+                                            <p className="text-gray-600">
+                                                All freelancers are verified and
+                                                transactions are secure
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-start space-x-4">
+                                        <div className="flex-shrink-0 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center mt-1">
+                                            <CheckCircle className="w-4 h-4 text-white" />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                                                Paiements locaux en real
+                                                brésilien
+                                            </h3>
+                                            <p className="text-gray-600">
+                                                Local payments in Brazilian real
+                                                for convenience
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-start space-x-4">
+                                        <div className="flex-shrink-0 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center mt-1">
+                                            <CheckCircle className="w-4 h-4 text-white" />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                                                Pas de bureaucratie, pas
+                                                d'étapes cachées
+                                            </h3>
+                                            <p className="text-gray-600">
+                                                No bureaucracy, no hidden steps
+                                                - just simple solutions
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* CTA Button */}
+                                <div className="pt-4">
+                                    <button className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                                        Contratar um Designer
+                                    </button>
+                                </div>
+                            </div>
+
+                            {/* Right Image */}
+                            <div className="relative">
+                                <div className="relative z-10">
+                                    <img
+                                        src="/build/assets/images/Group 1618873541.png"
+                                        alt="Professional freelancer with growth metrics and ranking statistics"
+                                        className="w-full h-auto rounded-2xl shadow-2xl"
+                                        loading="lazy"
+                                    />
+                                </div>
+                                {/* Background decoration */}
+                                <div className="absolute -top-4 -right-4 w-full h-full bg-purple-100 rounded-2xl -z-10"></div>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
