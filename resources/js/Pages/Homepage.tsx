@@ -587,7 +587,8 @@ const Homepage: React.FC<HomepageProps> = () => {
                     />
 
                     {/* Purple block shown *under* the image */}
-                    <div className="bg-[#7E54F7] h-40 relative z-0 lg:-top-34 sm:-mt-66 md:-mt-78"></div>
+                    <div className="bg-[#7E54F7] h-40 relative z-1 lg:-top-34 sm:-mt-66 md:-mt-78"></div>
+                    <img  style={{ transform: "rotate(-15deg)" }} className="absolute z-0 right-0 -bottom-78 max-w-full h-auto" src="/build/assets/images/Vaiva_elemento-3_fundo-branco.png" alt="" />
                 </section>
 
                 {/* Testimonials Section */}
