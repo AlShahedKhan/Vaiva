@@ -20,7 +20,7 @@ const HowItWorks: React.FC<HowItWorksProps> = () => {
                 <Header />
 
                 {/* Hero Section */}
-                <main className="relative z-10 px-4 sm:px-6 lg:px-8 pt-8 md:pt-16 pb-16">
+                <main className="relative z-10 px-4 sm:px-6 lg:px-8 pt-8 md:pt-0 md:pb-0 pb-16">
                     {/* Background Image for all content */}
                     <div className="absolute -z-10 w-full h-210 sm:h-222 md:h-236  bg-no-repeat inset-0 pointer-events-none">
                         <img
