@@ -273,7 +273,7 @@ const Login = () => {
                                 loading="lazy"
                             />
                         </div>
-                        <div className="absolute lg:bottom-6 lg:left-24">
+                        <div className="absolute lg:bottom-6 lg:left-24 md:bottom-4">
                             <img
                                 src="/build/assets/images/Group 1618873490 1.png"
                                 alt="Two professional women collaborating"
