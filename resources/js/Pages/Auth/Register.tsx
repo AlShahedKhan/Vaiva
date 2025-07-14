@@ -36,9 +36,52 @@ const Register = () => {
   }
 
   return (
-    <main className="h-screen overflow-hidden flex ">
-      {/* Left Side - Registration Form - Your original position */}
-      <section className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-gray-50 min-h-[55vh] lg:min-h-full order-2 lg:order-1">
+    <main className="h-screen flex flex-col sm:flex-col md:flex-row sm:overflow-y-auto md:overflow-hidden lg:overflow-hidden">
+      {/* Purple Section - Top only on sm, Right on md/lg */}
+      <section className="flex-1 bg-violet-600 flex m-2 sm:m-4 lg:m-6 rounded-2xl relative overflow-hidden min-h-[45vh] sm:min-h-[40vh] md:min-h-full order-1 sm:order-1 md:order-2 overflow-y-auto">
+        <div className="text-white w-full flex flex-col justify-between">
+          <div className="p-4 sm:p-6 lg:p-8">
+            <div className="w-20 h-6 sm:w-24 sm:h-8 lg:w-[129px] lg:h-[40.35px] mb-4 sm:mb-6 lg:mb-8">
+              <img
+                src="/build/assets/images/Group 1.png"
+                alt="Vaiva Logo"
+                className="w-full h-full object-contain"
+                loading="lazy"
+              />
+            </div>
+            <div className="mt-10 sm:mt-12 lg:mt-16 xl:mt-20">
+              <h2 className="text-[65.87px] sm:text-[65.87px] lg:text-[65.87px] xl:text-[65.87px] font-satoshi font-medium leading-[73.1px] tracking-[0]">
+                Conecte.
+                <br />
+                Combine.
+                <br />
+                Resolva.
+              </h2>
+            </div>
+          </div>
+          <div className="relative flex-1">
+            <div className="absolute inset-0">
+              <img
+                src="/build/assets/images/Vaiva_elemento-1_fundo-branco.png"
+                alt="Background decoration"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div className="absolute bottom-6 right-26 w-1/2 sm:w-2/3 lg:w-auto">
+              <img
+                src="/build/assets/images/image 29 (1) 2.png"
+                alt="Professional person with laptop"
+                className="w-full h-auto object-contain"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Form Section - Bottom on sm, Left on md/lg */}
+      <section className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-gray-50 min-h-[55vh] sm:min-h-[60vh] md:min-h-full order-2 sm:order-2 md:order-1">
         <div className="w-full max-w-md">
           <header className="mb-3 sm:mb-4 lg:mb-8">
             <h1 className="text-2xl sm:text-3xl lg:text-6xl font-satoshi font-semibold text-gray-900 mb-1 sm:mb-2 leading-tight">
@@ -185,50 +228,6 @@ const Register = () => {
               {processing ? 'Creating Account...' : 'Sign Up'}
             </button>
           </form>
-        </div>
-      </section>
-
-      {/* Right Side - Purple Gradient - Your original position */}
-      <section className="flex-1 bg-violet-600 flex m-2 sm:m-4 lg:m-6 rounded-2xl relative overflow-hidden min-h-[45vh] lg:min-h-full order-1 lg:order-2 ">
-        {/* Revert to your exact original purple section styling */}
-        <div className=" text-white w-full flex flex-col justify-between">
-          <div className="p-4 sm:p-6 lg:p-8">
-            <div className="w-20 h-6 sm:w-24 sm:h-8 lg:w-[129px] lg:h-[40.35px] mb-4 sm:mb-6 lg:mb-8">
-              <img
-                src="/build/assets/images/Group 1.png"
-                alt="Vaiva Logo"
-                className="w-full h-full object-contain"
-                loading="lazy"
-              />
-            </div>
-            <div className="mt-10 sm:mt-12 lg:mt-16 xl:mt-20">
-              <h2 className="text-[65.87px] sm:text-[65.87px] lg:text-[65.87px] xl:text-[65.87px] font-satoshi font-medium leading-[73.1px] tracking-[0]">
-                Conecte.
-                <br />
-                Combine.
-                <br />
-                Resolva.
-              </h2>
-            </div>
-          </div>
-          <div className="relative flex-1">
-            <div className="absolute inset-0">
-              <img
-                src="/build/assets/images/Vaiva_elemento-1_fundo-branco.png"
-                alt="Background decoration"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-            <div className="absolute bottom-6 right-26 w-1/2 sm:w-2/3 lg:w-auto">
-              <img
-                src="/build/assets/images/image 29 (1) 2.png"
-                alt="Professional person with laptop"
-                className="w-full h-auto object-contain"
-                loading="lazy"
-              />
-            </div>
-          </div>
         </div>
       </section>
     </main>
