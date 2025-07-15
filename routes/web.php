@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::get('/', function () {
     return Inertia::render('Homepage', [
         'title' => 'Welcome to Vaiva',
@@ -16,16 +13,6 @@ Route::get('/', function () {
     ]);
 });
 
-// Route::get('/services', function () {
-//     // return Inertia::render('Serivces', [
-//     //     'title' => 'Services',
-//     //     'description' => 'Your platform for seamless connections and solutions.',
-//     // ]);
-//     return Inertia::render('Services', [
-//     'title' => 'Services',
-//     'description' => 'Your platform for seamless connections and solutions.',
-// ]);
-// })->name('services');
 
 Route::get('/explore-services', function () {
     return Inertia::render('Services', [

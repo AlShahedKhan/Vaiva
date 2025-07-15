@@ -1,0 +1,171 @@
+import React, { useState } from 'react';
+import { Link, usePage } from '@inertiajs/react';
+import { Calendar, ShoppingCart, BarChart3, User, FileText, HelpCircle, Menu, X } from 'lucide-react';
+
+interface MenuItem {
+  name: string;
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+}
+
+interface SidebarProps {
+  user?: {
+    name: string;
+    email: string;
+    avatar?: string;
+  };
+  notifications?: number;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ user, notifications = 0 }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const { url } = usePage();
+
+  const menuItems: MenuItem[] = [
+    { name: 'dashboard', href: '/dashboard', icon: Calendar, label: 'Dashboard' },
+    { name: 'orders', href: '/orders', icon: ShoppingCart, label: 'Orders' },
+    { name: 'analytics', href: '/analytics', icon: BarChart3, label: 'Analytics' },
+    { name: 'users', href: '/users', icon: User, label: 'Users' },
+    { name: 'documents', href: '/documents', icon: FileText, label: 'Documents' },
+    { name: 'help', href: '/help', icon: HelpCircle, label: 'Help' },
+  ];
+
+  const isActive = (href: string) => url.startsWith(href);
+
+  const toggleSidebar = () => setIsOpen(!isOpen);
+
+  return (
+    <>
+      {/* Mobile menu button */}
+      <button
+        onClick={toggleSidebar}
+        className="lg:hidden fixed top-4 left-4 z-50 p-2 rounded-md bg-white shadow-md hover:bg-gray-50 transition-colors"
+        aria-label="Toggle navigation menu"
+      >
+        {isOpen ? (
+          <X className="h-6 w-6 text-gray-600" />
+        ) : (
+          <Menu className="h-6 w-6 text-gray-600" />
+        )}
+      </button>
+
+      {/* Mobile overlay */}
+      {isOpen && (
+        <div
+          className="lg:hidden fixed inset-0 z-40 bg-black bg-opacity-50"
+          onClick={toggleSidebar}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside
+        className={`
+          fixed top-0 left-0 z-40 w-20 bg-white border-r border-gray-200
+          transition-transform duration-300 ease-in-out
+          lg:translate-x-0 lg:static lg:z-auto
+          ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+        `}
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        <div className="flex flex-col h-full">
+          {/* Logo */}
+          <div className="flex items-center justify-center h-16 border-b border-gray-200">
+            <Link
+              href="/"
+              className="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 transition-all duration-200"
+              aria-label="Go to homepage"
+            >
+              <div className="w-6 h-6 bg-white rounded-sm transform rotate-45 relative">
+                <div className="absolute inset-1 bg-purple-500 rounded-sm transform -rotate-45"></div>
+              </div>
+            </Link>
+          </div>
+
+          {/* Navigation Menu */}
+          <nav className="flex-1 py-6" role="menubar">
+            <ul className="space-y-2 px-3">
+              {menuItems.map((item) => {
+                const Icon = item.icon;
+                const active = isActive(item.href);
+
+                return (
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
+                      className={`
+                        group flex items-center justify-center w-14 h-14 rounded-xl
+                        transition-all duration-200 relative
+                        ${active
+                          ? 'bg-purple-100 text-purple-600 shadow-sm'
+                          : 'text-gray-400 hover:bg-gray-50 hover:text-gray-600'
+                        }
+                      `}
+                      role="menuitem"
+                      aria-label={item.label}
+                      title={item.label}
+                    >
+                      <Icon
+                        className={`
+                          w-5 h-5 transition-transform duration-200
+                          ${active ? 'scale-110' : 'group-hover:scale-105'}
+                        `}
+                      />
+
+                      {/* Active indicator */}
+                      {active && (
+                        <div className="absolute -right-1 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-purple-600 rounded-l-full"></div>
+                      )}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          {/* User Profile Section - Matching your exact design */}
+          {user && (
+            <div className="p-3">
+              <div className="w-14 h-14 bg-gray-50 rounded-2xl border border-gray-200 flex items-center justify-center relative">
+                <Link
+                  href="/profile"
+                  className="relative group"
+                  aria-label={`User profile: ${user.name}`}
+                  title={`${user.name} - View Profile`}
+                >
+                  {/* User Avatar */}
+                  <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-sm">
+                    <img
+                      src={user.avatar || "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-bytHT0ys1WbvDmnTWOdXbyh0d3QRTI.png"}
+                      alt={`${user.name}'s avatar`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Purple Notification Badge */}
+                  {notifications > 0 && (
+                    <div className="absolute -top-1 -right-1 w-5 h-5 bg-purple-500 rounded-lg flex items-center justify-center shadow-sm">
+                      <span className="text-white text-xs font-medium">
+                        {notifications > 9 ? '9+' : notifications}
+                      </span>
+                    </div>
+                  )}
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
+        <div className='fixed bottom-4 p-1 bg-white shadow-lg border-2 border-gray-200 rounded-2xl'>
+            <img src="/images/user profile.png" alt="" />
+        </div>
+      </aside>
+
+        {/* Main content spacer for desktop */}
+        <div className="hidden lg:block w-20 flex-shrink-0" aria-hidden="true"></div>
+    </>
+  );
+};
+
+export default Sidebar;
