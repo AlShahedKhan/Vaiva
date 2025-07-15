@@ -2,7 +2,6 @@ import React from "react";
 import { Search, CheckCircle, Menu, X } from "lucide-react";
 import { Head, Link, usePage } from "@inertiajs/react";
 const HeaderLogo = '/logo-footer.png'; // Adjust the path as needed
-// import route from 'ziggy-js';
 
 type HeaderProps = {
     isMobileMenuOpen: boolean;
