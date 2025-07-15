@@ -17,10 +17,14 @@ Route::get('/', function () {
 });
 
 Route::get('/services', function () {
-    return Inertia::render('Serivces', [
-        'title' => 'Services',
-        'description' => 'Your platform for seamless connections and solutions.',
-    ]);
+    // return Inertia::render('Serivces', [
+    //     'title' => 'Services',
+    //     'description' => 'Your platform for seamless connections and solutions.',
+    // ]);
+    return Inertia::render('Services', [
+    'title' => 'Services',
+    'description' => 'Your platform for seamless connections and solutions.',
+]);
 })->name('services');
 
 Route::get('/how-it-works', function () {
