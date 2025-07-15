@@ -27,7 +27,7 @@ Route::get('/', function () {
 // ]);
 // })->name('services');
 
-Route::get('/services', function () {
+Route::get('/explore-services', function () {
     return Inertia::render('Services', [
         'title' => 'Welcome to Vaiva',
         'description' => 'Your platform for seamless connections and solutions.',

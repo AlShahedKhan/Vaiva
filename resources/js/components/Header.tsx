@@ -32,7 +32,7 @@ const Header: React.FC<HeaderProps> = ({
                                 Home
                             </Link>
                             <Link
-                                href="/services"
+                                href="/explore-services"
                                 className="text-gray-700 hover:text-purple-600 font-medium transition-colors duration-200"
                             >
                                 Explore Services
