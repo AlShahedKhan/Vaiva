@@ -16,17 +16,23 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/services', function () {
-    // return Inertia::render('Serivces', [
-    //     'title' => 'Services',
-    //     'description' => 'Your platform for seamless connections and solutions.',
-    // ]);
-    return Inertia::render('Services', [
-    'title' => 'Services',
-    'description' => 'Your platform for seamless connections and solutions.',
-]);
-})->name('services');
+// Route::get('/services', function () {
+//     // return Inertia::render('Serivces', [
+//     //     'title' => 'Services',
+//     //     'description' => 'Your platform for seamless connections and solutions.',
+//     // ]);
+//     return Inertia::render('Services', [
+//     'title' => 'Services',
+//     'description' => 'Your platform for seamless connections and solutions.',
+// ]);
+// })->name('services');
 
+Route::get('/services', function () {
+    return Inertia::render('Services', [
+        'title' => 'Welcome to Vaiva',
+        'description' => 'Your platform for seamless connections and solutions.',
+    ]);
+});
 Route::get('/how-it-works', function () {
     return Inertia::render('HowItWorks', [
         'title' => 'Welcome to Vaiva',
