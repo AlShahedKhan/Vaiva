@@ -30,7 +30,7 @@ const Services: React.FC<ServicesProps> = () => {
                 <section className="relative z-10 py-16 md:py-24 text-center px-4 sm:px-6 lg:px-0 overflow-hidden">
                     <div className="absolute -z-10  lg:h-[700px]  bg-no-repeat inset-0 pointer-events-none">
                         <img
-                            src="/build/assets/images/Vaiva_elemento-1_fundo-branco.png"
+                            src="/images/Vaiva_elemento-1_fundo-branco.png"
                             alt=""
                             className="w-full h-full"
                         />
