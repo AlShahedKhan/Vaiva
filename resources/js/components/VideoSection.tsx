@@ -10,7 +10,7 @@ const VideoSection: React.FC<VideoSectionProps> = () => {
     return (
         <section className="relative z-10 py-16 px-4 sm:px-6 lg:px-8 overfollow-x-hidden">
             <img
-                src="/build/assets/services/video-bg.png"
+                src="/services/video-bg.png"
                 alt="Background Image"
                 className="absolute -bottom-56 -right-0 md:-right-0 w-64 h-64 md:w-auto md:h-auto lg:-bottom-130 lg:right-0 z-0"
             />
@@ -18,7 +18,7 @@ const VideoSection: React.FC<VideoSectionProps> = () => {
                 {/* Image Section */}
                 <div className="md:w-1/2 w-full">
                     <img
-                        src="/build/assets/services/video.png"
+                        src="/services/video.png"
                         alt="Designer gráfico trabalhando em um laptop"
                         className="w-full h-auto object-cover md:h-full rounded-l-xl"
                     />

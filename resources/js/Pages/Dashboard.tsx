@@ -32,7 +32,7 @@ const Dashboard = () => {
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-4">
               <img
-                src="/build/assets/images/Group 1.png"
+                src="/images/Group 1.png"
                 alt="Vaiva Logo"
                 className="w-20 h-6 object-contain"
               />

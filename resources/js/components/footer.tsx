@@ -1,9 +1,9 @@
 // resources/js/components/Footer.tsx
 import React from 'react';
 import { ArrowRight, Linkedin, Facebook, Instagram } from 'lucide-react';
-const FooterBg = '/build/assets/footer/footer-bg.png';
-const FooterPerson = '/build/assets/footer/foot-person.png';
-const FooterLogo = '/build/assets/footer/logo-footer.png';
+const FooterBg = '/footer/footer-bg.png';
+const FooterPerson = '/footer/foot-person.png';
+const FooterLogo = '/footer/logo-footer.png';
 interface FooterProps {
 }
 
@@ -97,8 +97,8 @@ const Footer: React.FC<FooterProps> = () => {
 
                     {/* App Downloads */}
                     <div className="flex flex-col items-center lg:items-end">
-                        <img src="/build/assets/footer/apple.png" alt="Download on the App Store" className="w-fit mb-3 cursor-pointer" />
-                        <img src="/build/assets/footer/google.png" alt="Get it on Google Play" className="w-fit cursor-pointer" />
+                        <img src="/footer/apple.png" alt="Download on the App Store" className="w-fit mb-3 cursor-pointer" />
+                        <img src="/footer/google.png" alt="Get it on Google Play" className="w-fit cursor-pointer" />
                     </div>
                 </div>
 

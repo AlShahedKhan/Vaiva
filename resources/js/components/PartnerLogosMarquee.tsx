@@ -1,12 +1,12 @@
 // resources/js/components/PartnerLogosMarquee.tsx
 import React from 'react';
 import Marquee from 'react-fast-marquee';
-const Partner1 = '/build/assets/images/marque/1.png'
-const Partner2 = '/build/assets/images/marque/2.png'
-const Partner3 = '/build/assets/images/marque/3.png'
-const Partner4 = '/build/assets/images/marque/4.png'
-const Partner5 = '/build/assets/images/marque/5.png'
-const Partner6 = '/build/assets/images/marque/6.png'
+const Partner1 = '/images/marque/1.png'
+const Partner2 = '/images/marque/2.png'
+const Partner3 = '/images/marque/3.png'
+const Partner4 = '/images/marque/4.png'
+const Partner5 = '/images/marque/5.png'
+const Partner6 = '/images/marque/6.png'
 
 interface PartnerLogosMarqueeProps {
     // You can add props here if you want to make speed, gradient, etc. customizable from parent

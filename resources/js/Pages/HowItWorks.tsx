@@ -25,7 +25,7 @@ const HowItWorks: React.FC<HowItWorksProps> = () => {
                     {/* Background Image for all content */}
                     <div className="absolute -z-10 w-full h-96 sm:h-222 md:h-236  bg-no-repeat inset-0 pointer-events-none">
                         <img
-                            src="/build/assets/images/Vaiva_elemento-1_fundo-branco.png"
+                            src="/images/Vaiva_elemento-1_fundo-branco.png"
                             alt=""
                             className="w-full h-[45%] sm:h-[55%] pb-50 sm:pb-0 sm:-mb-24 md:pb-0"
                         />
@@ -76,7 +76,7 @@ const HowItWorks: React.FC<HowItWorksProps> = () => {
                         </div>
                         <img
                             className="mt-24"
-                            src="/build/assets/images/Group 1618873540.png"
+                            src="/images/Group 1618873540.png"
                             alt=""
                         />
                     </div>
@@ -91,7 +91,7 @@ const HowItWorks: React.FC<HowItWorksProps> = () => {
                                 <div className="space-y-6 text-center">
                                     <div className="w-12 h-12 flex items-center justify-center md:hidden sm:hidden">
                                         <img
-                                            src="/build/assets/images/Vaiva_horizontal-2 2.png"
+                                            src="/images/Vaiva_horizontal-2 2.png"
                                             alt=""
                                         />
                                     </div>
@@ -178,7 +178,7 @@ const HowItWorks: React.FC<HowItWorksProps> = () => {
                             <div className="relative">
                                 <div className="relative z-10">
                                     <img
-                                        src="/build/assets/images/Group 1618873541.png"
+                                        src="/images/Group 1618873541.png"
                                         alt="Professional freelancer with growth metrics and ranking statistics"
                                         className="w-full h-auto"
                                         loading="lazy"

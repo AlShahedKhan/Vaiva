@@ -55,7 +55,7 @@ const Login = () => {
                     <div className="p-4 sm:p-6 lg:p-8">
                         <div className="w-20 h-6 sm:w-24 sm:h-8 lg:w-[129px] lg:h-[40.35px] mb-4 sm:mb-6 lg:mb-8">
                             <img
-                                src="/build/assets/images/Group 1.png"
+                                src="/images/Group 1.png"
                                 alt="Vaiva Logo"
                                 className="w-full h-full object-contain"
                                 loading="lazy"
@@ -73,7 +73,7 @@ const Login = () => {
                     <div className="relative flex-1 min-h-[150px] md:min-h-0">
                         <div className="absolute inset-0">
                             <img
-                                src="/build/assets/images/Vaiva_elemento-1_fundo-branco.png"
+                                src="/images/Vaiva_elemento-1_fundo-branco.png"
                                 alt="Background decoration"
                                 className="w-full h-full object-cover opacity-20"
                                 loading="lazy"
@@ -81,7 +81,7 @@ const Login = () => {
                         </div>
                         <div className="absolute bottom-4 sm:bottom-0 lg:bottom-6 lg:left-24 ">
                             <img
-                                src="/build/assets/images/Group 1618873490 1.png"
+                                src="/images/Group 1618873490 1.png"
                                 alt="Two professional women collaborating"
                                 className="w-full h-auto object-contain drop-shadow-2xl"
                                 loading="lazy"

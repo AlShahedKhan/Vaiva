@@ -10,7 +10,7 @@ const GraphicDesignServiceCard: React.FC<GraphicDesignServiceCardProps> = () => 
     return (
         <section className="relative z-10 py-16 px-4 sm:px-6 lg:px-8">
             <img
-                src="/build/assets/services/person-bg.png"
+                src="/services/person-bg.png"
                 alt="Background Image"
                 className="absolute -bottom-30 -right-0 md:-bottom-124 md:-right-0 w-64 h-64 md:w-auto md:h-auto lg:-bottom-80 lg:right-0 z-0"
             />
@@ -18,7 +18,7 @@ const GraphicDesignServiceCard: React.FC<GraphicDesignServiceCardProps> = () => 
                 {/* Image Section */}
                 <div className="md:w-1/2 w-full order-2 lg:order-1 z-99">
                     <img
-                        src="/build/assets/services/person.png" // Replace with your actual image path
+                        src="/services/person.png" // Replace with your actual image path
                         alt="Designer gráfico trabalhando em um laptop"
                         className="w-full h-auto object-cover md:h-full rounded-l-xl"
                     />

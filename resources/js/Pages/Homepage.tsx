@@ -24,15 +24,15 @@ const Homepage: React.FC<HomepageProps> = () => {
     const [currentSlide, setCurrentSlide] = React.useState(0);
     const [logoIndex, setLogoIndex] = useState(0);
     const [carouselImages, setCarouselImages] = useState([
-        "/build/assets/images/Group 1618873530.png",
-        "/build/assets/images/Group 1618873531.png",
-        "/build/assets/images/Group 1618873532.png",
+        "/images/Group 1618873530.png",
+        "/images/Group 1618873531.png",
+        "/images/Group 1618873532.png",
     ]);
 
     const [carouselImages1, setCarouselImages1] = useState([
-        "/build/assets/images/Group 1618873533.png",
-        "/build/assets/images/Group 1618873534.png",
-        "/build/assets/images/Group 1618873535.png",
+        "/images/Group 1618873533.png",
+        "/images/Group 1618873534.png",
+        "/images/Group 1618873535.png",
     ]);
 
     const toggleMobileMenu = () => {
@@ -92,19 +92,19 @@ const Homepage: React.FC<HomepageProps> = () => {
         {
             name: "John Anderson",
             role: "February 2, 2024 Muito Obrigado",
-            image: "/build/assets/images/user profile.png",
+            image: "images/user profile.png",
             text: "Entregou rápido e ficou melhor do que eu imaginei. Voltarei a contratar com certeza.",
         },
         {
             name: "John Anderson",
             role: "February 2, 2024 Muito Obrigado",
-            image: "/build/assets/images/user profile.png",
+            image: "images/user profile.png",
             text: "Tudo certinho, combinado pelo chat e entregue no prazo. Sem dor de cabeça.",
         },
         {
             name: "Elena Rossi",
             role: "Owner Seaview Boutique Hotel",
-            image: "/build/assets/images/user profile.png",
+            image: "images/user profile.png",
             text: "Primeira vez usando a Vaiva e já resolveu meu problema. Muito prático.",
         },
     ];
@@ -188,7 +188,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                     {/* Background Image for all content */}
                     <div className="absolute -z-10 w-full h-210 sm:h-222 md:h-236  bg-no-repeat inset-0 pointer-events-none">
                         <img
-                            src="/build/assets/images/Vaiva_elemento-1_fundo-branco.png"
+                            src="images/Vaiva_elemento-1_fundo-branco.png"
                             alt=""
                             className="w-full h-full pb-50 sm:pb-0 sm:-mb-24 md:pb-0"
                         />
@@ -222,7 +222,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                         </div>
                         <div className="sm:flex sm:justify-center md:justify-center">
                             <img
-                                src="/build/assets/images/Mask group.png"
+                                src="images/Mask group.png"
                                 alt=""
                             />
                         </div>
@@ -233,7 +233,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                 <section className="relative z-10 bg-white">
                     <div className="absolute lg:top-64 sm:top-50 md:top-2 right-0 h-screen w-[46vw] md:w-[84vw] sm:w-[74vw] -z-10 overflow-hidden pointer-events-none">
                         <img
-                            src="/build/assets/images/Vaiva_elemento-2_fundo-roxo.png"
+                            src="images/Vaiva_elemento-2_fundo-roxo.png"
                             alt=""
                             className="w-full h-full"
                         />
@@ -393,7 +393,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                     {/* Image first */}
                     <img
                         className="items-center mx-auto mt-12 relative z-10"
-                        src="/build/assets/images/Group 1618873536.png"
+                        src="images/Group 1618873536.png"
                         alt=""
                     />
 
@@ -405,7 +405,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                     <img
                         style={{ transform: "rotate(-15deg)" }}
                         className="absolute z-0 right-0 -bottom-71 lg:block md:hidden sm:hidden  max-w-full h-auto"
-                        src="/build/assets/images/Vaiva_elemento-3_fundo-branco.png"
+                        src="images/Vaiva_elemento-3_fundo-branco.png"
                         alt="bg image"
                     />
                 </section>
@@ -505,7 +505,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                         <img
                             style={{ transform: "rotate(-180deg)" }}
                             className="absolute z-0 left-0 -bottom-71 lg:block md:hidden sm:hidden  max-w-full h-auto"
-                            src="/build/assets/images/Vaiva_elemento-3_fundo-branco.png"
+                            src="images/Vaiva_elemento-3_fundo-branco.png"
                             alt="bg image"
                         />
                     </div>

@@ -28,7 +28,7 @@ const HeroContentSection: React.FC<HeroContentSectionProps> = () => {
                 {/* Right Side: Image and Floating Cards */}
                 <div className="flex-1 flex flex-col pt-0 lg:pt-20">
                     <img
-                        src="/build/assets/services/card-new.png"
+                        src="/services/card-new.png"
                         alt="Man working on laptop"
                     />
                 </div>
