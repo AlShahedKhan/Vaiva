@@ -43,37 +43,31 @@ const Sidebar: React.FC<SidebarProps> = ({ user, notifications = 0 }) => {
             name: "dashboard",
             href: "/dashboard",
             icon: Icon1,
-            label: "Dashboard",
         },
         {
             name: "orders",
             href: "/orders",
             icon: Icon2,
-            label: "Orders",
         },
         {
             name: "analytics",
             href: "/analytics",
             icon: Icon3,
-            label: "Analytics",
         },
         {
             name: "users",
             href: "/users",
             icon: Icon4,
-            label: "Users",
         },
         {
             name: "documents",
             href: "/documents",
             icon: Icon5,
-            label: "Documents",
         },
         {
             name: "help",
             href: "/help",
             icon: Icon6,
-            label: "Help",
         },
     ];
 
@@ -86,7 +80,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, notifications = 0 }) => {
             {/* Mobile menu button */}
             <button
                 onClick={toggleSidebar}
-                className="lg:hidden fixed top-4 left-4 z-50 p-2 rounded-md bg-white shadow-md hover:bg-gray-50 transition-colors"
+                className="lg:hidden fixed top-4 md:mt-24 md:ml-0 left-2 z-50 p-2 rounded-md bg-white shadow-md hover:bg-gray-50 transition-colors"
                 aria-label="Toggle navigation menu"
             >
                 {isOpen ? (
@@ -108,9 +102,11 @@ const Sidebar: React.FC<SidebarProps> = ({ user, notifications = 0 }) => {
             {/* Sidebar */}
             <aside
                 className={`
-          fixed top-0 left-0 z-40 w-32 rounded-2xl mt-2 mb-2 ml-2 bg-white border-r border-gray-200
+          fixed top-0 left-0 z-40 bg-white border-r border-gray-200
           transition-transform duration-300 ease-in-out
-          lg:translate-x-0 lg:static lg:z-auto
+          h-full w-full sm:w-20  lg:w-32
+          rounded-2xl lg:m-2
+          lg:translate-x-0 lg:static lg:z-auto lg:h-auto
           ${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
         `}
                 role="navigation"
@@ -118,17 +114,26 @@ const Sidebar: React.FC<SidebarProps> = ({ user, notifications = 0 }) => {
             >
                 <div className="flex flex-col h-full">
                     {/* Logo */}
-                    <div className="flex items-center justify-center h-28 border-b border-gray-200">
-                        <Link href="/">
-                            <div className="flex items-center space-x-2 ">
-                                <img className="h-20" src={Logo} alt="Header Logo" />
+                    <div className="flex items-center justify-center h-28 border-b border-gray-200 lg:border-b-gray-200 border-b-gray-100">
+                        <Link href="/" className="relative flex items-center">
+                            <div className="flex items-center space-x-2">
+                                <img className="h-20 md:h-15" src={Logo} alt="Header Logo" />
                             </div>
+                            {/* Close button for mobile */}
+                            <button
+                                onClick={toggleSidebar}
+                                className="lg:hidden absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-md hover:bg-gray-100"
+                                aria-label="Close menu"
+                                title="Close menu"
+                            >
+                                <X className="h-6 w-6 text-gray-600" />
+                            </button>
                         </Link>
                     </div>
 
                     {/* Navigation Menu */}
-                    <nav className="flex-1 py-6 " role="menubar">
-                        <ul className="space-y-2 px-8">
+                    <nav className="flex-1 py-6 md:mt-7">
+                        <ul className="space-y-4 sm:space-y-3 md:space-y-2 px-8 sm:px-6 md:px-4 lg:px-8">
                             {menuItems.map((item) => {
                                 const active = isActive(item.href);
                                 return (
@@ -136,8 +141,9 @@ const Sidebar: React.FC<SidebarProps> = ({ user, notifications = 0 }) => {
                                         <Link
                                             href={item.href}
                                             className={`
-                        group flex items-center justify-center w-14 h-14 rounded-xl
-                        transition-all duration-200 relative
+                        group flex items-center sm:justify-start lg:justify-center rounded-xl
+                        transition-all duration-200 relative p-3 sm:p-2
+                        w-full sm:h-12 md:h-13 lg:w-14 lg:h-14
                         ${
                             active
                                 ? "bg-[#7E54F7] shadow-sm"
@@ -149,6 +155,9 @@ const Sidebar: React.FC<SidebarProps> = ({ user, notifications = 0 }) => {
                                             title={item.label}
                                         >
                                             <img src={item.icon} alt={item.label} className={`w-7 h-7 ${active ? "scale-110" : "group-hover:scale-105"} transition-transform duration-200`} />
+                                            <span className="ml-3 text-sm font-medium sm:inline lg:hidden text-gray-700">
+                                                {item.label}
+                                            </span>
                                             {/* Active indicator */}
                                             {active && (
                                                 <div className="absolute -right-1 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-[#7E54F7] rounded-l-full"></div>
