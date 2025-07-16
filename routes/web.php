@@ -42,8 +42,8 @@ Route::post('/logout', [LogoutController::class, 'logout'])
     ->name('logout');
 
 // Add a simple dashboard route for after registration
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard', [
+Route::get('/payment', function () {
+    return Inertia::render('Payment', [
         'user' => auth()->user()
     ]);
 })->middleware('auth')->name('dashboard');
