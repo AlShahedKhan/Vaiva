@@ -11,6 +11,12 @@ import {
     X,
 } from "lucide-react";
 const Logo = "/images/logo.png"; // Adjust the path as needed
+const Icon1 = "/images/icon1.png"; // Adjust the path as needed
+const Icon2 = "/images/icon2.png"; // Adjust the path as needed
+const Icon3 = "/images/icon3.png"; // Adjust the path as needed
+const Icon4 = "/images/icon4.png"; // Adjust the path as needed
+const Icon5 = "/images/icon5.png"; // Adjust the path as needed
+const Icon6 = "/images/icon6.png"; // Adjust the path as needed
 
 interface MenuItem {
     name: string;
@@ -32,33 +38,43 @@ const Sidebar: React.FC<SidebarProps> = ({ user, notifications = 0 }) => {
     const [isOpen, setIsOpen] = useState(false);
     const { url } = usePage();
 
-    const menuItems: MenuItem[] = [
+    const menuItems = [
         {
             name: "dashboard",
             href: "/dashboard",
-            icon: Calendar,
+            icon: Icon1,
             label: "Dashboard",
         },
         {
             name: "orders",
             href: "/orders",
-            icon: ShoppingCart,
+            icon: Icon2,
             label: "Orders",
         },
         {
             name: "analytics",
             href: "/analytics",
-            icon: BarChart3,
+            icon: Icon3,
             label: "Analytics",
         },
-        { name: "users", href: "/users", icon: User, label: "Users" },
+        {
+            name: "users",
+            href: "/users",
+            icon: Icon4,
+            label: "Users",
+        },
         {
             name: "documents",
             href: "/documents",
-            icon: FileText,
+            icon: Icon5,
             label: "Documents",
         },
-        { name: "help", href: "/help", icon: HelpCircle, label: "Help" },
+        {
+            name: "help",
+            href: "/help",
+            icon: Icon6,
+            label: "Help",
+        },
     ];
 
     const isActive = (href: string) => url.startsWith(href);
@@ -92,7 +108,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, notifications = 0 }) => {
             {/* Sidebar */}
             <aside
                 className={`
-          fixed top-0 left-0 z-40 w-32 rounded-2xl mt-2 mb-2 bg-white border-r border-gray-200
+          fixed top-0 left-0 z-40 w-32 rounded-2xl mt-2 mb-2 ml-2 bg-white border-r border-gray-200
           transition-transform duration-300 ease-in-out
           lg:translate-x-0 lg:static lg:z-auto
           ${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
@@ -111,12 +127,10 @@ const Sidebar: React.FC<SidebarProps> = ({ user, notifications = 0 }) => {
                     </div>
 
                     {/* Navigation Menu */}
-                    <nav className="flex-1 py-6" role="menubar">
-                        <ul className="space-y-2 px-3">
+                    <nav className="flex-1 py-6 " role="menubar">
+                        <ul className="space-y-2 px-8">
                             {menuItems.map((item) => {
-                                const Icon = item.icon;
                                 const active = isActive(item.href);
-
                                 return (
                                     <li key={item.name}>
                                         <Link
@@ -126,7 +140,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, notifications = 0 }) => {
                         transition-all duration-200 relative
                         ${
                             active
-                                ? "bg-purple-100 text-purple-600 shadow-sm"
+                                ? "bg-[#7E54F7] shadow-sm"
                                 : "text-gray-400 hover:bg-gray-50 hover:text-gray-600"
                         }
                       `}
@@ -134,16 +148,10 @@ const Sidebar: React.FC<SidebarProps> = ({ user, notifications = 0 }) => {
                                             aria-label={item.label}
                                             title={item.label}
                                         >
-                                            <Icon
-                                                className={`
-                          w-5 h-5 transition-transform duration-200
-                          ${active ? "scale-110" : "group-hover:scale-105"}
-                        `}
-                                            />
-
+                                            <img src={item.icon} alt={item.label} className={`w-7 h-7 ${active ? "scale-110" : "group-hover:scale-105"} transition-transform duration-200`} />
                                             {/* Active indicator */}
                                             {active && (
-                                                <div className="absolute -right-1 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-purple-600 rounded-l-full"></div>
+                                                <div className="absolute -right-1 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-[#7E54F7] rounded-l-full"></div>
                                             )}
                                         </Link>
                                     </li>
