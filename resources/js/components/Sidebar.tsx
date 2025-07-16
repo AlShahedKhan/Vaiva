@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { Link, usePage } from "@inertiajs/react";
 import {
-    Calendar,
-    ShoppingCart,
-    BarChart3,
-    User,
-    FileText,
-    HelpCircle,
     Menu,
     X,
 } from "lucide-react";

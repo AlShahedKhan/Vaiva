@@ -28,7 +28,7 @@ const Header: React.FC<HeaderProps> = ({ user, notifications = 0, messages = 0 }
 
   return (
     <header className="bg-white border-b border-gray-200 shadow-sm" role="banner">
-      <div className="max-w-7xl mx-36 sm:px-6 lg:px-0">
+      <div className="max-w-7xl mx-36 sm:px-20 lg:px-0">
         <div className="flex items-center justify-between h-24">
           {/* Left Section - User Welcome */}
           <div className="flex items-center space-x-3">
