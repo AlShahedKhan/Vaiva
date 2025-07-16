@@ -134,7 +134,7 @@ const Dashboard = () => {
                 <Header />
 
                 <main className="flex-1 p-4 sm:p-6 lg:p-8" role="main">
-                    <div className="max-w-7xl mx-auto">
+                    <div className="lg:max-w-7xl md:max-w-2xl md:ml-58 sm:max-w-xl sm:ml-58  mx-auto">
                         {/* Page Header */}
                         <div className="mb-8">
                             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
@@ -323,7 +323,7 @@ const Dashboard = () => {
                         </div>
 
                         {/* Additional Information */}
-                        <div className="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-6">
+                        {/* <div className="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-6">
                             <h3 className="font-semibold text-blue-900 mb-2">What happens next?</h3>
                             <ul className="text-sm text-blue-800 space-y-1">
                                 <li>• Your freelancer will be notified immediately after payment</li>
@@ -331,7 +331,7 @@ const Dashboard = () => {
                                 <li>• All communication happens through our secure platform</li>
                                 <li>• Payment is held securely until you approve the final work</li>
                             </ul>
-                        </div>
+                        </div> */}
                     </div>
                 </main>
             </div>
