@@ -80,7 +80,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, notifications = 0 }) => {
             {/* Mobile menu button */}
             <button
                 onClick={toggleSidebar}
-                className="lg:hidden fixed top-4 md:mt-24 md:ml-0 left-2 z-50 p-2 rounded-md bg-white shadow-md hover:bg-gray-50 transition-colors"
+                className="lg:hidden fixed top-4 md:mt-24 sm:mt-24 md:ml-0 left-2 z-50 p-2 rounded-md bg-white shadow-md hover:bg-gray-50 transition-colors"
                 aria-label="Toggle navigation menu"
             >
                 {isOpen ? (
@@ -104,7 +104,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, notifications = 0 }) => {
                 className={`
           fixed top-0 left-0 z-40 bg-white border-r border-gray-200
           transition-transform duration-300 ease-in-out
-          h-full w-full sm:w-20  lg:w-32
+          h-full w-full sm:w-24  lg:w-32
           rounded-2xl lg:m-2
           lg:translate-x-0 lg:static lg:z-auto lg:h-auto
           ${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
@@ -117,7 +117,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, notifications = 0 }) => {
                     <div className="flex items-center justify-center h-28 border-b border-gray-200 lg:border-b-gray-200 border-b-gray-100">
                         <Link href="/" className="relative flex items-center">
                             <div className="flex items-center space-x-2">
-                                <img className="h-20 md:h-15" src={Logo} alt="Header Logo" />
+                                <img className="h-20 md:h-15 sm:h-14" src={Logo} alt="Header Logo" />
                             </div>
                             {/* Close button for mobile */}
                             <button
@@ -126,13 +126,13 @@ const Sidebar: React.FC<SidebarProps> = ({ user, notifications = 0 }) => {
                                 aria-label="Close menu"
                                 title="Close menu"
                             >
-                                <X className="h-6 w-6 text-gray-600" />
+                                {/* <X className="h-6 w-6 text-gray-600" /> */}
                             </button>
                         </Link>
                     </div>
 
                     {/* Navigation Menu */}
-                    <nav className="flex-1 py-6 md:mt-7">
+                    <nav className="flex-1 py-6 md:mt-7 sm:mt-7">
                         <ul className="space-y-4 sm:space-y-3 md:space-y-2 px-8 sm:px-6 md:px-4 lg:px-8">
                             {menuItems.map((item) => {
                                 const active = isActive(item.href);
