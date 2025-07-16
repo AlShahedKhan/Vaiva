@@ -163,7 +163,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, notifications = 0 }) => {
                     {/* User Profile Section - Matching your exact design */}
                     {user && (
                         <div className="p-3">
-                            <div className="w-14 h-14 bg-gray-50 rounded-2xl border border-gray-200 flex items-center justify-center relative">
+                            <div className="w-14 h-14 bg-gray-50 rounded-2xl border border-gray-00 flex items-center justify-center relative">
                                 <Link
                                     href="/profile"
                                     className="relative group"
@@ -197,7 +197,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, notifications = 0 }) => {
                         </div>
                     )}
                 </div>
-                <div className="fixed bottom-4 p-1 bg-white shadow-lg border-2 border-gray-200 rounded-2xl">
+                <div className="fixed bottom-4 p-1 bg-white shadow-lg border-1 border-gray-100 rounded-2xl">
                     <img src="/images/user profile.png" alt="" />
                 </div>
             </aside>
