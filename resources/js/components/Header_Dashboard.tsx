@@ -1,23 +1,33 @@
 "use client"
 
 import React from "react"
-import { Link } from "@inertiajs/react"
-import { Search, Bell, Mail, HelpCircle } from "lucide-react"
+import { Link, usePage } from "@inertiajs/react"
+import { Search, Bell, Mail, HelpCircle, LogOut } from "lucide-react"
 
 interface User {
-  id: number
-  name: string
-  email: string
-  avatar?: string
+    id: number;
+    name: string;
+    email: string;
+    avatar?: string;
+    created_at: string;
+}
+
+interface PageProps {
+    auth: {
+        user: User;
+    };
+    [key: string]: any;
 }
 
 interface HeaderProps {
-  user?: User | null
-  notifications?: number
-  messages?: number
+    notifications?: number;
+    messages?: number;
 }
 
-const Header: React.FC<HeaderProps> = ({ user, notifications = 0, messages = 0 }) => {
+const Header: React.FC<HeaderProps> = ({ notifications = 0, messages = 0 }) => {
+  const page = usePage<PageProps>()
+  console.log('Page props:', page.props)
+  const user = page.props?.auth?.user
   const [searchQuery, setSearchQuery] = React.useState("")
 
   const handleSearch = (e: React.FormEvent) => {
@@ -111,6 +121,20 @@ const Header: React.FC<HeaderProps> = ({ user, notifications = 0, messages = 0 }
             >
               <HelpCircle className="h-6 w-6" aria-hidden="true" />
             </Link>
+
+            {/* User Profile and Logout */}
+            <div className="relative ml-3">
+              <div className="flex items-center space-x-3">
+                <Link
+                  href="/logout"
+                  method="post"
+                  as="button"
+                  className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Logout
+                </Link>
+              </div>
+            </div>
 
             {/* Mobile Menu Button (for smaller screens) */}
             <div className="sm:hidden">
