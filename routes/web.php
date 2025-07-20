@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\StripePaymentController;
 
 Route::get('/', function () {
     return Inertia::render('Homepage', [
@@ -41,9 +42,27 @@ Route::post('/logout', [LogoutController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
 
-// Add a simple dashboard route for after registration
-Route::get('/payment', function () {
-    return Inertia::render('Payment', [
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard', [
         'user' => auth()->user()
     ]);
 })->middleware('auth')->name('dashboard');
+
+// Payment routes
+Route::get('/payment', [StripePaymentController::class, 'index'])
+    ->middleware('auth')
+    ->name('payment.form');
+
+Route::post('/payment/process', [StripePaymentController::class, 'process'])
+    ->middleware('auth')
+    ->name('payment.process');
+
+Route::get('/payment/success', function () {
+    return Inertia::render('PaymentSuccess', [
+        'user' => auth()->user()
+    ]);
+})->middleware('auth')->name('payment.success');
+
+// API route for payment intents (if you need it later)
+Route::post('/payment-intent', [StripePaymentController::class, 'createIntent'])
+    ->middleware('auth');

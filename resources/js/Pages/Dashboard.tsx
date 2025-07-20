@@ -1,14 +1,14 @@
 import { usePage } from "@inertiajs/react";
 import { router } from "@inertiajs/react";
 import { useState, useEffect } from "react";
-import { CreditCard, Shield, Clock, Package } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header_Dashboard";
+import { CreditCard, Shield, Clock, Package } from "lucide-react";
 
 // Add Stripe types
 declare global {
     interface Window {
-        Stripe?: (key: string) => any;
+        Stripe: any;
     }
 }
 
@@ -32,12 +32,13 @@ interface Service {
 interface PageProps {
     user: User;
     currentService?: Service;
+    notifications?: number;
+    messages?: number;
     stripePublicKey?: string;
-    [key: string]: any;
 }
 
-const Payment = () => {
-    const { user, currentService, stripePublicKey } = usePage<PageProps>().props;
+const Dashboard = () => {
+    const { user, currentService, notifications = 3, messages = 2, stripePublicKey } = usePage<PageProps>().props;
 
     // Default service data if not provided from backend
     const defaultService: Service = {
@@ -70,22 +71,14 @@ const Payment = () => {
             try {
                 if (typeof window !== 'undefined') {
                     if (window.Stripe) {
-                        const stripeInstance = window.Stripe(publicKey);
-                        if (stripeInstance) {
-                            initializeStripeElements(stripeInstance);
-                        }
+                        initializeStripeElements(window.Stripe(publicKey));
                     } else {
                         // Load Stripe script if not already loaded
                         const script = document.createElement('script');
                         script.src = 'https://js.stripe.com/v3/';
                         script.onload = () => {
                             try {
-                                const stripeInstance = window.Stripe?.(publicKey);
-                                if (stripeInstance) {
-                                    initializeStripeElements(stripeInstance);
-                                } else {
-                                    throw new Error('Failed to initialize Stripe instance');
-                                }
+                                initializeStripeElements(window.Stripe(publicKey));
                             } catch (error) {
                                 console.error('Error initializing Stripe:', error);
                                 setCardError("Failed to initialize payment system. Please refresh the page.");
@@ -109,7 +102,7 @@ const Payment = () => {
             // Create elements instance with updated styling
             const elementsInstance = stripeInstance.elements({
                 appearance: {
-                    theme: 'stripe',
+                    theme: 'stripe', // Changed from 'none' to 'stripe'
                     variables: {
                         colorPrimary: '#7c3aed',
                         colorBackground: '#ffffff',
@@ -309,6 +302,18 @@ const Payment = () => {
         }
     };
 
+    const handleLogout = () => {
+        router.post(
+            "/logout",
+            {},
+            {
+                onSuccess: () => {
+                    window.location.href = "/";
+                },
+            },
+        );
+    };
+
     const total = service.price + service.serviceFee;
 
     return (
@@ -318,8 +323,9 @@ const Payment = () => {
             {/* Content wrapper with left margin equal to sidebar width */}
             <div className="flex-1 -ml-52">
                 <Header />
+
                 <main className="flex-1 p-4 sm:p-6 lg:p-8" role="main">
-                    <div className="lg:max-w-7xl md:max-w-2xl md:ml-58 sm:max-w-xl sm:ml-58 mx-auto">
+                    <div className="lg:max-w-7xl md:max-w-2xl md:ml-58 sm:max-w-xl sm:ml-58  mx-auto">
                         {/* Page Header */}
                         <div className="mb-8">
                             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
@@ -330,191 +336,191 @@ const Payment = () => {
                             </p>
                         </div>
 
-                    {/* Main Content Grid */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-                        {/* Payment Form */}
-                        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8">
-                            <div className="flex items-center mb-6">
-                                <CreditCard className="h-6 w-6 text-purple-600 mr-3" />
-                                <h2 className="text-xl font-semibold text-gray-900">Card Payment</h2>
-                            </div>
-
-                            {/* Stripe Loading Status */}
-                            {!isStripeLoaded && !cardError && (
-                                <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                                    <p className="text-sm text-blue-600">Loading payment system...</p>
+                        {/* Main Content Grid */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+                            {/* Payment Form */}
+                            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8">
+                                <div className="flex items-center mb-6">
+                                    <CreditCard className="h-6 w-6 text-purple-600 mr-3" />
+                                    <h2 className="text-xl font-semibold text-gray-900">Card Payment</h2>
                                 </div>
-                            )}
 
-                            {/* Error Message */}
-                            {cardError && (
-                                <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-                                    <p className="text-sm text-red-600">{cardError}</p>
-                                </div>
-                            )}
-
-                            <form onSubmit={handleSubmit} className="space-y-6">
-                                {/* Card Number - Stripe Element */}
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2 ">
-                                        Card Number
-                                    </label>
-                                    <div
-                                        id="card-number-element"
-                                        className="w-full border border-gray-300 rounded-xl focus-within:ring-2 focus-within:ring-purple-500 focus-within:border-purple-500 transition-colors min-h-[48px]"
-                                    >
+                                {/* Stripe Loading Status */}
+                                {!isStripeLoaded && !cardError && (
+                                    <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                                        <p className="text-sm text-blue-600">Loading payment system...</p>
                                     </div>
-                                </div>
+                                )}
 
-                                {/* Card Name */}
-                                <div>
-                                    <label htmlFor="cardholderName" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Cardholder Name
-                                    </label>
-                                    <input
-                                        id="cardholderName"
-                                        type="text"
-                                        placeholder="John Doe"
-                                        value={cardholderName}
-                                        onChange={(e) => setCardholderName(e.target.value)}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors"
-                                        required
-                                        disabled={!isStripeLoaded}
-                                    />
-                                </div>
+                                {/* Error Message */}
+                                {cardError && (
+                                    <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+                                        <p className="text-sm text-red-600">{cardError}</p>
+                                    </div>
+                                )}
 
-                                {/* Expiry Date and CVV - Stripe Elements */}
-                                <div className="grid grid-cols-2 gap-4">
+                                <form onSubmit={handleSubmit} className="space-y-6">
+                                    {/* Card Number - Stripe Element */}
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            Expiry Date
+                                        <label className="block text-sm font-medium text-gray-700 mb-2 ">
+                                            Card Number
                                         </label>
                                         <div
-                                            id="card-expiry-element"
+                                            id="card-number-element"
                                             className="w-full border border-gray-300 rounded-xl focus-within:ring-2 focus-within:ring-purple-500 focus-within:border-purple-500 transition-colors min-h-[48px]"
                                         >
-                                            {/* Stripe Card Expiry Element will mount here */}
                                         </div>
                                     </div>
+
+                                    {/* Card Name */}
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            CVV
+                                        <label htmlFor="cardholderName" className="block text-sm font-medium text-gray-700 mb-2">
+                                            Cardholder Name
                                         </label>
-                                        <div
-                                            id="card-cvc-element"
-                                            className="w-full border border-gray-300 rounded-xl focus-within:ring-2 focus-within:ring-purple-500 focus-within:border-purple-500 transition-colors min-h-[48px]"
-                                        >
-                                            {/* Stripe Card CVC Element will mount here */}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Submit Button */}
-                                <button
-                                    type="submit"
-                                    disabled={isProcessing || !stripe || !isStripeLoaded}
-                                    className="w-full bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white font-semibold py-4 px-6 rounded-xl transition-colors duration-200 flex items-center justify-center"
-                                >
-                                    {isProcessing ? (
-                                        <>
-                                            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                                            Processing...
-                                        </>
-                                    ) : !isStripeLoaded ? (
-                                        "Loading..."
-                                    ) : (
-                                        "Confirmar e Pagar"
-                                    )}
-                                </button>
-                            </form>
-
-                            {/* Security Notice */}
-                            <div className="mt-6 flex items-center text-sm text-gray-500">
-                                <Shield className="h-4 w-4 mr-2" />
-                                Your payment information is encrypted and secure
-                            </div>
-                        </div>
-
-                        {/* Order Summary */}
-                        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8">
-                            <div className="flex items-center mb-6">
-                                <Package className="h-6 w-6 text-purple-600 mr-3" />
-                                <h2 className="text-xl font-semibold text-gray-900">Order Summary</h2>
-                            </div>
-
-                            <div className="space-y-6">
-                                {/* Service Details */}
-                                <div>
-                                    <div className="flex items-start mb-4">
-                                        <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mr-4">
-                                            <Package className="h-6 w-6 text-purple-600" />
-                                        </div>
-                                        <div className="flex-1">
-                                            <h3 className="font-semibold text-gray-900 mb-1">Services</h3>
-                                            <p className="text-gray-700 font-medium">{service.name}</p>
-                                            <p className="text-sm text-gray-500 mt-1">{service.description}</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Freelancer */}
-                                <div className="flex items-center">
-                                    <Package className="h-5 w-5 text-gray-400 mr-3" />
-                                    <div>
-                                        <p className="text-sm text-gray-500">Freelancer</p>
-                                        <p className="font-medium text-gray-900">{service.freelancer}</p>
-                                    </div>
-                                </div>
-
-                                {/* Delivery Time */}
-                                <div className="flex items-center">
-                                    <Clock className="h-5 w-5 text-gray-400 mr-3" />
-                                    <div>
-                                        <p className="text-sm text-gray-500">Delivery Time</p>
-                                        <p className="font-medium text-gray-900">{service.deliveryTime}</p>
-                                    </div>
-                                </div>
-
-                                {/* Pricing Breakdown */}
-                                <div className="border-t border-gray-200 pt-6 space-y-4">
-                                    <div className="flex justify-between">
-                                        <span className="text-gray-600">Service Price</span>
-                                        <span className="font-medium text-gray-900">${service.price.toFixed(2)}</span>
+                                        <input
+                                            id="cardholderName"
+                                            type="text"
+                                            placeholder="John Doe"
+                                            value={cardholderName}
+                                            onChange={(e) => setCardholderName(e.target.value)}
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors"
+                                            required
+                                            disabled={!isStripeLoaded}
+                                        />
                                     </div>
 
-                                    <div className="flex justify-between">
-                                        <span className="text-gray-600">Service Fee</span>
-                                        <span className="font-medium text-gray-900">${service.serviceFee.toFixed(2)}</span>
-                                    </div>
-
-                                    <div className="border-t border-gray-200 pt-4">
-                                        <div className="flex justify-between items-center">
-                                            <span className="text-lg font-semibold text-gray-900">Total</span>
-                                            <span className="text-2xl font-bold text-purple-600">${total.toFixed(2)}</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Money Back Guarantee */}
-                                <div className="bg-green-50 border border-green-200 rounded-xl p-4">
-                                    <div className="flex items-center">
-                                        <Shield className="h-5 w-5 text-green-600 mr-2" />
+                                    {/* Expiry Date and CVV - Stripe Elements */}
+                                    <div className="grid grid-cols-2 gap-4">
                                         <div>
-                                            <p className="text-sm font-medium text-green-800">Money Back Guarantee</p>
-                                            <p className="text-xs text-green-600 mt-1">
-                                                Get a full refund if you're not satisfied with the work
-                                            </p>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                                Expiry Date
+                                            </label>
+                                            <div
+                                                id="card-expiry-element"
+                                                className="w-full border border-gray-300 rounded-xl focus-within:ring-2 focus-within:ring-purple-500 focus-within:border-purple-500 transition-colors min-h-[48px]"
+                                            >
+                                                {/* Stripe Card Expiry Element will mount here */}
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                                CVV
+                                            </label>
+                                            <div
+                                                id="card-cvc-element"
+                                                className="w-full border border-gray-300 rounded-xl focus-within:ring-2 focus-within:ring-purple-500 focus-within:border-purple-500 transition-colors min-h-[48px]"
+                                            >
+                                                {/* Stripe Card CVC Element will mount here */}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Submit Button */}
+                                    <button
+                                        type="submit"
+                                        disabled={isProcessing || !stripe || !isStripeLoaded}
+                                        className="w-full bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white font-semibold py-4 px-6 rounded-xl transition-colors duration-200 flex items-center justify-center"
+                                    >
+                                        {isProcessing ? (
+                                            <>
+                                                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                                                Processing...
+                                            </>
+                                        ) : !isStripeLoaded ? (
+                                            "Loading..."
+                                        ) : (
+                                            "Confirmar e Pagar"
+                                        )}
+                                    </button>
+                                </form>
+
+                                {/* Security Notice */}
+                                <div className="mt-6 flex items-center text-sm text-gray-500">
+                                    <Shield className="h-4 w-4 mr-2" />
+                                    Your payment information is encrypted and secure
+                                </div>
+                            </div>
+
+                            {/* Order Summary */}
+                            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8">
+                                <div className="flex items-center mb-6">
+                                    <Package className="h-6 w-6 text-purple-600 mr-3" />
+                                    <h2 className="text-xl font-semibold text-gray-900">Order Summary</h2>
+                                </div>
+
+                                <div className="space-y-6">
+                                    {/* Service Details */}
+                                    <div>
+                                        <div className="flex items-start mb-4">
+                                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mr-4">
+                                                <Package className="h-6 w-6 text-purple-600" />
+                                            </div>
+                                            <div className="flex-1">
+                                                <h3 className="font-semibold text-gray-900 mb-1">Services</h3>
+                                                <p className="text-gray-700 font-medium">{service.name}</p>
+                                                <p className="text-sm text-gray-500 mt-1">{service.description}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Freelancer */}
+                                    <div className="flex items-center">
+                                        <Package className="h-5 w-5 text-gray-400 mr-3" />
+                                        <div>
+                                            <p className="text-sm text-gray-500">Freelancer</p>
+                                            <p className="font-medium text-gray-900">{service.freelancer}</p>
+                                        </div>
+                                    </div>
+
+                                    {/* Delivery Time */}
+                                    <div className="flex items-center">
+                                        <Clock className="h-5 w-5 text-gray-400 mr-3" />
+                                        <div>
+                                            <p className="text-sm text-gray-500">Delivery Time</p>
+                                            <p className="font-medium text-gray-900">{service.deliveryTime}</p>
+                                        </div>
+                                    </div>
+
+                                    {/* Pricing Breakdown */}
+                                    <div className="border-t border-gray-200 pt-6 space-y-4">
+                                        <div className="flex justify-between">
+                                            <span className="text-gray-600">Service Price</span>
+                                            <span className="font-medium text-gray-900">${service.price.toFixed(2)}</span>
+                                        </div>
+
+                                        <div className="flex justify-between">
+                                            <span className="text-gray-600">Service Fee</span>
+                                            <span className="font-medium text-gray-900">${service.serviceFee.toFixed(2)}</span>
+                                        </div>
+
+                                        <div className="border-t border-gray-200 pt-4">
+                                            <div className="flex justify-between items-center">
+                                                <span className="text-lg font-semibold text-gray-900">Total</span>
+                                                <span className="text-2xl font-bold text-purple-600">${total.toFixed(2)}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Money Back Guarantee */}
+                                    <div className="bg-green-50 border border-green-200 rounded-xl p-4">
+                                        <div className="flex items-center">
+                                            <Shield className="h-5 w-5 text-green-600 mr-2" />
+                                            <div>
+                                                <p className="text-sm font-medium text-green-800">Money Back Guarantee</p>
+                                                <p className="text-xs text-green-600 mt-1">
+                                                    Get a full refund if you're not satisfied with the work
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                        </div>
                 </main>
             </div>
         </div>
     );
 };
 
-export default Payment;
+export default Dashboard;
