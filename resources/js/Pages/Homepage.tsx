@@ -13,7 +13,7 @@ import {
     Minus,
 } from "lucide-react";
 import { Head } from "@inertiajs/react";
-import Footer from "../components/footer"
+import Footer from "../components/footer";
 import Header from "../components/Header";
 import PartnerLogosMarquee from "../components/PartnerLogosMarquee";
 
@@ -180,8 +180,10 @@ const Homepage: React.FC<HomepageProps> = () => {
             </Head>
 
             <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-100 relative">
-                <Header isMobileMenuOpen={isMobileMenuOpen} toggleMobileMenu={toggleMobileMenu} />
-
+                <Header
+                    isMobileMenuOpen={isMobileMenuOpen}
+                    toggleMobileMenu={toggleMobileMenu}
+                />
 
                 {/* Hero Section */}
                 <main className="relative z-10 px-4 sm:px-6 lg:px-8 pt-8 md:pt-16 pb-16">
@@ -221,10 +223,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                             </div>
                         </div>
                         <div className="sm:flex sm:justify-center md:justify-center">
-                            <img
-                                src="images/Mask group.png"
-                                alt=""
-                            />
+                            <img src="images/Mask group.png" alt="" />
                         </div>
                     </div>
                 </main>
@@ -352,31 +351,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                     </div>
                 </section>
                 {/* Statistics Bar */}
-                <section className="">
-                    <div className="bg-[#7E54F7] backdrop-blur-sm p-6 borde overflow-hidden w-full">
-                        <div className="flex flex-wrap items-center justify-center gap-8 text-white text-sm animate-scroll w-[200%]">
-                            <div className="flex items-center gap-2">
-                                <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-                                <span>Freelancers</span>
-                            </div>
-                            <div className="text-white/70">
-                                858 checks realizados
-                            </div>
-                            <div className="text-white/70">Desde 2025</div>
-                            <div className="text-white/70 font-bold">
-                                1407.56 • 745.65
-                            </div>
-                            <div className="text-white/70">1058 projetos</div>
-                            <div className="text-white/70">
-                                858 checks realizados
-                            </div>
-                            <div className="text-white/70">Desde 2025</div>
-                            <div className="text-white/70">
-                                1058 profissionais digitais
-                            </div>
-                        </div>
-                    </div>
-                </section>
+              <PartnerLogosMarquee />
                 <section className="relative sm:-mt-8 sm:-mb-28  overfollow-hidden">
                     <div className="mt-24 text-center">
                         <h1 className="text-5xl font-bold sm:text-4xl">
