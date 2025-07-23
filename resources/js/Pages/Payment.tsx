@@ -30,6 +30,7 @@ interface PageProps {
 }
 
 const Dashboard = () => {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const { user, currentService, notifications = 3, messages = 2 } = usePage<PageProps>().props;
 
     // Default service data if not provided from backend
@@ -127,10 +128,19 @@ const Dashboard = () => {
 
     return (
         <div className="flex ">
-            {/* <Sidebar /> */}
+            <Sidebar
+                notifications={notifications}
+                isOpen={isSidebarOpen}
+                setIsOpen={setIsSidebarOpen}
+            />
             {/* Content wrapper with left margin equal to sidebar width */}
             <div className="flex-1">
-                <Header />
+                 <Header
+                    user={user}
+                    notifications={notifications}
+                    messages={messages}
+                    onMenuButtonClick={() => setIsSidebarOpen(true)} // Toggle sidebar open
+                />
                 <main className="flex-1 p-4 sm:p-6 lg:p-8" role="main">
                     <div className="">
                         {/* Page Header */}
