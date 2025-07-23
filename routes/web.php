@@ -5,6 +5,8 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\OrderController;
+
 
 Route::get('/', function () {
     return Inertia::render('Homepage', [
@@ -47,3 +49,25 @@ Route::get('/payment', function () {
         'user' => auth()->user()
     ]);
 })->middleware('auth')->name('dashboard');
+Route::get('/marketplace', function () {
+    return Inertia::render('MarketPlace', [
+        'user' => auth()->user()
+    ]);
+})->middleware('auth')->name('marketplace');
+Route::get('/list', function () {
+    return Inertia::render('List', [
+        'user' => auth()->user()
+    ]);
+})->middleware('auth')->name('list');
+Route::get('/table', function () {
+    return Inertia::render('Table', [
+        'user' => auth()->user()
+    ]);
+})->middleware('auth')->name('table');
+Route::get('/profile', function () {
+    return Inertia::render('ProfileHeader', [
+        'user' => auth()->user()
+    ]);
+})->middleware('auth')->name('profileheader');
+
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index')->middleware('auth');

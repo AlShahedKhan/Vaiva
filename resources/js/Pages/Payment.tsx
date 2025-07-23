@@ -126,15 +126,13 @@ const Dashboard = () => {
     const total = service.price + service.serviceFee;
 
     return (
-        <div className="flex min-h-screen bg-gradient-to-br from-violet-50 to-gray-50">
-            <Sidebar />
-
+        <div className="flex ">
+            {/* <Sidebar /> */}
             {/* Content wrapper with left margin equal to sidebar width */}
-            <div className="flex-1 -ml-52">
+            <div className="flex-1">
                 <Header />
-
                 <main className="flex-1 p-4 sm:p-6 lg:p-8" role="main">
-                    <div className="lg:max-w-7xl md:max-w-2xl md:ml-58 sm:max-w-xl sm:ml-58  mx-auto">
+                    <div className="">
                         {/* Page Header */}
                         <div className="mb-8">
                             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
