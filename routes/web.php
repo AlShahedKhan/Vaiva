@@ -6,8 +6,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\OrderController;
-
 use App\Http\Controllers\StripePaymentController;
+use App\Http\Controllers\Admin\AdminPageController;
 
 Route::get('/', function () {
     return Inertia::render('Homepage', [
@@ -44,31 +44,15 @@ Route::post('/logout', [LogoutController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard', [
-        'user' => auth()->user()
-    ]);
-})->middleware('auth')->name('dashboard');
-Route::get('/marketplace', function () {
-    return Inertia::render('MarketPlace', [
-        'user' => auth()->user()
-    ]);
-})->middleware('auth')->name('marketplace');
-Route::get('/list', function () {
-    return Inertia::render('List', [
-        'user' => auth()->user()
-    ]);
-})->middleware('auth')->name('list');
-Route::get('/table', function () {
-    return Inertia::render('Table', [
-        'user' => auth()->user()
-    ]);
-})->middleware('auth')->name('table');
-Route::get('/profile', function () {
-    return Inertia::render('ProfileHeader', [
-        'user' => auth()->user()
-    ]);
-})->middleware('auth')->name('profileheader');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [AdminPageController::class, 'dashboard'])->name('dashboard');
+    Route::get('/admin', [AdminPageController::class, 'marketplace'])->name('admin');
+    Route::get('/list', [AdminPageController::class, 'list'])->name('list');
+    Route::get('/client', [AdminPageController::class, 'client'])->name('client');
+    Route::get('/profile', [AdminPageController::class, 'profile'])->name('profileheader');
+    Route::get('/payment', [AdminPageController::class, 'payment'])->name('payment');
+});
 
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index')->middleware('auth');
 
