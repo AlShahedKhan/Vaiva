@@ -36,7 +36,7 @@ interface PageProps {
     [key: string]: any;
 }
 
-const Dashboard = () => {
+const Payment = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const { user, currentService, notifications = 3, messages = 2 } = usePage<PageProps>().props;
 

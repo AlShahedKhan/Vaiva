@@ -187,7 +187,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                         <div className="space-y-8 text-center lg:text-left">
                             <div className="space-y-4">
                                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight ">
-                                    <span className="flex sm:space-x-3 justify-center">
+                                    <span className="block sm:flex sm:space-x-3 sm:justify-center">
                                         <span className="block">Conecte.</span>
                                         <span className="block">Combine.</span>
                                     </span>
@@ -202,7 +202,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                                 <input
                                     type="text"
                                     placeholder="Encontre o que você está buscando aqui"
-                                    className="bg-white w-full pl-4 pr-12 py-3 rounded-full border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500 focus:outline-none text-sm transition-colors duration-200"
+                                    className="w-full pl-4 pr-12 py-3 rounded-full border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500 focus:outline-none text-sm transition-colors duration-200"
                                 />
                                 <button className="absolute right-3 top-1/2 transform -translate-y-1/2 p-1.5 bg-purple-600 rounded-full hover:bg-purple-700 transition-colors duration-200">
                                     <Search className="w-4 h-4 text-white" />
@@ -217,7 +217,7 @@ const Homepage: React.FC<HomepageProps> = () => {
 
                 {/* Featured Freelancers Section */}
                 <section className="relative z-10 bg-white">
-                    <div className="absolute right-0 -bottom-50 -z-1 hidden lg:block">
+                    <div className="absolute right-0 -bottom-50 -z-1">
                         <img
                             src="images/Vaiva_elemento-2_fundo-roxo.png"
                             alt=""
@@ -394,7 +394,6 @@ const Homepage: React.FC<HomepageProps> = () => {
                 </section>
 
                 {/* Testimonials Section */}
-                {/* Testimonials Section */}
                 <section className="relative py-16 bg-gray-50 overflow-hidden mt-5 md:pt-30">
                     <div className="max-w-7xl mx-auto px-4 lg:mt-6 sm:px-6 md:-mt-16 lg:px-8 md:py-0">
                         {/* Section Title */}
@@ -478,17 +477,17 @@ const Homepage: React.FC<HomepageProps> = () => {
                                     </SwiperSlide>
                                 ))}
                                 {/* Custom Navigation Buttons for Testimonials */}
-                                <div className="swiper-button-prev-testimonials absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 z-10 p-3 rounded-full shadow bg-gray-100 hover:bg-gray-200 transition-colors cursor-pointer">
+                                <div className="swiper-button-prev-testimonials absolute left-0 sm:left-[-30px] lg:left-[-50px] top-1/2 transform -translate-y-1/2 z-10 p-3 rounded-full shadow bg-gray-100 hover:bg-gray-200 transition-colors cursor-pointer">
                                     <ChevronLeft className="w-6 h-6 text-gray-700" />
                                 </div>
-                                <div className="swiper-button-next-testimonials absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 z-10 p-3 rounded-full shadow bg-gray-100 hover:bg-gray-200 transition-colors cursor-pointer">
+                                <div className="swiper-button-next-testimonials absolute right-0 sm:right-[-30px] lg:right-[-50px] top-1/2 transform -translate-y-1/2 z-10 p-3 rounded-full shadow bg-gray-100 hover:bg-gray-200 transition-colors cursor-pointer">
                                     <ChevronRight className="w-6 h-6 text-gray-700" />
                                 </div>
                             </Swiper>
                         </div>
                         <img
                             style={{ transform: "rotate(-180deg)" }}
-                            className="absolute z-0 -left-30 -bottom-41 hidden lg:block max-w-full h-auto"
+                            className="absolute z-0 left-0 -bottom-71 hidden lg:block max-w-full h-auto"
                             src="images/Vaiva_elemento-3_fundo-branco.png"
                             alt="bg image"
                         />
