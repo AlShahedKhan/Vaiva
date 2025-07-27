@@ -1,5 +1,6 @@
 // resources/js/components/Footer.tsx
 import React from 'react';
+import { Link } from '@inertiajs/react';
 import { ArrowRight, Linkedin, Facebook, Instagram } from 'lucide-react';
 const FooterBg = '/footer/footer-bg.png';
 const FooterPerson = '/footer/foot-person.png';
@@ -53,10 +54,10 @@ const Footer: React.FC<FooterProps> = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 grid grid-cols-1 md:grid-cols-5 gap-8">
                     {/* Vaiva Branding */}
                     <div className="col-span-1 md:col-span-1">
-                        <div className="flex items-center space-x-2 mb-4">
+                        <Link href='/' className="flex items-center space-x-2 mb-4">
                             {/* Using the new logo image path */}
                             <img src={FooterLogo} alt="Vaiva Logo" className="h-8 m-auto lg:ml-0" />
-                        </div>
+                        </Link>
                         <p className="text-lg text-center lg:text-left text-[#838099]">
                             Plataforma brasileira, feita pra facilitar a vida de quem oferece e de quem precisa de serviços digitais.
                         </p>

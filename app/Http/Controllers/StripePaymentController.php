@@ -7,6 +7,7 @@ use Stripe\Stripe;
 use Stripe\Charge;
 use Stripe\PaymentIntent;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class StripePaymentController extends Controller
 {
@@ -14,6 +15,7 @@ class StripePaymentController extends Controller
     {
         return inertia('Payment', [
             'stripePublicKey' => config('services.stripe.key', env('STRIPE_KEY')), // Use config for better practice
+            'user' => Auth::user(),
         ]);
     }
 
@@ -72,7 +74,7 @@ class StripePaymentController extends Controller
                 'description' => 'Payment for service: ' . $service['name'],
                 'metadata' => [
                     'service_id' => $request->service_id,
-                    'user_id' => auth()->id(),
+                    'user_id' => Auth::id(),
                     'cardholder_name' => $request->card_name,
                 ],
             ]);
@@ -82,7 +84,7 @@ class StripePaymentController extends Controller
                 Log::info('Payment successful', [
                     'payment_intent_id' => $paymentIntent->id,
                     'amount' => $amount,
-                    'user_id' => auth()->id(),
+                    'user_id' => Auth::id(),
                     'service_id' => $request->service_id,
                 ]);
 

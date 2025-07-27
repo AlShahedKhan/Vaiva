@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
@@ -54,7 +55,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/list', [AdminPageController::class, 'list'])->name('list');
     Route::get('/client', [AdminPageController::class, 'client'])->name('client');
     Route::get('/profile', [AdminPageController::class, 'profile'])->name('profileheader');
-    Route::get('/payment', [AdminPageController::class, 'payment'])->name('payment');
     Route::post('/logout', [AdminPageController::class, 'logout'])->name('logout');
 });
 
@@ -71,7 +71,7 @@ Route::post('/payment/process', [StripePaymentController::class, 'process'])
 
 Route::get('/payment/success', function () {
     return Inertia::render('PaymentSuccess', [
-        'user' => auth()->user()
+        'user' => Auth::user(),
     ]);
 })->middleware('auth')->name('payment.success');
 
@@ -123,5 +123,3 @@ Route::get('/contact-us', function () {
 // Flash message example (add this to controller after actions)
 session()->flash('success', 'Action completed successfully!');
 
-// Permission management (example middleware usage)
-// Add 'can:permission-name' to routes as needed
