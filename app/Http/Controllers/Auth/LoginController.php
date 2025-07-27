@@ -17,7 +17,7 @@ class LoginController extends Controller
         ]);
     }
 
-   public function login(Request $request)
+    public function login(Request $request)
     {
         $request->validate([
             'email' => 'required|email',
@@ -29,8 +29,12 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
-
-            return redirect()->intended('/dashboard');
+            return redirect()->route('dashboard')->with([
+                'flash' => [
+                    'type' => 'success',
+                    'message' => 'User Logged in Successfully!'
+                ]
+            ]);
         }
 
         throw ValidationException::withMessages([

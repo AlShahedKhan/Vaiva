@@ -48,6 +48,11 @@ class RegisterController extends Controller
         Auth::login($user, $request->boolean('rememberMe'));
 
         // Redirect to dashboard or intended page
-        return redirect()->intended('/dashboard')->with('success', 'Registration successful! Welcome to Vaiva.');
+        return redirect()->route('dashboard')->with([
+            'flash' => [
+                'type' => 'success',
+                'message' => 'Registration successful! Welcome to Vaiva!'
+            ]
+        ]);
     }
 }

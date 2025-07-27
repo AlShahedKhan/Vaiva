@@ -9,6 +9,8 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\Admin\AdminPageController;
 
+use App\Http\Controllers\Frontend\SocialLoginController;
+
 Route::get('/', function () {
     return Inertia::render('Homepage', [
         'title' => 'Welcome to Vaiva',
@@ -52,6 +54,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/client', [AdminPageController::class, 'client'])->name('client');
     Route::get('/profile', [AdminPageController::class, 'profile'])->name('profileheader');
     Route::get('/payment', [AdminPageController::class, 'payment'])->name('payment');
+    Route::post('/logout', [AdminPageController::class, 'logout'])->name('logout');
 });
 
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index')->middleware('auth');
@@ -74,3 +77,9 @@ Route::get('/payment/success', function () {
 // API route for payment intents (if you need it later)
 Route::post('/payment-intent', [StripePaymentController::class, 'createIntent'])
     ->middleware('auth');
+
+
+Route::get('login/google', [SocialLoginController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('user/google', [SocialLoginController::class, 'handleGoogleCallback']);
+Route::get('login/facebook', [SocialLoginController::class, 'redirectTofacebook'])->name('login.facebook');
+Route::get('user/facebook', [SocialLoginController::class, 'handlefacebookCallback']);

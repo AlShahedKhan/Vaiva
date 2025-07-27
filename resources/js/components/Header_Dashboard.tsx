@@ -1,8 +1,10 @@
 "use client";
 
 import React from "react";
-import { Link } from "@inertiajs/react";
-import { Search, Bell, Mail, HelpCircle, Menu } from "lucide-react";
+import { Link, router } from "@inertiajs/react"; // Import router for Inertia.post
+import { Search, Bell, Mail, HelpCircle, Menu, LogOut } from "lucide-react"; // Add LogOut icon
+import Swal from 'sweetalert2';
+
 const FooterLogo = '/footer/logo-footer.png';
 
 interface User {
@@ -13,7 +15,7 @@ interface User {
 }
 
 interface HeaderProps {
-    user?: User | null;
+    user?: User | null; // This will determine if the user is logged in
     notifications?: number;
     messages?: number;
     onMenuButtonClick: () => void;
@@ -25,6 +27,42 @@ const Header: React.FC<HeaderProps> = ({ user, notifications = 0, messages = 0, 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
         console.log("Searching for:", searchQuery);
+    };
+
+    const handleLogout = async () => {
+        const result = await Swal.fire({
+            title: 'Are you sure?',
+            text: "You will be logged out from your account.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, log me out!',
+            reverseButtons: true, // Make "Cancel" the first button for better UX
+        });
+
+        if (result.isConfirmed) {
+            router.post('/logout', {}, {
+                onSuccess: (page) => {
+                    Swal.fire(
+                        'Logged Out!',
+                        'You have been successfully logged out.',
+                        'success'
+                    );
+                },
+                onError: (errors) => {
+                    const errorMessage = errors.message || 'Failed to log out. Please try again.';
+                    Swal.fire(
+                        'Error!',
+                        errorMessage,
+                        'error'
+                    );
+                    console.error('Logout error:', errors);
+                },
+                onFinish: () => {
+                }
+            });
+        }
     };
 
     return (
@@ -39,7 +77,7 @@ const Header: React.FC<HeaderProps> = ({ user, notifications = 0, messages = 0, 
                         <img
                             className="w-fit h-10 rounded-full object-cover ring-2 ring-gray-100"
                             src={
-                                user?.avatar || FooterLogo
+                                user?.avatar || FooterLogo // Fallback to FooterLogo if no user avatar
                             }
                             alt={`${user?.name || "User"}'s profile picture`}
                             loading="lazy"
@@ -84,6 +122,17 @@ const Header: React.FC<HeaderProps> = ({ user, notifications = 0, messages = 0, 
                         >
                             <HelpCircle className="h-6 w-6" />
                         </Link>
+
+                        {/* Logout Button (Mobile) - Conditionally Rendered */}
+                        {user && ( // Only show if user is logged in
+                            <button
+                                onClick={handleLogout}
+                                className="p-2 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-full"
+                                aria-label="Logout"
+                            >
+                                <LogOut className="h-6 w-6" />
+                            </button>
+                        )}
                     </div>
                 </div>
 
@@ -205,6 +254,17 @@ const Header: React.FC<HeaderProps> = ({ user, notifications = 0, messages = 0, 
                     >
                         <HelpCircle className="h-6 w-6" />
                     </Link>
+
+                    {/* Logout Button (Desktop) - Conditionally Rendered */}
+                    {user && ( // Only show if user is logged in
+                        <button
+                            onClick={handleLogout}
+                            className="p-2 cursor-pointer text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-full"
+                            aria-label="Logout"
+                        >
+                            <LogOut className="h-6 w-6" />
+                        </button>
+                    )}
                 </div>
             </div>
         </header>

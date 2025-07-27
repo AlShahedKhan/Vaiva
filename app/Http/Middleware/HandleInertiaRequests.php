@@ -44,6 +44,7 @@ class HandleInertiaRequests extends Middleware
                     // add any other user fields you need
                 ] : null,
             ],
+            'flash' => $request->session()->get('flash'),
         ]);
     }
 }
