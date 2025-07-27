@@ -2,10 +2,11 @@
 
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\Admin\AdminPageController;
 
@@ -83,3 +84,44 @@ Route::get('login/google', [SocialLoginController::class, 'redirectToGoogle'])->
 Route::get('user/google', [SocialLoginController::class, 'handleGoogleCallback']);
 Route::get('login/facebook', [SocialLoginController::class, 'redirectTofacebook'])->name('login.facebook');
 Route::get('user/facebook', [SocialLoginController::class, 'handlefacebookCallback']);
+// Service CRUD routes (Admin only)
+Route::middleware(['auth', 'can:manage-services'])->group(function () {
+    Route::get('/services', [App\Http\Controllers\ServiceController::class, 'index'])->name('services.index'); // List all services
+    Route::get('/services/create', [App\Http\Controllers\ServiceController::class, 'create'])->name('services.create');
+    Route::post('/services', [App\Http\Controllers\ServiceController::class, 'store'])->name('services.store');
+    Route::get('/services/{service}/edit', [App\Http\Controllers\ServiceController::class, 'edit'])->name('services.edit');
+    Route::put('/services/{service}', [App\Http\Controllers\ServiceController::class, 'update'])->name('services.update');
+    Route::delete('/services/{service}', [App\Http\Controllers\ServiceController::class, 'destroy'])->name('services.destroy');
+});
+
+// Service listing with search/filter (public)
+Route::get('/service-listing', [App\Http\Controllers\ServiceController::class, 'listing'])->name('services.listing');
+
+// Admin panel for user and service management
+Route::middleware(['auth', 'can:access-admin'])->group(function () {
+    Route::get('/admin/users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin.users.index');
+    Route::get('/admin/services', [App\Http\Controllers\Admin\ServiceController::class, 'index'])->name('admin.services.index');
+    Route::post('/users/{user}/approve', [UserController::class, 'approve'])->name('users.approve');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+});
+
+// Market Listing page
+Route::get('/market-listing', function () {
+    return Inertia::render('MarketListing');
+})->name('market.listing');
+
+// Integration List page
+Route::get('/integration-list', function () {
+    return Inertia::render('IntegrationList');
+})->name('integration.list');
+
+// Contact Us page
+Route::get('/contact-us', function () {
+    return Inertia::render('ContactUs');
+})->name('contact.us');
+
+// Flash message example (add this to controller after actions)
+session()->flash('success', 'Action completed successfully!');
+
+// Permission management (example middleware usage)
+// Add 'can:permission-name' to routes as needed
