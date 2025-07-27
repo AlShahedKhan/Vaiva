@@ -1,4 +1,4 @@
-import{c}from"./PartnerLogosMarquee-C8FECk3m.js";/**
+import{c}from"./x-DenSywY0.js";/**
  * @license lucide-react v0.525.0 - ISC
  *
  * This source code is licensed under the ISC license.

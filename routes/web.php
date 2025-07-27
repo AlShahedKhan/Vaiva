@@ -1,13 +1,17 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\Admin\AdminPageController;
+
+use App\Http\Controllers\Frontend\SocialLoginController;
 
 Route::get('/', function () {
     return Inertia::render('Homepage', [
@@ -51,7 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/list', [AdminPageController::class, 'list'])->name('list');
     Route::get('/client', [AdminPageController::class, 'client'])->name('client');
     Route::get('/profile', [AdminPageController::class, 'profile'])->name('profileheader');
-    Route::get('/payment', [AdminPageController::class, 'payment'])->name('payment');
+    Route::post('/logout', [AdminPageController::class, 'logout'])->name('logout');
 });
 
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index')->middleware('auth');
@@ -67,10 +71,55 @@ Route::post('/payment/process', [StripePaymentController::class, 'process'])
 
 Route::get('/payment/success', function () {
     return Inertia::render('PaymentSuccess', [
-        'user' => auth()->user()
+        'user' => Auth::user(),
     ]);
 })->middleware('auth')->name('payment.success');
 
 // API route for payment intents (if you need it later)
 Route::post('/payment-intent', [StripePaymentController::class, 'createIntent'])
     ->middleware('auth');
+
+
+Route::get('login/google', [SocialLoginController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('user/google', [SocialLoginController::class, 'handleGoogleCallback']);
+Route::get('login/facebook', [SocialLoginController::class, 'redirectTofacebook'])->name('login.facebook');
+Route::get('user/facebook', [SocialLoginController::class, 'handlefacebookCallback']);
+// Service CRUD routes (Admin only)
+Route::middleware(['auth', 'can:manage-services'])->group(function () {
+    Route::get('/services', [App\Http\Controllers\ServiceController::class, 'index'])->name('services.index'); // List all services
+    Route::get('/services/create', [App\Http\Controllers\ServiceController::class, 'create'])->name('services.create');
+    Route::post('/services', [App\Http\Controllers\ServiceController::class, 'store'])->name('services.store');
+    Route::get('/services/{service}/edit', [App\Http\Controllers\ServiceController::class, 'edit'])->name('services.edit');
+    Route::put('/services/{service}', [App\Http\Controllers\ServiceController::class, 'update'])->name('services.update');
+    Route::delete('/services/{service}', [App\Http\Controllers\ServiceController::class, 'destroy'])->name('services.destroy');
+});
+
+// Service listing with search/filter (public)
+Route::get('/service-listing', [App\Http\Controllers\ServiceController::class, 'listing'])->name('services.listing');
+
+// Admin panel for user and service management
+Route::middleware(['auth', 'can:access-admin'])->group(function () {
+    Route::get('/admin/users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin.users.index');
+    Route::get('/admin/services', [App\Http\Controllers\Admin\ServiceController::class, 'index'])->name('admin.services.index');
+    Route::post('/users/{user}/approve', [UserController::class, 'approve'])->name('users.approve');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+});
+
+// Market Listing page
+Route::get('/market-listing', function () {
+    return Inertia::render('MarketListing');
+})->name('market.listing');
+
+// Integration List page
+Route::get('/integration-list', function () {
+    return Inertia::render('IntegrationList');
+})->name('integration.list');
+
+// Contact Us page
+Route::get('/contact-us', function () {
+    return Inertia::render('ContactUs');
+})->name('contact.us');
+
+// Flash message example (add this to controller after actions)
+session()->flash('success', 'Action completed successfully!');
+

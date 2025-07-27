@@ -1,7 +1,7 @@
 "use client";
 
-import type React from "react";
-import { useForm } from "@inertiajs/react";
+import React, { useEffect, useState } from "react";
+import { useForm, usePage } from "@inertiajs/react";
 
 interface LoginFormData {
     email: string;
@@ -10,12 +10,15 @@ interface LoginFormData {
 }
 
 const Login = () => {
+    const [flash, setFlash] = useState<{ type: string; message: string } | null>(null);
+    // useForm থেকে data, setData, post, processing, errors, reset ডিস্ট্রাকচার করা হয়েছে
     const { data, setData, post, processing, errors, reset } =
         useForm<LoginFormData>({
             email: "",
             password: "",
             rememberMe: false,
         });
+
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value, type, checked } = e.target;
@@ -30,18 +33,38 @@ const Login = () => {
 
         post("/login", {
             onFinish: () => reset("password"),
+            // লগইন সফল হলে এখানেও একটি টোস্ট দেখাতে পারেন, তবে Laravel থেকে রিডাইরেক্ট হলে
+            // flash মেসেজটি নতুন পেজে যাবে, তাই এখানে প্রয়োজন নাও হতে পারে।
+            // onSuccess: () => {
+            //     toast.success('Login successful!');
+            // },
+            // onError: () => {
+            //     toast.error('Login failed. Please check your credentials.');
+            // }
         });
     };
 
-    const handleGoogleLogin = () => {
-        window.location.href = "/auth/google";
+    const handleGoogleLogin = async () => {
+        setData('processing', true);
+
+        try {
+            window.location.href = '/login/google';
+        } catch (error) {
+            setData('processing', false);
+        }
     };
 
     const handleFacebookLogin = () => {
-        window.location.href = "/auth/facebook";
+        setData('processing', true);
+        window.location.href = "/login/facebook";
+        setFlash({
+            type: 'success',
+            message: 'Facebook User Logged in Successfully!',
+        });
     };
 
     return (
+
         <main className="h-screen flex flex-col md:flex-row overflow-y-auto sm:overflow-y-auto md:overflow-hidden lg:overflow-hidden">
             {/* Purple Gradient Section - Top on sm, Right on md/lg */}
             <section className="flex-1 bg-violet-600 flex m-2 sm:m-4 lg:m-6 rounded-2xl relative overflow-hidden order-1 md:order-2 lg:min-h-[40vh] sm:min-h-[85vh] md:min-h-full ">
@@ -180,7 +203,7 @@ const Login = () => {
                         <button
                             type="submit"
                             disabled={processing}
-                            className="w-full bg-gradient-to-r from-gray-900 to-black text-white py-3 px-4 text-base rounded-full font-medium font-gilroy hover:from-black hover:to-gray-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                            className="cursor-pointer w-full bg-gradient-to-r from-gray-900 to-black text-white py-3 px-4 text-base rounded-full font-medium font-gilroy hover:from-black hover:to-gray-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                             aria-label="Se connecter"
                         >
                             {processing ? (
@@ -225,7 +248,7 @@ const Login = () => {
                                 type="button"
                                 onClick={handleGoogleLogin}
                                 disabled={processing}
-                                className="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-full bg-white text-gray-700 font-gilroy text-sm hover:bg-gray-50 transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="cursor-pointer w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-full bg-white text-gray-700 font-gilroy text-sm hover:bg-gray-50 transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 disabled:opacity-50 disabled:cursor-not-allowed"
                                 aria-label="Login with Google"
                             >
                                 <svg
@@ -256,7 +279,7 @@ const Login = () => {
                                 type="button"
                                 onClick={handleFacebookLogin}
                                 disabled={processing}
-                                className="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-full bg-white text-gray-700 font-gilroy text-sm hover:bg-gray-50 transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="w-full cursor-pointer flex items-center justify-center px-4 py-3 border border-gray-300 rounded-full bg-white text-gray-700 font-gilroy text-sm hover:bg-gray-50 transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
                                 aria-label="Login with Facebook"
                             >
                                 <svg

@@ -1,41 +1,65 @@
-import { usePage } from "@inertiajs/react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header_Dashboard";
+import FlashMessage from './services/FlashMessage';
 
 interface User {
     id: number;
     name: string;
     email: string;
-    created_at: string;
+    avatar?: string;
 }
 
-interface PageProps {
-    user: User;
+interface DashboardLayoutProps {
+    children: React.ReactNode;
+    user?: User | null;
     notifications?: number;
     messages?: number;
-    [key: string]: any;
+    flash?: { type: string; message: string } | null; // Flash message passed from Inertia
 }
 
-const Dashboard = () => {
-    const { user, notifications = 3, messages = 2 } = usePage<PageProps>().props;
-
+const Dashboard: React.FC<DashboardLayoutProps> = ({
+    children,
+    user,
+    notifications = 3,
+    messages = 4,
+    flash
+}) => {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     return (
-        <div className="flex min-h-screen bg-gradient-to-br from-violet-50 to-gray-50">
-            <Sidebar />
+        <div className="min-h-screen flex flex-col lg:flex-row bg-gray-100">
+            {flash && flash.message && (
+                <FlashMessage type={flash.type as 'success' | 'error' | 'info' | 'warning'} message={flash.message} />
+            )}
+            {/* Sidebar */}
+            <Sidebar
+                notifications={notifications}
+                isOpen={isSidebarOpen}
+                setIsOpen={setIsSidebarOpen}
+            />
 
-            {/* Content wrapper with left margin equal to sidebar width */}
-            <div className="flex-1 -ml-52">
-                <Header />
+            {/* Main Content Area */}
+            <div className="flex-1 flex flex-col">
+                {/* Header */}
+                <Header
+                    user={user}
+                    notifications={notifications}
+                    messages={messages}
+                    onMenuButtonClick={() => setIsSidebarOpen(true)} // Toggle sidebar open
+                />
 
+                {/* Page Content */}
                 <main className="flex-1 p-4 sm:p-6 lg:p-8" role="main">
-                    <div className="lg:max-w-7xl md:max-w-2xl md:ml-58 sm:max-w-xl sm:ml-58 mx-auto">
+                    <div className="">
                         {/* Page Header */}
                         <div className="mb-8">
                             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
                                 Dashboard
                             </h1>
                             <p className="text-gray-600">
-                                Welcome back, {user.name}
+                                Welcome back, {user?.name}
                             </p>
                         </div>
 

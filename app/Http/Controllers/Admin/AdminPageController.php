@@ -65,23 +65,16 @@ class AdminPageController extends Controller
     /**
      * Render the Payment page.
      */
-    public function payment()
+    public function logout(Request $request)
     {
-        // Example service data (replace with actual data retrieval from your database)
-        $currentService = [
-            'id' => 1,
-            'name' => "Logo Design — Basic Pack",
-            'description' => "Professional logo design with 3 concepts and unlimited revisions",
-            'freelancer' => "Ana Silva",
-            'deliveryTime' => "5 business days",
-            'price' => 250.0,
-            'serviceFee' => 15.0,
-        ];
-
-        return Inertia::render('Payment', [
-            'user' => Auth::user(), // Passing the authenticated user
-            'currentService' => $currentService,
-            'stripePublicKey' => config('services.stripe.key'), // Ensure this is configured in config/services.php
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login')->with([
+            'flash' => [
+                'type' => 'success',
+                'message' => 'User Logged Out Successfully!'
+            ]
         ]);
     }
 }

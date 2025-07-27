@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
@@ -36,5 +37,12 @@ class AppServiceProvider extends ServiceProvider
         if (app()->environment('production')) {
             URL::forceScheme('https');
         }
+
+        Gate::define('manage-services', function ($user) {
+            return $user->role === 'freelancer';
+        });
+        Gate::define('access-admin', function ($user) {
+            return $user->role === 'admin';
+        });
     }
 }
