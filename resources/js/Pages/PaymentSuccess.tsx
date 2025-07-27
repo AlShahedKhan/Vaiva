@@ -1,8 +1,31 @@
+import React, { useState } from "react";
 import { usePage } from "@inertiajs/react";
 import { router } from "@inertiajs/react";
 import { CheckCircle, Package, Clock, User, ArrowRight, AlertTriangle } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header_Dashboard";
+
+// Define types for user, notification, and message props
+interface UserData {
+    id: number;
+    name: string;
+    email: string;
+    // Add other user properties as needed
+}
+
+interface NotificationData {
+    id: number;
+    message: string;
+    read: boolean;
+    // Add other notification properties
+}
+
+interface MessageData {
+    id: number;
+    sender: string;
+    content: string;
+    // Add other message properties
+}
 
 interface PaymentData {
     service: {
@@ -29,10 +52,15 @@ interface PaymentData {
 
 interface PageProps {
     paymentData?: PaymentData; // Make it optional
+    notifications?: NotificationData[]; // Make it optional
+    user?: UserData; // Make it optional
+    messages?: MessageData[]; // Make it optional
 }
 
 const PaymentSuccess = () => {
-    const { paymentData } = usePage<PageProps>().props;
+    // Destructure all expected props from usePage
+    const { paymentData, notifications, user, messages } = usePage<PageProps>().props;
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const handleGoToDashboard = () => {
         router.visit('/dashboard');
@@ -42,24 +70,30 @@ const PaymentSuccess = () => {
         router.visit('/orders');
     };
 
-    // Handle case when paymentData is not available
+    // Handle case when essential paymentData is not available
     if (!paymentData || !paymentData.payment || !paymentData.service) {
         return (
             <div className="flex min-h-screen bg-gradient-to-br from-violet-50 to-gray-50">
-                <Sidebar />
+                <Sidebar
+                    isOpen={isSidebarOpen}
+                    setIsOpen={setIsSidebarOpen}
+                />
                 <div className="flex-1 -ml-52">
-                    <Header />
+                    <Header
+                        user={user} // Pass user data
+                        onMenuButtonClick={() => setIsSidebarOpen(true)}
+                    />
                     <main className="flex-1 p-4 sm:p-6 lg:p-8" role="main">
                         <div className="max-w-4xl mx-auto">
                             <div className="text-center">
-                                <div className="inline-flex items-center justify-center w-20 h-20 bg-red-100 rounded-full mb-6">
-                                    <AlertTriangle className="h-10 w-10 text-red-600" />
+                                <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-6">
+                                    <CheckCircle className="h-10 w-10 text-green-600" />
                                 </div>
                                 <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                                    Payment Data Not Found
+                                    Payment Successfull
                                 </h1>
                                 <p className="text-lg text-gray-600 mb-8">
-                                    We couldn't retrieve your payment information. Please check your orders or contact support.
+                                    Your order has been confirmed and the freelancer will start working on it soon.
                                 </p>
                                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                     <button
@@ -85,11 +119,17 @@ const PaymentSuccess = () => {
 
     return (
         <div className="flex min-h-screen bg-gradient-to-br from-violet-50 to-gray-50">
-            <Sidebar />
+            <Sidebar
+                isOpen={isSidebarOpen}
+                setIsOpen={setIsSidebarOpen}
+            />
 
             {/* Content wrapper */}
             <div className="flex-1 -ml-52">
-                <Header />
+                <Header
+                    user={user} // Pass user data
+                    onMenuButtonClick={() => setIsSidebarOpen(true)}
+                />
 
                 <main className="flex-1 p-4 sm:p-6 lg:p-8" role="main">
                     <div className="max-w-4xl mx-auto">

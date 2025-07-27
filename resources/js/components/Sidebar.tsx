@@ -2,8 +2,9 @@
 "use client";
 
 import React from "react";
-import { Link, usePage } from "@inertiajs/react";
+import { Link, usePage, router } from "@inertiajs/react";
 import { X } from "lucide-react";
+import Swal from 'sweetalert2';
 
 // Assuming these paths are correct
 const Logo = "/images/logo.png";
@@ -40,13 +41,49 @@ const Sidebar: React.FC<SidebarProps> = ({ notifications = 0, isOpen, setIsOpen 
         { name: "dashboard", href: "/dashboard", icon: Icon1, label: "Dashboard" },
         { name: "admin", href: "/admin", icon: Icon2, label: "Admin" },
         { name: "client", href: "/client", icon: Icon3, label: "Client" },
-        { name: "users", href: "/users", icon: Icon4, label: "Users" },
-        { name: "documents", href: "/documents", icon: Icon5, label: "Documents" },
-        { name: "help", href: "/help", icon: Icon6, label: "Help" },
+        { name: "profile", href: "/profile", icon: Icon4, label: "Profile" },
+        { name: "payment", href: "/payment", icon: Icon5, label: "payment" },
+        // { name: "help", href: "/help", icon: Icon6, label: "Help" },
     ];
 
     const isActive = (href: string) => url.startsWith(href);
     const toggleSidebar = () => setIsOpen(!isOpen);
+
+    const handleLogout = async () => {
+        const result = await Swal.fire({
+            title: 'Are you sure?',
+            text: "You will be logged out from your account.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, log me out!',
+            reverseButtons: true, // Make "Cancel" the first button for better UX
+        });
+
+        if (result.isConfirmed) {
+            router.post('/logout', {}, {
+                onSuccess: (page) => {
+                    Swal.fire(
+                        'Logged Out!',
+                        'You have been successfully logged out.',
+                        'success'
+                    );
+                },
+                onError: (errors) => {
+                    const errorMessage = errors.message || 'Failed to log out. Please try again.';
+                    Swal.fire(
+                        'Error!',
+                        errorMessage,
+                        'error'
+                    );
+                    console.error('Logout error:', errors);
+                },
+                onFinish: () => {
+                }
+            });
+        }
+    };
 
     return (
         <>
@@ -74,7 +111,7 @@ const Sidebar: React.FC<SidebarProps> = ({ notifications = 0, isOpen, setIsOpen 
                 <div className="flex flex-col h-full">
                     {/* Logo Section */}
                     <div className="flex items-center justify-between h-20 border-b border-gray-200 px-4 lg:justify-center">
-                        <Link href="/" className="flex items-center lg:w-full lg:justify-center">
+                        <Link href="/dashboard" className="flex items-center lg:w-full lg:justify-center">
                             <img className="h-14 sm:h-12 md:h-10" src={Logo} alt="Logo" />
                         </Link>
                         <button
@@ -135,8 +172,8 @@ const Sidebar: React.FC<SidebarProps> = ({ notifications = 0, isOpen, setIsOpen 
                     {user && ( // Only render if user data is available
                         <div className="p-3 mt-auto">
                             <div className="bg-gray-50 rounded-2xl border border-gray-100 flex items-center justify-center p-2 relative">
-                                <Link
-                                    href="/profile"
+                                <button
+                                    onClick={handleLogout}
                                     className="relative group flex items-center justify-center w-full h-full"
                                     aria-label={`User profile: ${user.name}`}
                                     title={`${user.name} - View Profile`}
@@ -148,19 +185,15 @@ const Sidebar: React.FC<SidebarProps> = ({ notifications = 0, isOpen, setIsOpen 
                                             className="w-full h-full object-cover"
                                         />
                                     </div>
-                                    {/* Display user name only on wider sidebars (lg breakpoint) */}
-                                    <div className="hidden lg:block ml-2 text-sm font-medium text-gray-800">
-                                        {user.name}
-                                    </div>
 
-                                    {notifications > 0 && (
+                                    {/* {notifications > 0 && (
                                         <div className="absolute -top-1 -right-1 w-5 h-5 bg-purple-500 rounded-lg flex items-center justify-center shadow-sm">
                                             <span className="text-white text-xs font-medium">
                                                 {notifications > 9 ? "9+" : notifications}
                                             </span>
                                         </div>
-                                    )}
-                                </Link>
+                                    )} */}
+                                </button>
                             </div>
                         </div>
                     )}

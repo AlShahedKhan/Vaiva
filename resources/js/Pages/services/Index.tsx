@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageProps, Inertia } from '@inertiajs/inertia';
-import { Link } from '@inertiajs/inertia-react';
+import { Link } from '@inertiajs/react';
 
 interface Service {
   id: number;
@@ -59,7 +59,7 @@ const Index: React.FC<Props> = ({ services }) => {
                     </Link>
                     <button
                       onClick={() => handleDelete(service.id)}
-                      className="text-red-600 hover:underline"
+                      className="text-red-600 hover:underline max-h-max"
                     >
                       Delete
                     </button>
