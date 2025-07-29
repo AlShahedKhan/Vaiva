@@ -69,7 +69,7 @@ const Header: React.FC<HeaderProps> = ({
 
                         {/* Mobile Menu Button */}
                         <button
-                            className="lg:hidden p-1 bg-blue-500 rounded-[5px] hover:bg-black transition-colors duration-200"
+                            className="lg:hidden cursor-pointer p-1 bg-blue-500 rounded-[5px] hover:bg-black transition-colors duration-200"
                             onClick={toggleMobileMenu}
                             aria-label="Toggle mobile menu"
                         >
@@ -90,9 +90,9 @@ const Header: React.FC<HeaderProps> = ({
                 <div className="p-6 space-y-6">
                     <div className="flex justify-between items-center mb-6">
                         {/* Logo */}
-                        <div className="flex items-center space-x-2">
+                        <Link href='/' className="flex cursor-pointer items-center space-x-2">
                             <img src={HeaderLogo} alt="Header Logo" />
-                        </div>
+                        </Link>
                         <button
                             className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
                             onClick={toggleMobileMenu}
@@ -119,7 +119,7 @@ const Header: React.FC<HeaderProps> = ({
                             Explore Services
                         </Link>
                         <a
-                            href="#how-it-works"
+                            href="/how-it-works"
                             className="block text-lg font-medium text-gray-700 hover:text-purple-600 py-2"
                             onClick={toggleMobileMenu}
                         >

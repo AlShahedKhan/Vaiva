@@ -8,15 +8,15 @@ interface GraphicDesignServiceCardProps {
 
 const GraphicDesignServiceCard: React.FC<GraphicDesignServiceCardProps> = () => {
     return (
-        <section className="relative z-10 py-16 px-4 sm:px-6 lg:px-8">
+        <section className="relative py-16 px-4 sm:px-6 lg:px-8 z-10">
             <img
                 src="/services/person-bg.png"
                 alt="Background Image"
-                className="absolute -bottom-30 -right-0 md:-bottom-124 md:-right-0 w-64 h-64 md:w-auto md:h-auto lg:-bottom-80 lg:right-0 z-0"
+                className="absolute hidden lg:block -bottom-30 -right-0 md:-bottom-124 md:-right-0 w-64 h-64 md:w-auto md:h-auto lg:-bottom-80 lg:right-0 -z-1"
             />
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between md:gap-5">
                 {/* Image Section */}
-                <div className="md:w-1/2 w-full order-2 lg:order-1 z-99">
+                <div className="md:w-1/2 w-full order-2 lg:order-1">
                     <img
                         src="/services/person.png" // Replace with your actual image path
                         alt="Designer gráfico trabalhando em um laptop"

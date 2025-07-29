@@ -27,7 +27,7 @@ const Footer: React.FC<FooterProps> = () => {
                         <h2 className="text-4xl lg:text-6xl font-bold leading-10 lg:leading-16 mb-6 ">
                             Posso conversar com o profissional antes de contratar?
                         </h2>
-                        <button className="flex justify-center w-full items-center px-8 py-4 text-white text-sm border-1 border-clor rounded-full font-medium transition-colors duration-200 m-auto lg:ml-0 lg:w-auto">
+                        <button className="flex cursor-pointer justify-center w-full items-center px-8 py-4 text-white text-sm border-1 border-clor rounded-full font-medium transition-colors duration-200 m-auto lg:ml-0 lg:w-auto">
                             Comece agora
                             <ArrowRight className="w-5 h-5 ml-2" />
                         </button>

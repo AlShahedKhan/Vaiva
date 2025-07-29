@@ -34,7 +34,7 @@ const VideoSection: React.FC<VideoSectionProps> = () => {
                         Contratar um editor de vídeo na Vaiva é simples, rápido e seguro. Escolha o profissional ideal, combine os detalhes diretamente no chat e receba o trabalho no prazo.
                         Contratar um editor de vídeo
                     </p>
-                    <button className="mt-4 px-8 py-3 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 w-full lg:w-fit transition-colors duration-200">
+                    <button className="mt-4 cursor-pointer px-8 py-3 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 w-full lg:w-fit transition-colors duration-200">
                         Contratar um editor de vídeo
                     </button>
                 </div>

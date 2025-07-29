@@ -217,7 +217,7 @@ const Homepage: React.FC<HomepageProps> = () => {
 
                 {/* Featured Freelancers Section */}
                 <section className="relative z-10 bg-white">
-                    <div className="absolute right-0 -bottom-50 -z-1 hidden lg:block">
+                    <div className="absolute -bottom-80 -left-10 top-80 right-0 -z-1 lg:-bottom-50 lg:left-auto lg:top-auto lg:right-0">
                         <img
                             src="images/Vaiva_elemento-2_fundo-roxo.png"
                             alt=""
@@ -227,8 +227,8 @@ const Homepage: React.FC<HomepageProps> = () => {
                     <PartnerLogosMarquee />
 
                     {/* Main Content */}
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
-                        <div className="text-center mb-12">
+                    <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8">
+                        <div className="text-center px-4 mb-12">
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                                 Aqui, quem faz é valorizado.
                             </h2>
@@ -433,22 +433,23 @@ const Homepage: React.FC<HomepageProps> = () => {
                                             className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200 relative h-full flex flex-col justify-between"
                                         >
                                             {/* Quote marks */}
-                                            <div className="flex justify-between items-start mb-4">
-                                                <div className="text-4xl text-purple-400 font-bold leading-none">
-                                                    "
-                                                </div>
-                                                <div className="text-4xl text-purple-400 font-bold leading-none">
-                                                    "
-                                                </div>
-                                            </div>
+
 
                                             {/* Profile Section */}
                                             <div className="flex flex-col items-center mb-4">
-                                                <img
-                                                    src={t.image}
-                                                    alt={t.name}
-                                                    className="w-16 h-16 rounded-full object-cover mb-3 border-2 border-gray-100"
-                                                />
+                                                <div className="relative w-50 text-center m-auto mb-3">
+                                                    <img
+                                                        src={t.image}
+                                                        alt={t.name}
+                                                        className="w-16 h-16 m-auto rounded-full object-cover border-2 border-gray-100"
+                                                    />
+                                                    <div className="leading-none absolute top-1/2 transform -translate-y-1/2 left-0">
+                                                        <img src="/images/testimonial-qoute.png" alt="" />
+                                                    </div>
+                                                    <div className="leading-none absolute right-0 top-1/2 transform -translate-y-1/2">
+                                                        <img src="/images/testimonial-qoute2.png" alt="" />
+                                                    </div>
+                                                </div>
                                                 <h3 className="font-semibold text-gray-900 text-center">
                                                     {t.name}
                                                 </h3>
