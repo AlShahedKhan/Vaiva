@@ -166,7 +166,7 @@ const HowItWorks: React.FC<HowItWorksProps> = () => {
                                         </div>
                                     </div>
 
-                                    <div className="flex items-start justify-center space-x-4 bg-white p-4 pb-0 h-30 rounded-lg">
+                                    <div className="flex items-start justify-center space-x-4 bg-white p-4 pb-0 lg:h-30 rounded-lg">
                                         <div className="flex-shrink-0 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center mt-1">
                                             <Check className="w-4 h-4 text-white" />
                                         </div>

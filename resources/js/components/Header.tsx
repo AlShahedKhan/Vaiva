@@ -112,7 +112,7 @@ const Header: React.FC<HeaderProps> = ({
                             Home
                         </Link>
                         <Link
-                            href="/services"
+                            href="/explore-services"
                             className="block text-lg font-medium text-gray-700 hover:text-purple-600 py-2"
                             onClick={toggleMobileMenu}
                         >

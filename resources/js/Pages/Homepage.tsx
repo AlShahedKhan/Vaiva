@@ -433,8 +433,6 @@ const Homepage: React.FC<HomepageProps> = () => {
                                             className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200 relative h-full flex flex-col justify-between"
                                         >
                                             {/* Quote marks */}
-
-
                                             {/* Profile Section */}
                                             <div className="flex flex-col items-center mb-4">
                                                 <div className="relative w-50 text-center m-auto mb-3">
