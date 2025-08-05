@@ -1,8 +1,8 @@
 import React from "react";
 import { Search, CheckCircle, Menu, X } from "lucide-react";
 import { Head, Link, usePage } from "@inertiajs/react";
-const HeaderLogo = '/logo-footer.png'; // Adjust the path as needed
-
+const HeaderLogo = '/logo-footer.png';
+const LogoMobile = '/images/logo-mobile.png';
 type HeaderProps = {
     isMobileMenuOpen: boolean;
     toggleMobileMenu: () => void;
@@ -20,7 +20,8 @@ const Header: React.FC<HeaderProps> = ({
                     <div className="flex items-center justify-between h-16 md:h-20">
                         {/* Logo */}
                         <Link href='/' className="flex items-center space-x-2">
-                            <img src={HeaderLogo} alt="Header Logo" />
+                            <img src={HeaderLogo} alt="Header Logo" className="hidden lg:flex" />
+                            <img src={LogoMobile} alt="Header Logo" className="flex lg:hidden" />
                         </Link>
 
                         {/* Desktop Navigation */}
@@ -91,7 +92,7 @@ const Header: React.FC<HeaderProps> = ({
                     <div className="flex justify-between items-center mb-6">
                         {/* Logo */}
                         <Link href='/' className="flex cursor-pointer items-center space-x-2">
-                            <img src={HeaderLogo} alt="Header Logo" />
+                            <img src={LogoMobile} alt="Header Logo" />
                         </Link>
                         <button
                             className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"

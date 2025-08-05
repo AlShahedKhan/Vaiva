@@ -242,9 +242,9 @@ const Homepage: React.FC<HomepageProps> = () => {
                         </div>
 
                         {/* Updated Carousel for Featured Freelancers */}
-                        <div className="relative flex items-center justify-center gap-4 mb-12">
+                        <div className="relative overflow-hidden flex items-center justify-center gap-4 mb-12">
                             {/* Navigation Button for Previous */}
-                            <div className="swiper-button-prev-1 absolute left-0 sm:left-[-30px] lg:left-[-50px] top-1/2 transform -translate-y-1/2 z-10 p-3 rounded-full shadow bg-gray-100 hover:bg-gray-200 transition-colors cursor-pointer hidden sm:block">
+                            <div className="swiper-button-prev-1 absolute left-0 lg:left-[-50px] top-1/2 transform -translate-y-1/2 z-10 p-3 rounded-full shadow bg-gray-100 hover:bg-gray-200 transition-colors cursor-pointer hidden sm:block">
                                 <ChevronLeft className="w-6 h-6 text-gray-700" />
                             </div>
 
@@ -286,7 +286,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                             </div>
 
                             {/* Navigation Button for Next */}
-                            <div className="swiper-button-next-1 absolute right-0 sm:right-[-30px] lg:right-[-50px] top-1/2 transform -translate-y-1/2 z-10 p-3 rounded-full shadow bg-gray-100 hover:bg-gray-200 transition-colors cursor-pointer hidden sm:block">
+                            <div className="swiper-button-next-1 absolute right-0 lg:right-[-50px] top-1/2 transform -translate-y-1/2 z-10 p-3 rounded-full shadow bg-gray-100 hover:bg-gray-200 transition-colors cursor-pointer hidden sm:block overflow-hidden">
                                 <ChevronRight className="w-6 h-6 text-gray-700" />
                             </div>
                         </div>
@@ -360,7 +360,7 @@ const Homepage: React.FC<HomepageProps> = () => {
 
                 {/* Statistics Bar */}
                 <PartnerLogosMarquee />
-                <section className="relative lg:pb-40 overflow-hidden">
+                <section className="relative lg:pb-40 overflow-hidden ">
                     <div className="mt-24 text-center">
                         <h1 className="text-5xl font-bold sm:text-4xl">
                             A Vaiva nasceu pra facilitar a vida <br /> de quem
@@ -375,7 +375,7 @@ const Homepage: React.FC<HomepageProps> = () => {
 
                     {/* Image first */}
                     <img
-                        className="items-center mx-auto mt-12 relative z-10"
+                        className="items-center mx-auto mt-12 relative z-10 overflow-hidden"
                         src="images/Group 1618873536.png"
                         alt=""
                     />
@@ -404,7 +404,7 @@ const Homepage: React.FC<HomepageProps> = () => {
                             </h2>
                         </div>
 
-                        <div className="relative">
+                        <div className="relative overflow-hidden">
                             {/* Testimonials Swiper */}
                             <Swiper
                                 modules={[Navigation]} // Enable Navigation

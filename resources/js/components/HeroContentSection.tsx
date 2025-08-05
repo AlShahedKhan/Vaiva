@@ -10,7 +10,7 @@ const HeroContentSection: React.FC<HeroContentSectionProps> = () => {
             <img
                 src="/services/person-bg.png"
                 alt="Background Image"
-                className="absolute block md:hidden left-0 right-0  -top-20 -z-1"
+                className="absolute block md:hidden left-0 right-0  -top-20 -z-1 w-full"
             />
             <div className="relative bg-gradient-to-br from-gray-900 to-purple-900 overflow-hidden flex items-center justify-center mx-3 rounded-2xl">
                 {/* Content Container */}
