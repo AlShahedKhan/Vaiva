@@ -9,7 +9,7 @@ class OrderController extends Controller
 {
     public function index(Request $request)
     {
-        // Hardcoded dummy data - This simulates data you'd normally get from a database
+
         $allOrders = [
             ['id' => '#213', 'clientName' => 'Randy Lubin', 'orderDate' => '28 Jan 2025', 'status' => 'Active'],
             ['id' => '#214', 'clientName' => 'Ann Mango', 'orderDate' => '28 Jan 2025', 'status' => 'Pending'],
